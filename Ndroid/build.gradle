@@ -2,6 +2,18 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'me.tatarka.retrolambda'
 apply plugin: 'maven'
+apply plugin: 'com.novoda.bintray-release'
+
+publish {
+    userOrg = 'Pils'
+    groupId = 'Ndroid.appFactory'
+    artifactId = 'Ndroid'
+    publishVersion = '0.0.1-beta'
+    desc = 'Android MVP & Functional library'
+    website = 'https://github.com/skaengus2012/Ndroid'
+    issueTracker = "https://github.com/skaengus2012/Ndroid/issues"
+    repository = "https://github.com/skaengus2012/Ndroid.git"
+}
 
 android {
     compileSdkVersion 25
