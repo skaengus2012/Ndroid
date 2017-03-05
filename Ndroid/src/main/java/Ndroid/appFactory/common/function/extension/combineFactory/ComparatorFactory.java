@@ -5,7 +5,7 @@ import android.support.annotation.NonNull;
 import java.util.Collections;
 import java.util.Comparator;
 
-import Ndroid.appFactory.common.modeler.NxModeler;
+import Ndroid.appFactory.common.androidMvc.modeler.NxModeler;
 import Ndroid.appFactory.common.function.extension.supportFunction.NullAbleComparator;
 
 /**
@@ -74,8 +74,8 @@ public class ComparatorFactory<T> extends NxModeler {
      * 정렬 방식 변경.
      *
      * <pre>
-     *     오름차순 -> 내림차순
-     *     내림차순 -> 오름차순
+     *     오름차순, 내림차순
+     *     내림차순, 오름차순
      * </pre>
      *
      * @return

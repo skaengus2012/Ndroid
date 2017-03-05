@@ -1,19 +1,34 @@
-package Ndroid.appFactory.common.function;
+package Ndroid.appFactory.util;
 
 import java.util.Comparator;
 
+import Ndroid.appFactory.common.function.IFunction;
+import Ndroid.appFactory.common.function.IPredicate;
 import Ndroid.appFactory.common.function.extension.combineFactory.ComparatorFactory;
+import Ndroid.appFactory.common.function.extension.combineFactory.PredicateFactory;
 
 /**
- * JAVA8 Comparator Support
+ * Lambda Util Define.
  *
  * <pre>
- *     Default method in Comparator can use api >= 24
+ *     This class is supported default and static method in JAVA8 Lambda.
  * </pre>
  *
  * Created by Doohyun on 2017. 3. 5..
  */
-public interface IComparator<T> extends Comparator<T>{
+
+public class LambdaUtil {
+
+    /**
+     * Create Predicate Builder
+     *
+     * @param iPredicate
+     * @param <T>
+     * @return
+     */
+    public static <T> PredicateFactory<T> PredicateBuilder(IPredicate<T> iPredicate){
+        return new PredicateFactory<>(iPredicate);
+    }
 
     /**
      * Create ComparatorFactory for Lambda combination.
@@ -22,7 +37,7 @@ public interface IComparator<T> extends Comparator<T>{
      * @param <T>
      * @return
      */
-    static <T> ComparatorFactory<T> Builder(Comparator<T> comparator){
+    public static <T> ComparatorFactory<T> ComparatorBuilder(Comparator<T> comparator){
         return new ComparatorFactory<>(comparator);
     }
 
@@ -34,7 +49,7 @@ public interface IComparator<T> extends Comparator<T>{
      * @param <T>
      * @return
      */
-    static <T> ComparatorFactory<T> Builder(Comparator<T> comparator, Boolean nullFirstYn){
+    public static <T> ComparatorFactory<T> ComparatorBuilder(Comparator<T> comparator, Boolean nullFirstYn){
         return new ComparatorFactory<>(comparator, nullFirstYn);
     }
 
@@ -47,7 +62,7 @@ public interface IComparator<T> extends Comparator<T>{
      * @param <U>
      * @return
      */
-    static <T, U> Comparator<T> CreateKeyComparator(
+    public static <T, U> Comparator<T> CreateKeyComparator(
             IFunction<? super T, ? extends U> keyExtractor
             , Comparator<? super U> keyComparator) {
         return (T c1, T c2) -> keyComparator.compare(keyExtractor.apply(c1), keyExtractor.apply(c2));

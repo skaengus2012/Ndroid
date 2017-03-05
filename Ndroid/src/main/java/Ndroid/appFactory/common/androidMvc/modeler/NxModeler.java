@@ -1,4 +1,4 @@
-package Ndroid.appFactory.common.modeler;
+package Ndroid.appFactory.common.androidMvc.modeler;
 
 import java.util.Collection;
 import java.util.Map;
@@ -44,7 +44,6 @@ public abstract class NxModeler {
      *
      * @param obj
      *
-     * @modified 2016. 9. 19. by leehw
      */
     public final static void NullCheck(Object obj) {
         if (obj == null) {

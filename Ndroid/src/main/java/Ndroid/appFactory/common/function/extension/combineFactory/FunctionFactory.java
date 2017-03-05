@@ -1,6 +1,6 @@
 package Ndroid.appFactory.common.function.extension.combineFactory;
 
-import Ndroid.appFactory.common.modeler.NxModeler;
+import Ndroid.appFactory.common.androidMvc.modeler.NxModeler;
 
 /**
  * Function 공장 제작

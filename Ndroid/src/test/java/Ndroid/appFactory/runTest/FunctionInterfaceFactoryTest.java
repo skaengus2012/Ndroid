@@ -6,10 +6,9 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import Ndroid.appFactory.common.function.IComparator;
 import Ndroid.appFactory.common.function.IPredicate;
-import Ndroid.appFactory.common.function.extension.combineFactory.PredicateFactory;
 import Ndroid.appFactory.testVo.SubjectRelation;
+import Ndroid.appFactory.util.LambdaUtil;
 
 /**
  * Function support class Test
@@ -18,6 +17,7 @@ import Ndroid.appFactory.testVo.SubjectRelation;
  */
 
 public class FunctionInterfaceFactoryTest {
+
     @Test
     public void runTest() {
         comparatorFactoryTest();
@@ -34,13 +34,13 @@ public class FunctionInterfaceFactoryTest {
         );
 
         // 회사 순번으로 내림차순 정렬 후, 이름으로 오름정렬 (null last).
-        Collections.sort(subjectRelationList, IComparator.Builder(
-                        IComparator.CreateKeyComparator(SubjectRelation::getCompanySubjectSn
-                                , IComparator.Builder((Integer a, Integer b) -> a.compareTo(b)).reversed()
+        Collections.sort(subjectRelationList, LambdaUtil.ComparatorBuilder(
+                        LambdaUtil.CreateKeyComparator(SubjectRelation::getCompanySubjectSn
+                                , LambdaUtil.ComparatorBuilder((Integer a, Integer b) -> a.compareTo(b)).reversed()
                                         .getComparator())).
                         thenComparing(
-                                IComparator.CreateKeyComparator(SubjectRelation::getMemberName,
-                                        IComparator.Builder((String a, String b) -> a.compareTo(b)).
+                                LambdaUtil.CreateKeyComparator(SubjectRelation::getMemberName,
+                                        LambdaUtil.ComparatorBuilder((String a, String b) -> a.compareTo(b)).
                                                 nullsFirst().reversed().getComparator())).getComparator());
     }
 
@@ -51,7 +51,7 @@ public class FunctionInterfaceFactoryTest {
         {
             // a >= 5 && a < 10 || a == 0
 
-            IPredicate<Integer> predicate = IPredicate.Builder((Integer a) -> a >= 5).
+            IPredicate<Integer> predicate = LambdaUtil.PredicateBuilder((Integer a) -> a >= 5).
                     and(null).
                     or(a -> a == 0).
                     getPredicate();
@@ -63,9 +63,9 @@ public class FunctionInterfaceFactoryTest {
 
         {
             // (a >= 5 && a < 10) || (a >= 200 && a < 300)
-            IPredicate<Integer> predicate = IPredicate.Builder(
-                    new PredicateFactory<Integer>(a -> a >= 5).and(a -> a < 10).getPredicate()).
-                    or(new PredicateFactory<Integer>(a -> a >= 200).and(a -> a < 300).getPredicate()).
+            IPredicate<Integer> predicate = LambdaUtil.PredicateBuilder(
+                    LambdaUtil.PredicateBuilder((Integer a) -> a >= 5).and(a -> a < 10).getPredicate()).
+                    or(LambdaUtil.PredicateBuilder((Integer a) -> a >= 200).and(a -> a < 300).getPredicate()).
                     negative().
                     getPredicate();
 
