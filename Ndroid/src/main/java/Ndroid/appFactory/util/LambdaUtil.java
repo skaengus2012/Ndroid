@@ -1,9 +1,14 @@
 package Ndroid.appFactory.util;
 
+import android.support.annotation.NonNull;
+
 import java.util.Comparator;
 
+import Ndroid.appFactory.common.androidMvc.modeler.NxModeler;
+import Ndroid.appFactory.common.function.IBinaryOperator;
 import Ndroid.appFactory.common.function.IFunction;
 import Ndroid.appFactory.common.function.IPredicate;
+import Ndroid.appFactory.common.function.IUnaryOperator;
 import Ndroid.appFactory.common.function.extension.combineFactory.ComparatorFactory;
 import Ndroid.appFactory.common.function.extension.combineFactory.PredicateFactory;
 
@@ -66,5 +71,39 @@ public class LambdaUtil {
             IFunction<? super T, ? extends U> keyExtractor
             , Comparator<? super U> keyComparator) {
         return (T c1, T c2) -> keyComparator.compare(keyExtractor.apply(c1), keyExtractor.apply(c2));
+    }
+
+    /**
+     * Return Identity.
+     *
+     * @param <T>
+     * @return
+     */
+    public static <T> IUnaryOperator<T> GetIdentity() {
+        return t -> t;
+    }
+
+    /**
+     * Return min value T
+     *
+     * @param comparator
+     * @param <T>
+     * @return
+     */
+    static <T> IBinaryOperator<T> MinBy(@NonNull Comparator<? super T> comparator) {
+        NxModeler.NullCheck(comparator);
+        return (a, b) -> comparator.compare(a, b) <= 0 ? a : b;
+    }
+
+    /**
+     * Return max value T
+     *
+     * @param comparator
+     * @param <T>
+     * @return
+     */
+    static <T> IBinaryOperator<T> MaxBy(@NonNull Comparator<? super T> comparator) {
+        NxModeler.NullCheck(comparator);
+        return (a, b) -> comparator.compare(a, b) >= 0 ? a : b;
     }
 }
