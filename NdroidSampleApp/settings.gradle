@@ -1,2 +1,0 @@
-include ':app',':Ndroid'
-project(':Ndroid').projectDir = new File('/Users/namduhyeon/git_repository/ANDROID_REPOSITORY/Ndroid/Ndroid')
