@@ -28,7 +28,7 @@ android {
         minSdkVersion 15
         targetSdkVersion 22
         versionCode 1
-        versionName project.property('release_version')
+        versionName 'v0.0.3.5-alpha'
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
