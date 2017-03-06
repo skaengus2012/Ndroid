@@ -10,6 +10,7 @@ import Ndroid.appFactory.common.function.IFunction;
 import Ndroid.appFactory.common.function.IPredicate;
 import Ndroid.appFactory.common.function.IUnaryOperator;
 import Ndroid.appFactory.common.function.extension.combineFactory.ComparatorFactory;
+import Ndroid.appFactory.common.function.extension.combineFactory.FunctionFactory;
 import Ndroid.appFactory.common.function.extension.combineFactory.PredicateFactory;
 
 /**
@@ -31,7 +32,7 @@ public class LambdaUtil {
      * @param <T>
      * @return
      */
-    public static <T> PredicateFactory<T> PredicateBuilder(IPredicate<T> iPredicate){
+    public static <T> PredicateFactory<T> PredicateBuilder(@NonNull IPredicate<T> iPredicate){
         return new PredicateFactory<>(iPredicate);
     }
 
@@ -42,7 +43,7 @@ public class LambdaUtil {
      * @param <T>
      * @return
      */
-    public static <T> ComparatorFactory<T> ComparatorBuilder(Comparator<T> comparator){
+    public static <T> ComparatorFactory<T> ComparatorBuilder(@NonNull Comparator<T> comparator){
         return new ComparatorFactory<>(comparator);
     }
 
@@ -54,8 +55,22 @@ public class LambdaUtil {
      * @param <T>
      * @return
      */
-    public static <T> ComparatorFactory<T> ComparatorBuilder(Comparator<T> comparator, Boolean nullFirstYn){
+    public static <T> ComparatorFactory<T> ComparatorBuilder(
+            @NonNull Comparator<T> comparator
+            , @NonNull Boolean nullFirstYn){
         return new ComparatorFactory<>(comparator, nullFirstYn);
+    }
+
+    /**
+     * Create FunctionFactory for Lambda combination
+     *
+     * @param function
+     * @param <T>
+     * @param <R>
+     * @return
+     */
+    public static <T, R> FunctionFactory<T, R> FunctionBuilder(@NonNull IFunction<T, R> function) {
+        return new FunctionFactory<>(function);
     }
 
     /**
@@ -68,8 +83,8 @@ public class LambdaUtil {
      * @return
      */
     public static <T, U> Comparator<T> CreateKeyComparator(
-            IFunction<? super T, ? extends U> keyExtractor
-            , Comparator<? super U> keyComparator) {
+            @NonNull IFunction<? super T, ? extends U> keyExtractor
+            , @NonNull Comparator<? super U> keyComparator) {
         return (T c1, T c2) -> keyComparator.compare(keyExtractor.apply(c1), keyExtractor.apply(c2));
     }
 

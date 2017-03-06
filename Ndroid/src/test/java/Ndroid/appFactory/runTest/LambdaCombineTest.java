@@ -16,13 +16,43 @@ import Ndroid.appFactory.util.LambdaUtil;
  * Created by Doohyun on 2017. 3. 5..
  */
 
-public class FunctionInterfaceFactoryTest {
+public class LambdaCombineTest {
 
     @Test
     public void runTest() {
-        comparatorFactoryTest();
+        functionFactoryTest();
     }
 
+    /**
+     * Function combination Test!
+     */
+    public void functionFactoryTest() {
+        {
+            // f(x) = x + 2
+            // g(x) = x * 8;
+            // f(g(x)) = (x * 8) + 2
+            System.out.println(
+                    LambdaUtil.FunctionBuilder((Integer a) -> a + 2).
+                            compose((Integer a) -> a * 8).
+                            getFunction().
+                            apply(10));
+        }
+
+        {
+            // f(x) = x + 2
+            // g(x) = x * 8;
+            // g(f(x)) = (x + 2) * 8
+            System.out.println(
+                    LambdaUtil.FunctionBuilder((Integer a) -> a + 2).
+                            andThen((Integer a) -> a * 8).
+                            getFunction().
+                            apply(10));
+        }
+    }
+
+    /**
+     * Comparator combination Test!
+     */
     public void comparatorFactoryTest() {
         List<SubjectRelation> subjectRelationList = Arrays.asList(
                 new SubjectRelation(1, 1001, "Doohyun Nam", 1)
@@ -33,7 +63,7 @@ public class FunctionInterfaceFactoryTest {
                 , new SubjectRelation(2, 1006, null, 4)
         );
 
-        // 회사 순번으로 내림차순 정렬 후, 이름으로 오름정렬 (null last).
+        // order by companySubjectSn, memberName DESC
         Collections.sort(subjectRelationList, LambdaUtil.ComparatorBuilder(
                         LambdaUtil.CreateKeyComparator(SubjectRelation::getCompanySubjectSn
                                 , LambdaUtil.ComparatorBuilder((Integer a, Integer b) -> a.compareTo(b)).reversed()
@@ -45,24 +75,24 @@ public class FunctionInterfaceFactoryTest {
     }
 
     /**
-     * predicate Factory 에 대한 테스트 정의.
+     * Predicate combination test!
      */
     public void predicateFactoryTest(){
         {
             // a >= 5 && a < 10 || a == 0
 
             IPredicate<Integer> predicate = LambdaUtil.PredicateBuilder((Integer a) -> a >= 5).
-                    and(null).
+                    and(a -> a < 10).
                     or(a -> a == 0).
                     getPredicate();
 
             System.out.println(predicate.test(6));
-            System.out.println(predicate.test(0));
+            System.out.println(predicate.test(1));
             System.out.println(predicate.test(20));
         }
 
         {
-            // (a >= 5 && a < 10) || (a >= 200 && a < 300)
+            // !((a >= 5 && a < 10) || (a >= 200 && a < 300))
             IPredicate<Integer> predicate = LambdaUtil.PredicateBuilder(
                     LambdaUtil.PredicateBuilder((Integer a) -> a >= 5).and(a -> a < 10).getPredicate()).
                     or(LambdaUtil.PredicateBuilder((Integer a) -> a >= 200).and(a -> a < 300).getPredicate()).

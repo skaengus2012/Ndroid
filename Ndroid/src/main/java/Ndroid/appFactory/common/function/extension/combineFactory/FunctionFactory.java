@@ -1,17 +1,77 @@
 package Ndroid.appFactory.common.function.extension.combineFactory;
 
+import android.support.annotation.NonNull;
+
+import java.util.function.Function;
+
 import Ndroid.appFactory.common.androidMvc.model.NxModeler;
+import Ndroid.appFactory.common.function.IFunction;
 
 /**
- * Function 공장 제작
+ * Function combination Factory
  *
  * <pre>
- *     안드로이드에서는 24 레벨부터 default 메소드를 지원.
- *     고로, 기존 default 메소드에서 지원했던 기능을 시그니처 클래스를 두어 생산토록 제작.
+ *     Support default method in Predicate.
+ *     The original default method in JAVA8 can use api >= 24
+ *     So, I made builder class for support that.
  * </pre>
  *
  * Created by Doohyun on 2017. 3. 1..
  */
 
-public class FunctionFactory extends NxModeler {
+public class FunctionFactory<T, R> extends NxModeler {
+    private IFunction<T, R> iFunction;
+
+    public FunctionFactory(@NonNull IFunction<T, R> iFunction) {
+        NullCheck(iFunction);
+        this.iFunction = iFunction;
+    }
+
+    /**
+     * Function combine : compose
+     *
+     * <pre>
+     *     example
+     *          instance (iFunction) : f(x)
+     *          param (before) : g(x)
+     *          return : f(g(x))
+     * </pre>
+     *
+     * @param before
+     * @param <V>
+     * @return
+     */
+    public <V> FunctionFactory<V, R> compose(@NonNull Function<? super V, ? extends T> before) {
+        NullCheck(before);
+
+        return new FunctionFactory<>((V v) -> iFunction.apply(before.apply(v)));
+    }
+
+    /**
+     * Function combine : andThen
+     *
+     * <pre>
+     *     example (iFunction) : f(x)
+     *     param (after) : g(x)
+     *     return : g(f(x))
+     * </pre>
+     *
+     * @param after
+     * @param <V>
+     * @return
+     */
+    public <V> FunctionFactory<T, V> andThen(Function<? super R, ? extends V> after) {
+        NullCheck(after);
+
+        return new FunctionFactory<>((T t) -> after.apply(iFunction.apply(t)));
+    }
+
+    /**
+     * Return Final combination function.
+     *
+     * @return
+     */
+    public IFunction<T, R> getFunction(){
+        return iFunction;
+    }
 }
