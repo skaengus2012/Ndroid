@@ -5,7 +5,7 @@ import android.support.annotation.NonNull;
 import java.util.Collections;
 import java.util.Comparator;
 
-import Ndroid.appFactory.common.androidMvc.modeler.NxModeler;
+import Ndroid.appFactory.common.androidMvc.model.NxModeler;
 import Ndroid.appFactory.common.function.extension.supportFunction.NullAbleComparator;
 
 /**

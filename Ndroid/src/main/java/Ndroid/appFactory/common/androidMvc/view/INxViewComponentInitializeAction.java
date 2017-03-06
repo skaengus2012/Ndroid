@@ -1,4 +1,4 @@
-package Ndroid.appFactory.common.androidMvc.viewComponent;
+package Ndroid.appFactory.common.androidMvc.view;
 
 import android.support.annotation.LayoutRes;
 

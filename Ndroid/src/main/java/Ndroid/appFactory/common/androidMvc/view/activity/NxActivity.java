@@ -1,11 +1,11 @@
-package Ndroid.appFactory.common.androidMvc.viewComponent.activity;
+package Ndroid.appFactory.common.androidMvc.view.activity;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
 import android.support.v7.app.AppCompatActivity;
 
-import Ndroid.appFactory.common.androidMvc.viewComponent.INxViewComponentInitializeAction;
+import Ndroid.appFactory.common.androidMvc.view.INxViewComponentInitializeAction;
 
 /**
  * 마이다스 액티비티 정의

@@ -4,7 +4,7 @@ import android.support.annotation.NonNull;
 
 import java.util.Comparator;
 
-import Ndroid.appFactory.common.androidMvc.modeler.NxModeler;
+import Ndroid.appFactory.common.androidMvc.model.NxModeler;
 
 /**
  * Support null key comparator

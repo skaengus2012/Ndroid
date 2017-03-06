@@ -1,4 +1,4 @@
-package Ndroid.appFactory.common.androidMvc.modeler;
+package Ndroid.appFactory.common.androidMvc.model;
 
 import java.util.Collection;
 import java.util.Map;

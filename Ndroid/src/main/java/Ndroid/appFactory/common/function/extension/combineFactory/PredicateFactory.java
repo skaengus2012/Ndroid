@@ -2,7 +2,7 @@ package Ndroid.appFactory.common.function.extension.combineFactory;
 
 import android.support.annotation.NonNull;
 
-import Ndroid.appFactory.common.androidMvc.modeler.NxModeler;
+import Ndroid.appFactory.common.androidMvc.model.NxModeler;
 import Ndroid.appFactory.common.function.IPredicate;
 
 /**

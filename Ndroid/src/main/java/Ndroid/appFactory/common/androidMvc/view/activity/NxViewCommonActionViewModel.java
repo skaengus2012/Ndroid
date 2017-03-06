@@ -1,11 +1,11 @@
-package Ndroid.appFactory.common.androidMvc.viewComponent.activity;
+package Ndroid.appFactory.common.androidMvc.view.activity;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
 
-import Ndroid.appFactory.common.androidMvc.viewComponent.INxViewComponentInitializeAction;
-import Ndroid.appFactory.common.androidMvc.viewComponent.NxViewComponentInitializePresenter;
+import Ndroid.appFactory.common.androidMvc.view.INxViewComponentInitializeAction;
+import Ndroid.appFactory.common.androidMvc.view.NxViewComponentInitializePresenter;
 import Ndroid.appFactory.util.weakRef.NxActivityWeakReference;
 
 /**
