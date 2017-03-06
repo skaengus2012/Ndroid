@@ -58,7 +58,7 @@ public class PredicateFactory<T> extends NxModeler {
     }
 
     /**
-     * predicate 를 추가한다.
+     * predicate 를 출력한다.
      *
      * @return
      */

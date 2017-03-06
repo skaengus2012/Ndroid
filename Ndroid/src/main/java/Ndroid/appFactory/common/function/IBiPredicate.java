@@ -13,5 +13,5 @@ import android.support.annotation.NonNull;
  */
 @FunctionalInterface
 public interface IBiPredicate<T, R> {
-    void test(@NonNull T t, @NonNull R r);
+    boolean test(@NonNull T t, @NonNull R r);
 }

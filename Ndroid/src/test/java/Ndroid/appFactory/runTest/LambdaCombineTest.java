@@ -103,5 +103,10 @@ public class LambdaCombineTest {
             System.out.println(predicate.test(0));
             System.out.println(predicate.test(250));
         }
+
+        {
+            // BiPredicate support!
+            LambdaUtil.PredicateBuilder((Integer a, Integer b) -> a + b > 0).and((Integer a,Integer b) -> a >= b).getPredicate();
+        }
     }
 }

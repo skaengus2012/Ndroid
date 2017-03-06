@@ -5,10 +5,12 @@ import android.support.annotation.NonNull;
 import java.util.Comparator;
 
 import Ndroid.appFactory.common.androidMvc.model.NxModeler;
+import Ndroid.appFactory.common.function.IBiPredicate;
 import Ndroid.appFactory.common.function.IBinaryOperator;
 import Ndroid.appFactory.common.function.IFunction;
 import Ndroid.appFactory.common.function.IPredicate;
 import Ndroid.appFactory.common.function.IUnaryOperator;
+import Ndroid.appFactory.common.function.extension.combineFactory.BiPredicateFactory;
 import Ndroid.appFactory.common.function.extension.combineFactory.ComparatorFactory;
 import Ndroid.appFactory.common.function.extension.combineFactory.FunctionFactory;
 import Ndroid.appFactory.common.function.extension.combineFactory.PredicateFactory;
@@ -34,6 +36,18 @@ public class LambdaUtil {
      */
     public static <T> PredicateFactory<T> PredicateBuilder(@NonNull IPredicate<T> iPredicate){
         return new PredicateFactory<>(iPredicate);
+    }
+
+    /**
+     * Create BiPredicate Builder
+     *
+     * @param iBiPredicate
+     * @param <T>
+     * @param <U>
+     * @return
+     */
+    public static <T, U> BiPredicateFactory<T, U> PredicateBuilder(@NonNull IBiPredicate<T, U> iBiPredicate) {
+        return new BiPredicateFactory<>(iBiPredicate);
     }
 
     /**
