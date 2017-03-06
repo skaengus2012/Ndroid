@@ -1,4 +1,4 @@
-package Ndroid.appFactory.common.androidMvc.view.fragment;
+package Ndroid.appFactory.common.androidMvc.view.v4;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

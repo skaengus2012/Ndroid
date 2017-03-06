@@ -1,4 +1,4 @@
-package Ndroid.appFactory.common.androidMvc.view.activity;
+package Ndroid.appFactory.common.androidMvc.view.app;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
