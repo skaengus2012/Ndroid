@@ -60,6 +60,7 @@ dependencies {
 
     // for Cloner
     compile group: 'org.objenesis', name: 'objenesis', version: '2.5.1'
+    compile 'commons-codec:commons-codec:1.5'
 
     testCompile 'junit:junit:4.12'
 }
