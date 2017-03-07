@@ -72,8 +72,7 @@ LambdaUtil.PredicateBuilder((Integer a, Integer b) -> a + b > 0).and((Integer a,
 ```
 
 <H3>Comparator Example</H3>
-ComparatorBuilder support <B>null</B> value.<br>
-We can control null priority.
+	ComparatorBuilder support <B>null</B> value.<br> We can control null priority using ComparatorBuilder.
 ```java
 List<SubjectRelation> subjectRelationList = Arrays.asList(
                 new SubjectRelation(1, 1001, "Doohyun Nam", 1)
@@ -97,7 +96,7 @@ Comparator<SubjectRelation> comparator = LambdaUtil.ComparatorBuilder(
 
 ```
 <br/>
-Check, <B>keyComparator</B>. That is comparator, which is comparing between member val in Object.
+	Check, <B>keyComparator</B>. That is comparator, which is comparing between member val in Object.
 ```java
 LambdaUtil.CreateKeyComparator(SubjectRelation::getMemberName,LambdaUtil.
 			ComparatorBuilder((String a, String b) -> a.compareTo(b)).
