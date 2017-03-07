@@ -104,3 +104,35 @@ LambdaUtil.CreateKeyComparator(SubjectRelation::getMemberName,LambdaUtil.
 				reversed().
 				getComparator())
 ```
+
+<H2>Function Example</H2>
+```java
+{
+	// f(x) = x + 2
+        // g(x) = x * 8;
+        // f(g(x)) = (x * 8) + 2
+        LambdaUtil.FunctionBuilder((Integer a) -> a + 2).
+                   compose((Integer a) -> a * 8).
+                   getFunction().
+                   apply(10);
+}
+
+{
+	// f(x) = x + 2
+        // g(x) = x * 8;
+       	// g(f(x)) = (x + 2) * 8
+        LambdaUtil.FunctionBuilder((Integer a) -> a + 2).
+                   andThen((Integer a) -> a * 8).
+                   getFunction().
+                   apply(10);
+}
+
+{
+	// f(x, y) = (x * y) + 10
+	// g(x) = x * 10
+
+        LambdaUtil.FunctionBuilder((Integer a, Integer b) -> (a * b) + 10).
+                   andThen((Integer c) -> c * 10).
+                   getFunction().apply(2, 5));
+}
+```
