@@ -61,15 +61,13 @@ IPredicate<Integer> predicate = LambdaUtil.PredicateBuilder((Integer a) -> a >= 
 		    
 // !((a >= 5 && a < 10) || (a >= 200 && a < 300))
 IPredicate<Integer> predicate = LambdaUtil.PredicateBuilder(
-                    			LambdaUtil.PredicateBuilder(
-						(Integer a) -> a >= 5).
-						and(a -> a < 10).getPredicate()).
-                    			or(
-					LambdaUtil.PredicateBuilder(
-						(Integer a) -> a >= 200).
-						and(a -> a < 300).getPredicate()).
-                    			negative().
-                    			getPredicate();
+                    LambdaUtil.PredicateBuilder((Integer a) -> a >= 5).and(a -> a < 10).getPredicate()).
+                    or(LambdaUtil.PredicateBuilder((Integer a) -> a >= 200).and(a -> a < 300).getPredicate()).
+                    negative().
+                    getPredicate();
+		    
+// BiPredicate support!
+LambdaUtil.PredicateBuilder((Integer a, Integer b) -> a + b > 0).and((Integer a,Integer b) -> a >= b).getPredicate();
 ```
 
 Please reference next.
