@@ -18,8 +18,10 @@ So we can use lambda, but we can not combination default and static method.
 <Br/>
 And I tried to find that in Rx, but I could not find.
 <Br/>
+<Br/>
 So I published <B>LambdaUtil</B> for combination. We can build lambda.
-
+<Br/>
+<Br/>
 blog url : 
 
 Thank you!!
