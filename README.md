@@ -26,7 +26,7 @@ So I published <B>LambdaUtil</B> for combination. We can build lambda.
 Thank you!!
 <br/>
 
-#Getting started
+# Getting started
 
 <B>STEP1</B> : Add it in your root build.gradle at the end of repositories:
 ```gradle
@@ -45,13 +45,13 @@ dependencies {
 ```
 <br/>
 
-#Lambda combination
+# Lambda combination
 
 I made builder for lambda because combination method in lambda can use at api >= 24.<br/>
 So <B>Ndroid</B> support default combination method using factory & builder pattern.<br/>
 Please reference next.
 
-<H3>Predicate Example.</H3>
+<H2>Predicate Example.</H2>
 ```java
 // a >= 5 && a < 10 || a == 0
 
@@ -71,8 +71,8 @@ IPredicate<Integer> predicate = LambdaUtil.PredicateBuilder(
 LambdaUtil.PredicateBuilder((Integer a, Integer b) -> a + b > 0).and((Integer a,Integer b) -> a >= b).getPredicate();
 ```
 
-<H3>Comparator Example</H3>
-	ComparatorBuilder support <B>null</B> value.<br> We can control null priority using ComparatorBuilder.
+<H2>Comparator Example</H2>
+ComparatorBuilder support <B>null</B> value.<br> We can control null priority using ComparatorBuilder.
 ```java
 List<SubjectRelation> subjectRelationList = Arrays.asList(
                 new SubjectRelation(1, 1001, "Doohyun Nam", 1)
@@ -96,7 +96,7 @@ Comparator<SubjectRelation> comparator = LambdaUtil.ComparatorBuilder(
 
 ```
 <br/>
-	Check, <B>keyComparator</B>. That is comparator, which is comparing between member val in Object.
+Check, <B>keyComparator</B>. That is comparator, which is comparing between member val in Object.
 ```java
 LambdaUtil.CreateKeyComparator(SubjectRelation::getMemberName,LambdaUtil.
 			ComparatorBuilder((String a, String b) -> a.compareTo(b)).
