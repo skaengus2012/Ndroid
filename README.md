@@ -69,6 +69,7 @@ IPredicate<Integer> predicate = LambdaUtil.PredicateBuilder(
 		    
 // BiPredicate support!
 LambdaUtil.PredicateBuilder((Integer a, Integer b) -> a + b > 0).and((Integer a,Integer b) -> a >= b).getPredicate();
+
 ```
 
 <H2>Comparator Example</H2>
@@ -102,7 +103,8 @@ LambdaUtil.CreateKeyComparator(SubjectRelation::getMemberName,LambdaUtil.
 			ComparatorBuilder((String a, String b) -> a.compareTo(b)).
 				nullsFirst().
 				reversed().
-				getComparator())
+				getComparator());
+				
 ```
 
 <H2>Function Example</H2>
