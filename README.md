@@ -9,8 +9,7 @@ So I made NxPresenter, which is auto weak-ref between activity and presenter.
 And NxActivity and NxModeler are abstract class for comfortable develop.
 <br/><br/>
 blog url : http://doohyun.tistory.com/38
-
-<br/><br/>
+<br/>
 **Secondly**, I made <B>Lambda combination</B> util for Android. 
 Android support default method in JAVA8 at API >= 24. 
 <Br/>
