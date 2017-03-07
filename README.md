@@ -28,6 +28,14 @@ Thank you!!
 
 #Getting started
 
+Add it in your root build.gradle at the end of repositories:
+```gradle
+allprojects {
+	repositories {
+		maven { url 'https://jitpack.io' }
+	}
+}
+```
 
 The first step is to include Ndroid into your project, for example, as a Gradle compile dependency:<br/>
 ```gradle
