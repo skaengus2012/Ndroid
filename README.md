@@ -51,7 +51,7 @@ I made builder for lambda because combination method in lambda can use at api >=
 So <B>Ndroid</B> support default combination method using factory & builder pattern.<br/>
 Please reference next.
 
-<H5>Predicate Example.</H5>
+<H3>Predicate Example.</H3>
 ```java
 // a >= 5 && a < 10 || a == 0
 
@@ -71,7 +71,7 @@ IPredicate<Integer> predicate = LambdaUtil.PredicateBuilder(
 LambdaUtil.PredicateBuilder((Integer a, Integer b) -> a + b > 0).and((Integer a,Integer b) -> a >= b).getPredicate();
 ```
 
-- Comparator Example
+<H3>Comparator Example</H3>
 ComparatorBuilder support <B>null</B> value.<br>
 We can control null priority.
 ```java
