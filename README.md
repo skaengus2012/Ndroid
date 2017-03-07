@@ -6,7 +6,7 @@ Ndroid is util library, which is supported <B>Android MVP, Lambda combination</B
 But we need to share activity instance in presenter and I think that will be induce memory leak in specific situation. <br/>So we need to weak reference has-a relation. 
 <br/><br/>
 So I made NxPresenter, which is auto weak-ref between activity and presenter. 
-And NxActivity and NxModeler are abstract class for comfortable develop.
+And I support NxActivity & NxModeler, which are abstract class for comfortable develop.
 <br/><br/>
 <B>blog url</B> : http://doohyun.tistory.com/38
 <br/><br/>
