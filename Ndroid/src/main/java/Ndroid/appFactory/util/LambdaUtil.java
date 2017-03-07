@@ -5,11 +5,13 @@ import android.support.annotation.NonNull;
 import java.util.Comparator;
 
 import Ndroid.appFactory.common.androidMvc.model.NxModeler;
+import Ndroid.appFactory.common.function.IBiFunction;
 import Ndroid.appFactory.common.function.IBiPredicate;
 import Ndroid.appFactory.common.function.IBinaryOperator;
 import Ndroid.appFactory.common.function.IFunction;
 import Ndroid.appFactory.common.function.IPredicate;
 import Ndroid.appFactory.common.function.IUnaryOperator;
+import Ndroid.appFactory.common.function.extension.combineFactory.BiFunctionFactory;
 import Ndroid.appFactory.common.function.extension.combineFactory.BiPredicateFactory;
 import Ndroid.appFactory.common.function.extension.combineFactory.ComparatorFactory;
 import Ndroid.appFactory.common.function.extension.combineFactory.FunctionFactory;
@@ -85,6 +87,19 @@ public class LambdaUtil {
      */
     public static <T, R> FunctionFactory<T, R> FunctionBuilder(@NonNull IFunction<T, R> function) {
         return new FunctionFactory<>(function);
+    }
+
+    /**
+     * Create FunctionFactory for Lambda combination
+     *
+     * @param function
+     * @param <T>
+     * @param <U>
+     * @param <R>
+     * @return
+     */
+    public static <T, U, R> BiFunctionFactory<T, U, R> FunctionBuilder(@NonNull IBiFunction<T, U, R> function) {
+        return new BiFunctionFactory<T, U, R>(function);
     }
 
     /**
