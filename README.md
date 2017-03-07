@@ -43,4 +43,28 @@ dependencies {
     compile 'com.github.skaengus2012:Ndroid:v0.0.4-alpha'
 }
 ```
+<br/>
 
+#Lambda combination
+
+I made builder for lambda because combination method in lambda can use at api >= 24.
+So <B>Ndroid</B> support default combination method using factory & builder pattern. 
+
+- Predicate Example.
+```java
+// a >= 5 && a < 10 || a == 0
+
+IPredicate<Integer> predicate = LambdaUtil.PredicateBuilder((Integer a) -> a >= 5).
+                    and(a -> a < 10).
+                    or(a -> a == 0).
+                    getPredicate();
+		    
+// !((a >= 5 && a < 10) || (a >= 200 && a < 300))
+IPredicate<Integer> predicate = LambdaUtil.PredicateBuilder(
+                    LambdaUtil.PredicateBuilder((Integer a) -> a >= 5).and(a -> a < 10).getPredicate()).
+                    or(LambdaUtil.PredicateBuilder((Integer a) -> a >= 200).and(a -> a < 300).getPredicate()).
+                    negative().
+                    getPredicate();
+```
+
+Please reference next.
