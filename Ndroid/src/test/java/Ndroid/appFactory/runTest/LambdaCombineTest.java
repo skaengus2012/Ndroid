@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import Ndroid.appFactory.common.function.IPredicate;
@@ -52,8 +53,7 @@ public class LambdaCombineTest {
         {
             // f(x, y) = (x * y) + 10
             // g(x) = x * 10
-
-            System.out.println(
+          System.out.println(
                     LambdaUtil.FunctionBuilder((Integer a, Integer b) -> (a * b) + 10).
                             andThen((Integer c) -> c * 10).
                             getFunction().apply(2, 5));
@@ -69,19 +69,23 @@ public class LambdaCombineTest {
                 , new SubjectRelation(1, 1002, "Dolkin", 2)
                 , new SubjectRelation(1, 1003, "hshawng", 1)
                 , new SubjectRelation(1, 1004, "spKwon", 1)
-                , new SubjectRelation(2, 1005, "Other Person1", 3)
-                , new SubjectRelation(2, 1006, null, 4)
+                , new SubjectRelation(2, 1005, "redCamel", 3)
+                , new SubjectRelation(2, 1006, "broDuck", 4)
+                , new SubjectRelation(3, 1005, null, 3)
         );
 
         // order by companySubjectSn, memberName DESC
-        Collections.sort(subjectRelationList, LambdaUtil.ComparatorBuilder(
-                        LambdaUtil.CreateKeyComparator(SubjectRelation::getCompanySubjectSn
-                                , LambdaUtil.ComparatorBuilder((Integer a, Integer b) -> a.compareTo(b)).reversed()
-                                        .getComparator())).
-                        thenComparing(
-                                LambdaUtil.CreateKeyComparator(SubjectRelation::getMemberName,
-                                        LambdaUtil.ComparatorBuilder((String a, String b) -> a.compareTo(b)).
-                                                nullsFirst().reversed().getComparator())).getComparator());
+        Comparator<SubjectRelation> comparator = LambdaUtil.ComparatorBuilder(
+                LambdaUtil.CreateKeyComparator(SubjectRelation::getCompanySubjectSn
+                        , LambdaUtil.ComparatorBuilder((Integer a, Integer b) -> a.compareTo(b)).reversed()
+                                .getComparator())).
+                thenComparing(
+                        LambdaUtil.CreateKeyComparator(SubjectRelation::getMemberName,
+                                LambdaUtil.ComparatorBuilder((String a, String b) -> a.compareTo(b)).
+                                        nullsFirst().reversed().getComparator())).getComparator();
+
+        // order by companySubjectSn, memberName DESC
+        Collections.sort(subjectRelationList, comparator);
     }
 
     /**
@@ -109,9 +113,7 @@ public class LambdaCombineTest {
                     negative().
                     getPredicate();
 
-            System.out.println(predicate.test(6));
-            System.out.println(predicate.test(0));
-            System.out.println(predicate.test(250));
+
         }
 
         {
