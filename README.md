@@ -2,15 +2,15 @@
 
 Ndroid is util library, which is supported <B>Android MVP, Lambda combination</B> in alpha version.
 
-**First**, I suggest <B>android MVP</B> because we can separate data model, control and view.
-But we need to share activity instance in presenter and I think that will be induce memory leak in specific situation. So we need to weak reference has-a relation. 
-
+**First**, I suggest <B>android MVP</B> because we can separate data model, control and view.<br/>
+But we need to share activity instance in presenter and I think that will be induce memory leak in specific situation. <br/>So we need to weak reference has-a relation. 
+<br/><br/>
 So I made NxPresenter, which is auto weak-ref between activity and presenter. 
 And NxActivity and NxModeler are abstract class for comfortable develop.
-
+<br/><br/>
 blog url : http://doohyun.tistory.com/38
 
-<BR/>
+<br/><br/>
 **Secondly**, I made <B>Lambda combination</B> util for Android. 
 Android support default method in JAVA8 at API >= 24. 
 <Br/>
