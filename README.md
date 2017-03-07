@@ -51,7 +51,7 @@ I made builder for lambda because combination method in lambda can use at api >=
 So <B>Ndroid</B> support default combination method using factory & builder pattern.<br/>
 Please reference next.
 
-- Predicate Example.
+<H5>Predicate Example.</H5>
 ```java
 // a >= 5 && a < 10 || a == 0
 
@@ -72,8 +72,8 @@ LambdaUtil.PredicateBuilder((Integer a, Integer b) -> a + b > 0).and((Integer a,
 ```
 
 - Comparator Example
-	ComparatorBuilder support <B>null</B> value.<br>
-	We can control null priority.
+ComparatorBuilder support <B>null</B> value.<br>
+We can control null priority.
 ```java
 List<SubjectRelation> subjectRelationList = Arrays.asList(
                 new SubjectRelation(1, 1001, "Doohyun Nam", 1)
@@ -97,7 +97,7 @@ Comparator<SubjectRelation> comparator = LambdaUtil.ComparatorBuilder(
 
 ```
 <br/>
-	Check, <B>keyComparator</B>. That is comparator, which is comparing between member val in Object.
+Check, <B>keyComparator</B>. That is comparator, which is comparing between member val in Object.
 ```java
 LambdaUtil.CreateKeyComparator(SubjectRelation::getMemberName,LambdaUtil.
 			ComparatorBuilder((String a, String b) -> a.compareTo(b)).
