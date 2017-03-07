@@ -12,7 +12,9 @@ blog url : http://doohyun.tistory.com/38
 
 <BR/>
 **Secondly**, I made <B>Lambda combination</B> util for Android. 
-Android support default method in JAVA8 at API >= 24. So we can use lambda, but we can not combination default and static method. And I tried to find that in Rx, but I could not find.
+Android support default method in JAVA8 at API >= 24. 
+So we can use lambda, but we can not combination default and static method. 
+And I tried to find that in Rx, but I could not find.
 
 So I published <B>LambdaUtil</B> for combination. We can build lambda.
 
