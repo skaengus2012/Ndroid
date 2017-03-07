@@ -28,7 +28,7 @@ Thank you!!
 
 #Getting started
 
-Add it in your root build.gradle at the end of repositories:
+<B>STEP1</B> : Add it in your root build.gradle at the end of repositories:
 ```gradle
 allprojects {
 	repositories {
@@ -37,7 +37,7 @@ allprojects {
 }
 ```
 
-The first step is to include Ndroid into your project, for example, as a Gradle compile dependency:<br/>
+<B>STEP2</B> : Add the dependency:<br/>
 ```gradle
 dependencies {
     compile 'com.github.skaengus2012:Ndroid:v0.0.4-alpha'
