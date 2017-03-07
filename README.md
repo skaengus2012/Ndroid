@@ -22,6 +22,6 @@ So I published <B>LambdaUtil</B> for combination. We can build lambda.
 <Br/>
 <Br/>
 <B>blog url</B> : 
-<br/>
+<br/><br/>
 Thank you!!
 <br/>
