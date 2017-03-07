@@ -132,7 +132,6 @@ LambdaUtil.CreateKeyComparator(SubjectRelation::getMemberName,LambdaUtil.
 {
 	// f(x, y) = (x * y) + 10
 	// g(x) = x * 10
-
 	LambdaUtil.FunctionBuilder((Integer a, Integer b) -> (a * b) + 10).
                    andThen((Integer c) -> c * 10).
                    getFunction().apply(2, 5));
