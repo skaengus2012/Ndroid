@@ -26,10 +26,13 @@ So I published <B>LambdaUtil</B> for combination. We can build lambda.
 Thank you!!
 <br/>
 
-Getting started<br/>
-The first step is to include Ndroid into your project, for example, as a Gradle compile dependency:<br/>
+#Getting started
 
+
+The first step is to include Ndroid into your project, for example, as a Gradle compile dependency:<br/>
+```gradle
 dependencies {
     compile 'com.github.skaengus2012:Ndroid:v0.0.4-alpha'
 }
+```
 
