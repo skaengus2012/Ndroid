@@ -98,3 +98,8 @@ Comparator<SubjectRelation> comparator = LambdaUtil.ComparatorBuilder(
 ```
 <br/>
 Check, <B>keyComparator</B>. That is comparator, which is comparing between member val in Object.
+```java
+LambdaUtil.CreateKeyComparator(SubjectRelation::getMemberName,
+                                LambdaUtil.ComparatorBuilder((String a, String b) -> a.compareTo(b)).
+                                        nullsFirst().reversed().getComparator())
+```
