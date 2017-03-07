@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 
 import Ndroid.appFactory.common.androidMvc.model.NxModeler;
 import Ndroid.appFactory.common.function.IPredicate;
+import io.reactivex.functions.Predicate;
 
 /**
  * Predicate combination Factory
@@ -64,5 +65,18 @@ public class PredicateFactory<T> extends NxModeler {
      */
     public IPredicate<T> getPredicate() {
         return predicate;
+    }
+
+    /**
+     * Return Rx Predicate
+     *
+     * <pre>
+     *     Rx Observable support lambda.
+     * </pre>
+     *
+     * @return
+     */
+    public Predicate<T> getRxPredicate() {
+        return (T t) -> predicate.test(t);
     }
 }

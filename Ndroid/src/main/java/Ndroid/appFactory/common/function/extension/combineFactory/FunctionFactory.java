@@ -2,10 +2,9 @@ package Ndroid.appFactory.common.function.extension.combineFactory;
 
 import android.support.annotation.NonNull;
 
-import java.util.function.Function;
-
 import Ndroid.appFactory.common.androidMvc.model.NxModeler;
 import Ndroid.appFactory.common.function.IFunction;
+import io.reactivex.functions.Function;
 
 /**
  * Function combination Factory
@@ -41,7 +40,7 @@ public class FunctionFactory<T, R> extends NxModeler {
      * @param <V>
      * @return
      */
-    public <V> FunctionFactory<V, R> compose(@NonNull Function<? super V, ? extends T> before) {
+    public <V> FunctionFactory<V, R> compose(@NonNull IFunction<? super V, ? extends T> before) {
         NullCheck(before);
 
         return new FunctionFactory<>((V v) -> iFunction.apply(before.apply(v)));
@@ -60,7 +59,7 @@ public class FunctionFactory<T, R> extends NxModeler {
      * @param <V>
      * @return
      */
-    public <V> FunctionFactory<T, V> andThen(Function<? super R, ? extends V> after) {
+    public <V> FunctionFactory<T, V> andThen(IFunction<? super R, ? extends V> after) {
         NullCheck(after);
 
         return new FunctionFactory<>((T t) -> after.apply(iFunction.apply(t)));
@@ -73,5 +72,18 @@ public class FunctionFactory<T, R> extends NxModeler {
      */
     public IFunction<T, R> getFunction(){
         return iFunction;
+    }
+
+    /**
+     * Return Rx Function
+     *
+     * <pre>
+     *     Rx Observable support lambda.
+     * </pre>
+     *
+     * @return
+     */
+    public Function<T, R> getRxFunction() {
+        return (T t) -> iFunction.apply(t);
     }
 }

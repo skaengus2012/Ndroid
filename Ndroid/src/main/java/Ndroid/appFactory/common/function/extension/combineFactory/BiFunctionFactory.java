@@ -3,6 +3,7 @@ package Ndroid.appFactory.common.function.extension.combineFactory;
 import Ndroid.appFactory.common.androidMvc.model.NxModeler;
 import Ndroid.appFactory.common.function.IBiFunction;
 import Ndroid.appFactory.common.function.IFunction;
+import io.reactivex.functions.BiFunction;
 
 /**
  * BiFunction combination Factory
@@ -47,5 +48,18 @@ public class BiFunctionFactory<T, U, R> extends NxModeler {
      */
     public IBiFunction<T, U, R> getFunction() {
         return biFunction;
+    }
+
+    /**
+     * Return Rx BiFunction
+     *
+     * <pre>
+     *     Rx Observable support lambda.
+     * </pre>
+     *
+     * @return
+     */
+    public BiFunction<T, U, R> getRxFunction() {
+        return (T t, U u) -> biFunction.apply(t, u);
     }
 }

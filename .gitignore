@@ -1,3 +1,5 @@
 # Compile source #
 *.bin
 *.iml
+Ndroid/.idea/libraries/reactive_streams_1_0_0.xml
+Ndroid/.idea/libraries/rxjava_2_0_6.xml

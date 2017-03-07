@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 
 import Ndroid.appFactory.common.androidMvc.model.NxModeler;
 import Ndroid.appFactory.common.function.IBiPredicate;
+import io.reactivex.functions.BiPredicate;
 
 /**
  * BiPredicate combination Factory
@@ -67,5 +68,18 @@ public class BiPredicateFactory<T, U> extends NxModeler{
      */
     public IBiPredicate<T, U> getPredicate() {
         return biPredicate;
+    }
+
+    /**
+     * Return Rx BiPredicate
+     *
+     * <pre>
+     *     Rx Observable support lambda.
+     * </pre>
+     *
+     * @return
+     */
+    public BiPredicate<T, U> getRxPredicate() {
+        return (T t, U u) -> biPredicate.test(t, u);
     }
 }
