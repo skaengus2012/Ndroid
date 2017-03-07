@@ -47,8 +47,9 @@ dependencies {
 
 #Lambda combination
 
-I made builder for lambda because combination method in lambda can use at api >= 24.
-So <B>Ndroid</B> support default combination method using factory & builder pattern. 
+I made builder for lambda because combination method in lambda can use at api >= 24.<br/>
+So <B>Ndroid</B> support default combination method using factory & builder pattern.<br/>
+Please reference next.
 
 - Predicate Example.
 ```java
@@ -70,4 +71,26 @@ IPredicate<Integer> predicate = LambdaUtil.PredicateBuilder(
 LambdaUtil.PredicateBuilder((Integer a, Integer b) -> a + b > 0).and((Integer a,Integer b) -> a >= b).getPredicate();
 ```
 
-Please reference next.
+- Comparator Example
+```java
+List<SubjectRelation> subjectRelationList = Arrays.asList(
+                new SubjectRelation(1, 1001, "Doohyun Nam", 1)
+                , new SubjectRelation(1, 1002, "Dolkin", 2)
+                , new SubjectRelation(1, 1003, "hshawng", 1)
+                , new SubjectRelation(1, 1004, "spKwon", 1)
+                , new SubjectRelation(2, 1005, "redCamel", 3)
+                , new SubjectRelation(2, 1006, "broDuck", 4)
+                , new SubjectRelation(3, 1005, null, 3)
+        );
+	
+// order by companySubjectSn, memberName DESC
+Comparator<SubjectRelation> comparator = LambdaUtil.ComparatorBuilder(
+                LambdaUtil.CreateKeyComparator(SubjectRelation::getCompanySubjectSn
+                        , LambdaUtil.ComparatorBuilder((Integer a, Integer b) -> a.compareTo(b)).reversed()
+                                .getComparator())).
+                thenComparing(
+                        LambdaUtil.CreateKeyComparator(SubjectRelation::getMemberName,
+                                LambdaUtil.ComparatorBuilder((String a, String b) -> a.compareTo(b)).
+                                        nullsFirst().reversed().getComparator())).getComparator();
+
+```
