@@ -122,6 +122,7 @@ public class LoginPresenter extends NxActivityPresenter<T> implements ILoginServ
 I think that model likes Service, Component in Spring Framework required while devloping app.<br/>
 So I made modeler for busines logic.
 
+```java
 public class DummyModeler extends NxModeler {
 
     private DummyModeler() {
@@ -170,7 +171,7 @@ public class DummyModeler extends NxModeler {
         }
     }
     }
-    ```
+```
 
 # Lambda combination
 
