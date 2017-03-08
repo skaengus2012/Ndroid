@@ -84,7 +84,7 @@ public class LoginActivity extends NxActivity {
  @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-	loginPresenter = new LoginPresenter(this);
+		loginPresenter = new LoginPresenter(this);
 	}
 	
 	....
