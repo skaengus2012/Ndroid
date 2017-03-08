@@ -25,41 +25,6 @@ public class DummyModeler extends NxModeler {
         return ManagerHolder.dummyModeler;
     }
 
-    public void introduceModelerMethod() {
-        // Check example.
-        {
-            Integer a = 10;
-            Check(a != 5);       // throws RuntimeException.
-        }
-
-        // NullCheck example.
-        {
-            Integer a = null;
-            NullCheck(a);       // throws RuntimeException.
-        }
-
-        // String empty check example.
-        {
-            String a = "";
-            EmptyToStringCheck(a);       // throws RuntimeException.
-        }
-
-        // Container empty check example.
-        {
-            EmptyContainerCheck(new LinkedList<String>());                      // throws RuntimeException.
-            EmptyContainerCheck(new Integer[2]);                                // throws RuntimeException.
-            EmptyContainerCheck(new HashMap<String, String>());                 // throws RuntimeException.
-        }
-
-        {
-            Map<String, Object> param = new HashMap<>();
-            PutDefualtValueInMap(param, "Doohyun", () -> 2);
-
-            // Not operate put action, because param have key "doohyun"
-            PutDefualtValueInMap(param, "Doohyun", () -> 3);
-        }
-    }
-
     /**
      * 시간이 오래걸리는 일을 수행해본다.
      */
