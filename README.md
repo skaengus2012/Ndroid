@@ -81,7 +81,7 @@ public class LoginActivity extends NxActivity {
         editPwd = (EditText) findViewById(R.id.editPwd);
 	}
 	
- @Override
+ 	@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 		loginPresenter = new LoginPresenter(this);
