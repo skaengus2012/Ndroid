@@ -92,9 +92,10 @@ public class LoginActivity extends NxActivity {
 ```
 
 <h2>NxPresenter</h2>
-This presenter manage activity using weakReference. <br/>
-And if you use that, you do not need to consider memory leak. <br/>
-This is simple presenter.
+This presenter manage activity using <B>WeakReference.</B> <br/>
+If you use that, you do not need to consider memory leak. <br/>
+This is simple presenter.<br/><br/>
+And attention <B>observer</B> in presenter. Implement observer in presenter, not activity.
 
 ```java
 public class LoginPresenter extends NxActivityPresenter<T> implements ILoginServiceObserver {
