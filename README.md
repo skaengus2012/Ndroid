@@ -118,7 +118,7 @@ public class LoginPresenter extends NxActivityPresenter<T> implements ILoginServ
 	 }
 }
 ```
-<h2>Modeler</h2>
+<h2>NxModeler</h2>
 I think that model likes Service, Component in Spring Framework required while devloping app.<br/>
 So I made modeler for busines logic.
 
