@@ -1,4 +1,4 @@
-=# Ndroid
+# Ndroid
 
 Ndroid is util library, which is supported <B>Android MVP, Lambda combination</B> in alpha version.
 
