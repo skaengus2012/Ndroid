@@ -10,6 +10,7 @@ import java.util.List;
 import Ndroid.appFactory.common.function.IPredicate;
 import Ndroid.appFactory.testVo.SubjectRelation;
 import Ndroid.appFactory.util.LambdaUtil;
+import io.reactivex.Observable;
 
 /**
  * Function support class Test
@@ -20,13 +21,20 @@ import Ndroid.appFactory.util.LambdaUtil;
 public class LambdaCombineTest {
 
     @Test
-    public void runTest() {
-        functionFactoryTest();
+    public void rxTest() {
+        // a % 5 == 0 && a > 40 || a < 20
+        Observable.range(0, 60).filter(
+                LambdaUtil.PredicateBuilder((Integer a) -> a % 5 == 0).
+                        and(a -> a > 40).
+                        or(a -> a < 20).
+                        getRx()).
+                subscribe(System.out::println);
     }
 
     /**
      * Function combination Test!
      */
+    @Test
     public void functionFactoryTest() {
         {
             // f(x) = x + 2
@@ -63,6 +71,7 @@ public class LambdaCombineTest {
     /**
      * Comparator combination Test!
      */
+    @Test
     public void comparatorFactoryTest() {
         List<SubjectRelation> subjectRelationList = Arrays.asList(
                 new SubjectRelation(1, 1001, "Doohyun Nam", 1)
@@ -91,6 +100,7 @@ public class LambdaCombineTest {
     /**
      * Predicate combination test!
      */
+    @Test
     public void predicateFactoryTest(){
         {
             // a >= 5 && a < 10 || a == 0
