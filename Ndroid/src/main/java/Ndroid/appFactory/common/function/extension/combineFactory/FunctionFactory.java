@@ -2,7 +2,6 @@ package Ndroid.appFactory.common.function.extension.combineFactory;
 
 import android.support.annotation.NonNull;
 
-import Ndroid.appFactory.common.androidMvc.model.NxModeler;
 import Ndroid.appFactory.common.function.IFunction;
 import io.reactivex.functions.Function;
 
@@ -18,12 +17,20 @@ import io.reactivex.functions.Function;
  * Created by Doohyun on 2017. 3. 1..
  */
 
-public class FunctionFactory<T, R> extends NxModeler {
-    private IFunction<T, R> iFunction;
+public final class FunctionFactory<T, R> extends CombineFactory<IFunction<T, R>, Function<T, R>> {
 
     public FunctionFactory(@NonNull IFunction<T, R> iFunction) {
-        NullCheck(iFunction);
-        this.iFunction = iFunction;
+       super(iFunction);
+    }
+
+    /**
+     * Return Rx style Function.
+     *
+     * @return
+     */
+    @Override
+    public Function<T, R> getRx() {
+        return (T t) -> get().apply(t);
     }
 
     /**
@@ -43,7 +50,7 @@ public class FunctionFactory<T, R> extends NxModeler {
     public <V> FunctionFactory<V, R> compose(@NonNull IFunction<? super V, ? extends T> before) {
         NullCheck(before);
 
-        return new FunctionFactory<>((V v) -> iFunction.apply(before.apply(v)));
+        return new FunctionFactory<>((V v) -> get().apply(before.apply(v)));
     }
 
     /**
@@ -62,28 +69,6 @@ public class FunctionFactory<T, R> extends NxModeler {
     public <V> FunctionFactory<T, V> andThen(IFunction<? super R, ? extends V> after) {
         NullCheck(after);
 
-        return new FunctionFactory<>((T t) -> after.apply(iFunction.apply(t)));
-    }
-
-    /**
-     * Return Final combination function.
-     *
-     * @return
-     */
-    public IFunction<T, R> getFunction(){
-        return iFunction;
-    }
-
-    /**
-     * Return Rx Function
-     *
-     * <pre>
-     *     Rx Observable support lambda.
-     * </pre>
-     *
-     * @return
-     */
-    public Function<T, R> getRxFunction() {
-        return (T t) -> iFunction.apply(t);
+        return new FunctionFactory<>((T t) -> after.apply(get().apply(t)));
     }
 }

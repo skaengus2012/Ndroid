@@ -134,7 +134,7 @@ public class LambdaUtil {
      * @param <T>
      * @return
      */
-    static <T> IBinaryOperator<T> MinBy(@NonNull Comparator<? super T> comparator) {
+    public static <T> IBinaryOperator<T> MinBy(@NonNull Comparator<? super T> comparator) {
         NxModeler.NullCheck(comparator);
         return (a, b) -> comparator.compare(a, b) <= 0 ? a : b;
     }
@@ -146,7 +146,7 @@ public class LambdaUtil {
      * @param <T>
      * @return
      */
-    static <T> IBinaryOperator<T> MaxBy(@NonNull Comparator<? super T> comparator) {
+    public static <T> IBinaryOperator<T> MaxBy(@NonNull Comparator<? super T> comparator) {
         NxModeler.NullCheck(comparator);
         return (a, b) -> comparator.compare(a, b) >= 0 ? a : b;
     }

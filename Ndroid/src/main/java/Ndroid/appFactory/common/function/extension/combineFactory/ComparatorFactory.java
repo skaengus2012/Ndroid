@@ -19,7 +19,7 @@ import Ndroid.appFactory.common.function.extension.supportFunction.NullAbleCompa
  * Created by Doohyun on 2017. 3. 1..
  */
 
-public class ComparatorFactory<T> extends CombineFactory<NullAbleComparator<T>, Comparator<T>> {
+public final class ComparatorFactory<T> extends CombineFactory<NullAbleComparator<T>, Comparator<T>> {
 
     private Boolean nullFirstYn = false;            // null priority.
 

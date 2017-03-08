@@ -18,7 +18,7 @@ import io.reactivex.functions.BiFunction;
  * Created by Doohyun on 2017. 3. 7..
  */
 
-public class BiFunctionFactory<T, U, R> extends CombineFactory<IBiFunction<T, U, R>, BiFunction<T, U, R>> {
+public final class BiFunctionFactory<T, U, R> extends CombineFactory<IBiFunction<T, U, R>, BiFunction<T, U, R>> {
 
     public BiFunctionFactory(IBiFunction<T, U, R> biFunction) {
         super(biFunction);

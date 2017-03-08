@@ -17,7 +17,7 @@ import io.reactivex.functions.BiPredicate;
  * Created by Doohyun on 2017. 3. 7..
  */
 
-public class BiPredicateFactory<T, U> extends CombineFactory<IBiPredicate<T, U>, BiPredicate<T, U>>{
+public final class BiPredicateFactory<T, U> extends CombineFactory<IBiPredicate<T, U>, BiPredicate<T, U>>{
 
     public BiPredicateFactory(@NonNull IBiPredicate<T, U> biPredicate) {
         super(biPredicate);

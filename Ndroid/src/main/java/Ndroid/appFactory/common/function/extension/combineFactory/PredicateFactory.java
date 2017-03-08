@@ -17,12 +17,17 @@ import io.reactivex.functions.Predicate;
  * Created by Doohyun on 2017. 3. 1..
  */
 
-public class PredicateFactory<T> extends CombineFactory<IPredicate<T>, Predicate<T>> {
+public final class PredicateFactory<T> extends CombineFactory<IPredicate<T>, Predicate<T>> {
 
     public PredicateFactory(@NonNull IPredicate<T> predicate) {
         super(predicate);
     }
 
+    /**
+     * Return Rx style Predicate.
+     *
+     * @return
+     */
     @Override
     public Predicate<T> getRx() {
         return (T t) -> get().test(t);
