@@ -102,6 +102,16 @@ public class LoginPresenter extends NxActivityPresenter<T> implements ILoginServ
 	public LoginPresenter(LoginActivity loginActivity) {
         super(loginActivity);
 	}
+	
+	/**
+     * Presenter method example.
+     *
+     * @param view
+     */
+	 public void clickLoginButton(View view) {
+	 	// simple activity action.
+	 	run(lLoginActivity::setClickDisableLoginButton);	// run(loginActivity -> loginActivity.setClickDisableLoginButton());
+	 }
 }
 ```
 
