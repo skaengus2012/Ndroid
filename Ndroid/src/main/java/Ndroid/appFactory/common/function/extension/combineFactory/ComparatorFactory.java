@@ -5,7 +5,6 @@ import android.support.annotation.NonNull;
 import java.util.Collections;
 import java.util.Comparator;
 
-import Ndroid.appFactory.common.androidMvc.model.NxModeler;
 import Ndroid.appFactory.common.function.extension.supportFunction.NullAbleComparator;
 
 /**
@@ -20,15 +19,22 @@ import Ndroid.appFactory.common.function.extension.supportFunction.NullAbleCompa
  * Created by Doohyun on 2017. 3. 1..
  */
 
-public class ComparatorFactory<T> extends NxModeler {
+public class ComparatorFactory<T> extends CombineFactory<NullAbleComparator<T>, Comparator<T>> {
 
-    private Boolean nullFirstYn = false;            // null 값 우선순위
-    private NullAbleComparator<T> comparator;
+    private Boolean nullFirstYn = false;            // null priority.
 
     public ComparatorFactory(@NonNull Comparator<T> comparator) {
-        NullCheck(comparator);
+        super(new NullAbleComparator<>(comparator));
+    }
 
-        this.comparator = new NullAbleComparator<>(comparator, nullFirstYn);
+    /**
+     * Comparator equals Rx and JAVA8.
+     *
+     * @return
+     */
+    @Override
+    public Comparator<T> getRx() {
+        return get();
     }
 
     /**
@@ -44,48 +50,41 @@ public class ComparatorFactory<T> extends NxModeler {
     public ComparatorFactory(
             @NonNull Comparator<T> comparator
             , @NonNull Boolean nullFirstYn) {
-        NullCheck(comparator);
+        super(new NullAbleComparator<>(comparator, nullFirstYn));
         NullCheck(nullFirstYn);
 
         this.nullFirstYn = nullFirstYn;
-
-        this.comparator = new NullAbleComparator<>(comparator, nullFirstYn);
     }
 
     /**
-     * null 값을 우선순위 높게 잡는다.
+     * null first.
      *
      * @return
      */
     public ComparatorFactory<T> nullsFirst() {
-        return new ComparatorFactory<>(comparator, true);
+        return new ComparatorFactory<>(get(), true);
     }
 
     /**
-     * null 값을 우선순위 낮게 잡는다.
+     * null last.
      *
      * @return
      */
     public ComparatorFactory<T> nullsLast() {
-        return new ComparatorFactory<>(comparator, false);
+        return new ComparatorFactory<>(get(), false);
     }
 
     /**
-     * 정렬 방식 변경.
-     *
-     * <pre>
-     *     오름차순, 내림차순
-     *     내림차순, 오름차순
-     * </pre>
+     * Sort reversed
      *
      * @return
      */
     public ComparatorFactory<T> reversed(){
-        return new ComparatorFactory<>(Collections.reverseOrder(comparator), !nullFirstYn);
+        return new ComparatorFactory<>(Collections.reverseOrder(get()), !nullFirstYn);
     }
 
     /**
-     * 비교 진행에서 다음 조건을 추가시킨다.
+     * add compare!
      *
      * @param thenComparator
      * @return
@@ -94,17 +93,8 @@ public class ComparatorFactory<T> extends NxModeler {
         NullCheck(thenComparator);
 
         return new ComparatorFactory<>((c1, c2) -> {
-            int res = comparator.compare(c1, c2);
+            int res = get().compare(c1, c2);
             return (res != 0) ? res : thenComparator.compare(c1, c2);
         }, nullFirstYn);
-    }
-
-    /**
-     * Comparator 출력.
-     *
-     * @return
-     */
-    public Comparator<T> getComparator() {
-        return comparator;
     }
 }

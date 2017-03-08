@@ -2,7 +2,6 @@ package Ndroid.appFactory.common.function.extension.combineFactory;
 
 import android.support.annotation.NonNull;
 
-import Ndroid.appFactory.common.androidMvc.model.NxModeler;
 import Ndroid.appFactory.common.function.IBiPredicate;
 import io.reactivex.functions.BiPredicate;
 
@@ -18,14 +17,20 @@ import io.reactivex.functions.BiPredicate;
  * Created by Doohyun on 2017. 3. 7..
  */
 
-public class BiPredicateFactory<T, U> extends NxModeler{
-
-    private IBiPredicate<T, U> biPredicate;
+public class BiPredicateFactory<T, U> extends CombineFactory<IBiPredicate<T, U>, BiPredicate<T, U>>{
 
     public BiPredicateFactory(@NonNull IBiPredicate<T, U> biPredicate) {
-        NullCheck(biPredicate);
+        super(biPredicate);
+    }
 
-        this.biPredicate = biPredicate;
+    /**
+     * Return Rx style BiPredicate.
+     *
+     * @return
+     */
+    @Override
+    public BiPredicate<T, U> getRx() {
+        return (T t, U u) -> get().test(t, u);
     }
 
     /**
@@ -34,10 +39,10 @@ public class BiPredicateFactory<T, U> extends NxModeler{
      * @param other
      * @return
      */
-    public BiPredicateFactory<T, U> or(IBiPredicate<? super T, ? super U> other) {
+    public BiPredicateFactory<T, U> or(@NonNull IBiPredicate<? super T, ? super U> other) {
         NullCheck(other);
 
-        return new BiPredicateFactory<>((T t, U u) -> biPredicate.test(t, u) || other.test(t, u));
+        return new BiPredicateFactory<>((T t, U u) -> get().test(t, u) || other.test(t, u));
     }
 
     /**
@@ -46,10 +51,10 @@ public class BiPredicateFactory<T, U> extends NxModeler{
      * @param other
      * @return
      */
-    public BiPredicateFactory<T, U> and(IBiPredicate<? super T, ? super U> other) {
+    public BiPredicateFactory<T, U> and(@NonNull IBiPredicate<? super T, ? super U> other) {
         NullCheck(other);
 
-        return new BiPredicateFactory<>((T t, U u) -> biPredicate.test(t, u) && other.test(t, u));
+        return new BiPredicateFactory<>((T t, U u) -> get().test(t, u) && other.test(t, u));
     }
 
     /**
@@ -58,28 +63,6 @@ public class BiPredicateFactory<T, U> extends NxModeler{
      * @return
      */
     public BiPredicateFactory<T, U> negate() {
-        return new BiPredicateFactory<>((T t, U u) -> !biPredicate.test(t, u));
-    }
-
-    /**
-     * BiPredicate 를 출력한다.
-     *
-     * @return
-     */
-    public IBiPredicate<T, U> getPredicate() {
-        return biPredicate;
-    }
-
-    /**
-     * Return Rx BiPredicate
-     *
-     * <pre>
-     *     Rx Observable support lambda.
-     * </pre>
-     *
-     * @return
-     */
-    public BiPredicate<T, U> getRxPredicate() {
-        return (T t, U u) -> biPredicate.test(t, u);
+        return new BiPredicateFactory<>((T t, U u) -> !get().test(t, u));
     }
 }

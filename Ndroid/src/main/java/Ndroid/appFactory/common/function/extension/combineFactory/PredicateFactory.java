@@ -2,7 +2,6 @@ package Ndroid.appFactory.common.function.extension.combineFactory;
 
 import android.support.annotation.NonNull;
 
-import Ndroid.appFactory.common.androidMvc.model.NxModeler;
 import Ndroid.appFactory.common.function.IPredicate;
 import io.reactivex.functions.Predicate;
 
@@ -18,13 +17,15 @@ import io.reactivex.functions.Predicate;
  * Created by Doohyun on 2017. 3. 1..
  */
 
-public class PredicateFactory<T> extends NxModeler {
-
-    private IPredicate<T> predicate;
+public class PredicateFactory<T> extends CombineFactory<IPredicate<T>, Predicate<T>> {
 
     public PredicateFactory(@NonNull IPredicate<T> predicate) {
-        NullCheck(predicate);
-        this.predicate = predicate;
+        super(predicate);
+    }
+
+    @Override
+    public Predicate<T> getRx() {
+        return (T t) -> get().test(t);
     }
 
     /**
@@ -33,7 +34,7 @@ public class PredicateFactory<T> extends NxModeler {
      * @return
      */
     public PredicateFactory<T> negative(){
-        return new PredicateFactory<>(t -> !predicate.test(t));
+        return new PredicateFactory<>(t -> !get().test(t));
     }
 
     /**
@@ -44,7 +45,7 @@ public class PredicateFactory<T> extends NxModeler {
      */
     public PredicateFactory<T> and(@NonNull IPredicate<T> andConditionPredicate) {
         NullCheck(andConditionPredicate);
-        return new PredicateFactory<>(t -> predicate.test(t) && andConditionPredicate.test(t));
+        return new PredicateFactory<>(t -> get().test(t) && andConditionPredicate.test(t));
     }
 
     /**
@@ -55,28 +56,6 @@ public class PredicateFactory<T> extends NxModeler {
      */
     public PredicateFactory<T> or(@NonNull IPredicate<T> orConditionPredicate) {
         NullCheck(orConditionPredicate);
-        return new PredicateFactory<>(t -> predicate.test(t) || orConditionPredicate.test(t));
-    }
-
-    /**
-     * predicate 를 출력한다.
-     *
-     * @return
-     */
-    public IPredicate<T> getPredicate() {
-        return predicate;
-    }
-
-    /**
-     * Return Rx Predicate
-     *
-     * <pre>
-     *     Rx Observable support lambda.
-     * </pre>
-     *
-     * @return
-     */
-    public Predicate<T> getRxPredicate() {
-        return (T t) -> predicate.test(t);
+        return new PredicateFactory<>(t -> get().test(t) || orConditionPredicate.test(t));
     }
 }

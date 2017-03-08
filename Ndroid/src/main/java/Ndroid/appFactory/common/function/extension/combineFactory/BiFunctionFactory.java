@@ -1,6 +1,7 @@
 package Ndroid.appFactory.common.function.extension.combineFactory;
 
-import Ndroid.appFactory.common.androidMvc.model.NxModeler;
+import android.support.annotation.NonNull;
+
 import Ndroid.appFactory.common.function.IBiFunction;
 import Ndroid.appFactory.common.function.IFunction;
 import io.reactivex.functions.BiFunction;
@@ -17,11 +18,20 @@ import io.reactivex.functions.BiFunction;
  * Created by Doohyun on 2017. 3. 7..
  */
 
-public class BiFunctionFactory<T, U, R> extends NxModeler {
-    private IBiFunction<T, U, R> biFunction;
+public class BiFunctionFactory<T, U, R> extends CombineFactory<IBiFunction<T, U, R>, BiFunction<T, U, R>> {
 
     public BiFunctionFactory(IBiFunction<T, U, R> biFunction) {
-        this.biFunction = biFunction;
+        super(biFunction);
+    }
+
+    /**
+     * Return Rx style BiFunction.
+     *
+     * @return
+     */
+    @Override
+    public BiFunction<T, U, R> getRx() {
+        return (T t, U u) -> get().apply(t, u);
     }
 
     /**
@@ -35,31 +45,9 @@ public class BiFunctionFactory<T, U, R> extends NxModeler {
      * @param <V>
      * @return
      */
-    public <V> BiFunctionFactory<T, U, V> andThen(IFunction<? super R, ? extends V> after) {
+    public <V> BiFunctionFactory<T, U, V> andThen(@NonNull IFunction<? super R, ? extends V> after) {
         NullCheck(after);
 
-        return new BiFunctionFactory<>((T t, U u) -> after.apply(biFunction.apply(t, u)));
-    }
-
-    /**
-     * Return final combination BiFunction
-     *
-     * @return
-     */
-    public IBiFunction<T, U, R> getFunction() {
-        return biFunction;
-    }
-
-    /**
-     * Return Rx BiFunction
-     *
-     * <pre>
-     *     Rx Observable support lambda.
-     * </pre>
-     *
-     * @return
-     */
-    public BiFunction<T, U, R> getRxFunction() {
-        return (T t, U u) -> biFunction.apply(t, u);
+        return new BiFunctionFactory<>((T t, U u) -> after.apply(get().apply(t, u)));
     }
 }

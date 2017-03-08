@@ -56,7 +56,7 @@ public class LambdaCombineTest {
           System.out.println(
                     LambdaUtil.FunctionBuilder((Integer a, Integer b) -> (a * b) + 10).
                             andThen((Integer c) -> c * 10).
-                            getFunction().apply(2, 5));
+                            get().apply(2, 5));
         }
     }
 
@@ -78,11 +78,11 @@ public class LambdaCombineTest {
         Comparator<SubjectRelation> comparator = LambdaUtil.ComparatorBuilder(
                 LambdaUtil.CreateKeyComparator(SubjectRelation::getCompanySubjectSn
                         , LambdaUtil.ComparatorBuilder((Integer a, Integer b) -> a.compareTo(b)).reversed()
-                                .getComparator())).
+                                .get())).
                 thenComparing(
                         LambdaUtil.CreateKeyComparator(SubjectRelation::getMemberName,
                                 LambdaUtil.ComparatorBuilder((String a, String b) -> a.compareTo(b)).
-                                        nullsFirst().reversed().getComparator())).getComparator();
+                                        nullsFirst().reversed().get())).get();
 
         // order by companySubjectSn, memberName DESC
         Collections.sort(subjectRelationList, comparator);
@@ -98,7 +98,7 @@ public class LambdaCombineTest {
             IPredicate<Integer> predicate = LambdaUtil.PredicateBuilder((Integer a) -> a >= 5).
                     and(a -> a < 10).
                     or(a -> a == 0).
-                    getPredicate();
+                    get();
 
             System.out.println(predicate.test(6));
             System.out.println(predicate.test(1));
@@ -108,17 +108,15 @@ public class LambdaCombineTest {
         {
             // !((a >= 5 && a < 10) || (a >= 200 && a < 300))
             IPredicate<Integer> predicate = LambdaUtil.PredicateBuilder(
-                    LambdaUtil.PredicateBuilder((Integer a) -> a >= 5).and(a -> a < 10).getPredicate()).
-                    or(LambdaUtil.PredicateBuilder((Integer a) -> a >= 200).and(a -> a < 300).getPredicate()).
+                    LambdaUtil.PredicateBuilder((Integer a) -> a >= 5).and(a -> a < 10).get()).
+                    or(LambdaUtil.PredicateBuilder((Integer a) -> a >= 200).and(a -> a < 300).get()).
                     negative().
-                    getPredicate();
-
-
+                    get();
         }
 
         {
             // BiPredicate support!
-            LambdaUtil.PredicateBuilder((Integer a, Integer b) -> a + b > 0).and((Integer a,Integer b) -> a >= b).getPredicate();
+            LambdaUtil.PredicateBuilder((Integer a, Integer b) -> a + b > 0).and((Integer a,Integer b) -> a >= b).get();
         }
     }
 }
