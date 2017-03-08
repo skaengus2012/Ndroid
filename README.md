@@ -118,7 +118,59 @@ public class LoginPresenter extends NxActivityPresenter<T> implements ILoginServ
 	 }
 }
 ```
+<h2>Modeler</h2>
+I think that model likes Service, Component in Spring Framework required while devloping app.<br/>
+So I made modeler for busines logic.
 
+public class DummyModeler extends NxModeler {
+
+    private DummyModeler() {
+    }
+
+    private static final class ManagerHolder {
+        private static DummyModeler dummyModeler = new DummyModeler();
+    }
+
+    public static DummyModeler GetInstance() {
+        return ManagerHolder.dummyModeler;
+    }
+
+    public void introduceModelerMethod() {
+        // Check example.
+        {
+            Integer a = 10;
+            Check(a != 5);       // throws RuntimeException.
+        }
+
+        // NullCheck example.
+        {
+            Integer a = null;
+            NullCheck(a);       // throws RuntimeException.
+        }
+
+        // String empty check example.
+        {
+            String a = "";
+            EmptyToStringCheck(a);       // throws RuntimeException.
+        }
+
+        // Container empty check example.
+        {
+            EmptyContainerCheck(new LinkedList<String>());                      // throws RuntimeException.
+            EmptyContainerCheck(new Integer[2]);                                // throws RuntimeException.
+            EmptyContainerCheck(new HashMap<String, String>());                 // throws RuntimeException.
+        }
+
+        {
+            Map<String, Object> param = new HashMap<>();
+            PutDefualtValueInMap(param, "Doohyun", () -> 2);
+
+            // Not operate put action, because param have key "doohyun"
+            PutDefualtValueInMap(param, "Doohyun", () -> 3);
+        }
+    }
+    }
+    ```
 
 # Lambda combination
 
