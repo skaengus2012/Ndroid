@@ -170,7 +170,7 @@ public class DummyModeler extends NxModeler {
             PutDefualtValueInMap(param, "Doohyun", () -> 3);
         }
     }
-    }
+}
 ```
 
 # Lambda combination
