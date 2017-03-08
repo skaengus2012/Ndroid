@@ -59,6 +59,9 @@ public class LoginActivity extends NxActivity {
 
     private EditText editId, editPwd;
     
+    // This is presenter for LoginActivity
+    private LoginPresenter loginPresenter;
+    
     /**
      * Define, your activity layout resource id;
      *
@@ -70,15 +73,38 @@ public class LoginActivity extends NxActivity {
     }
     
     /**
-     * layout xml 바인딩 작업 정의
+     * layout xml binding.
      */
     @Override
     public void initView() {
         editId = (EditText) findViewById(R.id.editId);
         editPwd = (EditText) findViewById(R.id.editPwd);
 	}
+	
+ @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+	loginPresenter = new LoginPresenter(this);
+	}
+	
+	....
 }
 ```
+
+<h2>NxPresenter</h2>
+This presenter manage activity using weakReference. <br/>
+And if you use that, you do not need to consider memory leak. <br/>
+This is simple presenter.
+
+```java
+public class LoginPresenter extends NxActivityPresenter<T> implements ILoginServiceObserver {
+
+public LoginPresenter(LoginActivity loginActivity) {
+        super(loginActivity);
+	}
+}
+```
+
 
 # Lambda combination
 
