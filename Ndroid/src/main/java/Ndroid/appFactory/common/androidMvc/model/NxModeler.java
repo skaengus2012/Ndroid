@@ -3,12 +3,13 @@ package Ndroid.appFactory.common.androidMvc.model;
 import java.util.Collection;
 import java.util.Map;
 
+import Ndroid.appFactory.common.function.ISupplier;
 import Ndroid.appFactory.util.ContainerUtil;
 
 
 /**
  * 모델을 담당하는 클래스는 이곳에 제작한다.
- *
+ * <p>
  * <pre>
  *      스프링의 서비스와 같은 그 것!
  *      모든 모델러는 해당 클래스를 상속받아야함!
@@ -16,7 +17,7 @@ import Ndroid.appFactory.util.ContainerUtil;
  *
  *      단순 MVP 모델에서 사용하기 위한 모델러 역할 포함, 비지니스 로직만 전문으로 사용하는 클래스에서 사용하자!
  * </pre>
- *
+ * <p>
  * Created by Doohyun on 2017. 1. 29..
  */
 
@@ -25,9 +26,7 @@ public abstract class NxModeler {
     private static final String ERROR_BAD_ASSESS = "[ERROR] BAD DATA ASSESS";
 
     /**
-     * <pre>
-     *     boolean 논리 체크
-     * </pre>
+     * Description : Simple boolean checks
      *
      * @param check
      */
@@ -38,12 +37,9 @@ public abstract class NxModeler {
     }
 
     /**
-     * <pre>
-     * 설명 : null 체크
-     * </pre>
+     * Description : Parameter null checks
      *
      * @param obj
-     *
      */
     public final static void NullCheck(Object obj) {
         if (obj == null) {
@@ -52,19 +48,13 @@ public abstract class NxModeler {
     }
 
     /**
-     * <pre>
-     * 설명 : toString 공백 체크
-     * </pre>
+     * Description : Simple empty check.
      *
      * @param obj
-     * @param message
      */
-    public final static void EmptyToStringCheck(Object obj, String message) {
+    public final static void EmptyToStringCheck(Object obj) {
 
-        if (obj == null) {
-            // obj 자체 null 체크
-            throw new RuntimeException("[예외] 잘못된 접근");
-        }
+        NullCheck(obj);
 
         final String toString = obj.toString();
 
@@ -75,11 +65,10 @@ public abstract class NxModeler {
     }
 
     /**
-     * <pre>
-     * 설명 : 리스트 empty 체크
-     * </pre>
+     * Description : Empty Collection Check.
      *
      * @param list
+     * @param <T>
      */
     public final static <T> void EmptyContainerCheck(Collection<T> list) {
         if (ContainerUtil.IsEmpty(list)) {
@@ -88,11 +77,10 @@ public abstract class NxModeler {
     }
 
     /**
-     * <pre>
-     * 설명 : 배열 empty 체크
-     * </pre>
+     * Description : Empty Array Check.
      *
      * @param array
+     * @param <T>
      */
     public final static <T> void EmptyContainerCheck(T[] array) {
         if (ContainerUtil.IsEmpty(array)) {
@@ -101,36 +89,30 @@ public abstract class NxModeler {
     }
 
     /**
-     * <pre>
-     * 설명 : 배열 empty 체크
-     * </pre>
+     * Description : Empty map Check.
      *
      * @param dataSet
-     * @param message
+     * @param <T>
+     * @param <R>
      */
-    public final static <T, R> void EmptyContainerCheck(Map<T, R> dataSet, String message) {
+    public final static <T, R> void EmptyContainerCheck(Map<T, R> dataSet) {
         if (ContainerUtil.IsEmpty(dataSet)) {
             throw new RuntimeException(ERROR_BAD_ASSESS);
         }
     }
 
     /**
-     * <pre>
-     * 맵의 key 를 확인하고 기본 값을 넣는다.
-     * </pre>
+     * If this map not contains key, put key & value.
      *
      * @param map
      * @param key
-     * @param defaultVale
+     * @param iSupplier
      */
-    public static <T, R> void PutDefualtValueInMap(Map<T, R> map, T key, R defaultVale) {
-        try {
-            if (!map.containsKey(key)) {
-                map.containsKey(defaultVale);
-            }
-        } catch (NullPointerException e) {
-            // map 이 null 일 수 있음.
-            throw new RuntimeException(ERROR_BAD_ASSESS);
+    public static <T, R> void PutDefualtValueInMap(Map<T, R> map, T key, ISupplier<R> iSupplier) {
+        NullCheck(map);
+
+        if (!map.containsKey(key)) {
+            map.put(key, iSupplier.accept());
         }
     }
 }
