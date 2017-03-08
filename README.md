@@ -99,7 +99,7 @@ This is simple presenter.
 ```java
 public class LoginPresenter extends NxActivityPresenter<T> implements ILoginServiceObserver {
 
-public LoginPresenter(LoginActivity loginActivity) {
+	public LoginPresenter(LoginActivity loginActivity) {
         super(loginActivity);
 	}
 }
