@@ -8,7 +8,8 @@ But we need to share activity instance in presenter and I think that will be ind
 So I made NxPresenter, which is auto weak-ref between activity and presenter. 
 And I support NxActivity & NxModeler, which are abstract class for comfortable develop.
 <br/><br/>
-<B>blog url</B> : http://doohyun.tistory.com/38
+<B>blog url</B> : http://doohyun.tistory.com/38<br/>
+<B>example</B> : https://github.com/skaengus2012/Ndroid#android-mvp
 <br/><br/>
 **Secondly**, I made <B>Lambda combination</B> util for Android. 
 Android support default method in JAVA8 at API >= 24. 
@@ -22,6 +23,7 @@ So I published <B>LambdaUtil</B> for combination. We can build lambda.
 <Br/>
 <Br/>
 <B>blog url</B> : http://doohyun.tistory.com/45
+<B>example</B> : https://github.com/skaengus2012/Ndroid#lambda-combination
 <br/><br/>
 Thank you!!
 <br/>
