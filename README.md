@@ -140,7 +140,7 @@ LambdaUtil.CreateKeyComparator(SubjectRelation::getMemberName,LambdaUtil.
 ```
 
 <H2>Rx Lambda supprt</H2>
-I hate RxJava2 lambda because they made method with Exception in functional interface.<hr/><hr/>
-So I support functional interface method not including Exception.<hr/><hr/>
-But this library need to support Observable in Rx.<hr/><hr/>
-So I check getRx() for Rx Lambda support.<hr/><hr/>
+I hate RxJava2 lambda because they made method with Exception in functional interface.<br/><br/>
+So I support functional interface method not including Exception.<br/><br/>
+But this library need to support Observable in Rx.<br/><br/>
+So I check getRx() for Rx Lambda support.<br/><br/>
