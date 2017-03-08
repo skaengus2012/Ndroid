@@ -21,7 +21,7 @@ And I tried to find that in Rx, but I could not find.
 So I published <B>LambdaUtil</B> for combination. We can build lambda.
 <Br/>
 <Br/>
-<B>blog url</B> : 
+<B>blog url</B> : http://doohyun.tistory.com/45
 <br/><br/>
 Thank you!!
 <br/>
