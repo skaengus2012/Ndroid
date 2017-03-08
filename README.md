@@ -110,7 +110,10 @@ public class LoginPresenter extends NxActivityPresenter<T> implements ILoginServ
      */
 	 public void clickLoginButton(View view) {
 	 	// simple activity action.
-	 	run(lLoginActivity::setClickDisableLoginButton);	// run(loginActivity -> loginActivity.setClickDisableLoginButton());
+	 	run(LoginActivity::setClickDisableLoginButton);	// run(loginActivity -> loginActivity.setClickDisableLoginButton());
+		
+		// runOnUiThread activity action.
+		runOnUiThread(LoginActivity::setClickDisableLoginButton);
 	 }
 }
 ```
