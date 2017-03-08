@@ -44,6 +44,41 @@ dependencies {
 }
 ```
 <br/>
+# Android MVP
+
+Ndroid support android mvp with considering memory leak.
+
+First, You can find NxActivity, NxPresenter, NxModeler
+
+<H2>NxActivity series</H2>
+I defined required abstract method in NxActivity series.
+
+This is sample Activity. We need to separte basic function, and I suggest that.
+```java
+public class LoginActivity extends NxActivity {
+
+    private EditText editId, editPwd;
+    
+    /**
+     * Define, your activity layout resource id;
+     *
+     * @return
+     */
+    @Override
+    public int getLayoutResourceId(){
+        return R.layout.activity_login;
+    }
+    
+    /**
+     * layout xml 바인딩 작업 정의
+     */
+    @Override
+    public void initView() {
+        editId = (EditText) findViewById(R.id.editId);
+        editPwd = (EditText) findViewById(R.id.editPwd);
+	}
+}
+```
 
 # Lambda combination
 
