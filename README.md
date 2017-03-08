@@ -1,4 +1,4 @@
-# Ndroid
+=# Ndroid
 
 Ndroid is util library, which is supported <B>Android MVP, Lambda combination</B> in alpha version.
 
@@ -40,7 +40,7 @@ allprojects {
 <B>STEP2</B> : Add the dependency:<br/>
 ```gradle
 dependencies {
-    compile 'com.github.skaengus2012:Ndroid:v0.0.4-alpha'
+	compile 'com.github.skaengus2012:Ndroid:v0.0.4.1-alpha'
 }
 ```
 <br/>
@@ -58,17 +58,17 @@ Please reference next.
 IPredicate<Integer> predicate = LambdaUtil.PredicateBuilder((Integer a) -> a >= 5).
                     				and(a -> a < 10).
                     				or(a -> a == 0).
-                   				getPredicate();
+                   				get();
 		    
 // !((a >= 5 && a < 10) || (a >= 200 && a < 300))
 IPredicate<Integer> predicate = LambdaUtil.PredicateBuilder(
-                    LambdaUtil.PredicateBuilder((Integer a) -> a >= 5).and(a -> a < 10).getPredicate()).
-                    or(LambdaUtil.PredicateBuilder((Integer a) -> a >= 200).and(a -> a < 300).getPredicate()).
+                    LambdaUtil.PredicateBuilder((Integer a) -> a >= 5).and(a -> a < 10).get()).
+                    or(LambdaUtil.PredicateBuilder((Integer a) -> a >= 200).and(a -> a < 300).get()).
                     negative().
-                    getPredicate();
+                    get();
 		    
 // BiPredicate support!
-LambdaUtil.PredicateBuilder((Integer a, Integer b) -> a + b > 0).and((Integer a,Integer b) -> a >= b).getPredicate();
+LambdaUtil.PredicateBuilder((Integer a, Integer b) -> a + b > 0).and((Integer a,Integer b) -> a >= b).get();
 
 ```
 
@@ -89,11 +89,11 @@ List<SubjectRelation> subjectRelationList = Arrays.asList(
 Comparator<SubjectRelation> comparator = LambdaUtil.ComparatorBuilder(
                 LambdaUtil.CreateKeyComparator(SubjectRelation::getCompanySubjectSn
                         , LambdaUtil.ComparatorBuilder((Integer a, Integer b) -> a.compareTo(b)).reversed()
-                                .getComparator())).
+                                .get())).
                 thenComparing(
                         LambdaUtil.CreateKeyComparator(SubjectRelation::getMemberName,
                                 LambdaUtil.ComparatorBuilder((String a, String b) -> a.compareTo(b)).
-                                        nullsFirst().reversed().getComparator())).getComparator();
+                                        nullsFirst().reversed().get())).get();
 
 ```
 <br/>
@@ -103,7 +103,7 @@ LambdaUtil.CreateKeyComparator(SubjectRelation::getMemberName,LambdaUtil.
 			ComparatorBuilder((String a, String b) -> a.compareTo(b)).
 				nullsFirst().
 				reversed().
-				getComparator());
+				get());
 				
 ```
 
@@ -115,7 +115,7 @@ LambdaUtil.CreateKeyComparator(SubjectRelation::getMemberName,LambdaUtil.
 	// f(g(x)) = (x * 8) + 2
 	LambdaUtil.FunctionBuilder((Integer a) -> a + 2).
                    compose((Integer a) -> a * 8).
-                   getFunction().
+                   get().
                    apply(10);
 }
 
@@ -125,7 +125,7 @@ LambdaUtil.CreateKeyComparator(SubjectRelation::getMemberName,LambdaUtil.
 	// g(f(x)) = (x + 2) * 8
 	LambdaUtil.FunctionBuilder((Integer a) -> a + 2).
                    andThen((Integer a) -> a * 8).
-                   getFunction().
+                   get().
                    apply(10);
 }
 
@@ -134,6 +134,13 @@ LambdaUtil.CreateKeyComparator(SubjectRelation::getMemberName,LambdaUtil.
 	// g(x) = x * 10
 	LambdaUtil.FunctionBuilder((Integer a, Integer b) -> (a * b) + 10).
                    andThen((Integer c) -> c * 10).
-                   getFunction().apply(2, 5));
+                   get().
+		   apply(2, 5));
 }
 ```
+
+<H2>Rx Lambda supprt</H2>
+I hate RxJava2 lambda because they made method with Exception in functional interface.<hr/><hr/>
+So I support functional interface method not including Exception.<hr/><hr/>
+But this library need to support Observable in Rx.<hr/><hr/>
+So I check getRx() for Rx Lambda support.<hr/><hr/>
