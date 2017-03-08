@@ -22,7 +22,7 @@ And I tried to find that in Rx, but I could not find.
 So I published <B>LambdaUtil</B> for combination. We can build lambda.
 <Br/>
 <Br/>
-<B>blog url</B> : http://doohyun.tistory.com/45
+<B>blog url</B> : http://doohyun.tistory.com/45<br/>
 <B>example</B> : https://github.com/skaengus2012/Ndroid#lambda-combination
 <br/><br/>
 Thank you!!
