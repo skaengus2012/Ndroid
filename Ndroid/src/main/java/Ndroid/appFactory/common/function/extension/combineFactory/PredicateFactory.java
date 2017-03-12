@@ -3,7 +3,7 @@ package Ndroid.appFactory.common.function.extension.combineFactory;
 import android.support.annotation.NonNull;
 
 import Ndroid.appFactory.common.function.IPredicate;
-import io.reactivex.functions.Predicate;
+import Ndroid.appFactory.common.function.exceptionLambda.IExPredicate;
 
 /**
  * Predicate combination Factory
@@ -17,7 +17,7 @@ import io.reactivex.functions.Predicate;
  * Created by Doohyun on 2017. 3. 1..
  */
 
-public final class PredicateFactory<T> extends CombineFactory<IPredicate<T>, Predicate<T>> {
+public class PredicateFactory<T> extends CombineFactory<IPredicate<T>, IExPredicate<T>> {
 
     public PredicateFactory(@NonNull IPredicate<T> predicate) {
         super(predicate);
@@ -29,7 +29,7 @@ public final class PredicateFactory<T> extends CombineFactory<IPredicate<T>, Pre
      * @return
      */
     @Override
-    public Predicate<T> getRx() {
+    public IExPredicate<T> getRx() {
         return (T t) -> get().test(t);
     }
 

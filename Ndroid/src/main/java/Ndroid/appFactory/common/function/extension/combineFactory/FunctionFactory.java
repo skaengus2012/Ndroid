@@ -3,7 +3,7 @@ package Ndroid.appFactory.common.function.extension.combineFactory;
 import android.support.annotation.NonNull;
 
 import Ndroid.appFactory.common.function.IFunction;
-import io.reactivex.functions.Function;
+import Ndroid.appFactory.common.function.exceptionLambda.IExFunction;
 
 /**
  * Function combination Factory
@@ -17,7 +17,7 @@ import io.reactivex.functions.Function;
  * Created by Doohyun on 2017. 3. 1..
  */
 
-public final class FunctionFactory<T, R> extends CombineFactory<IFunction<T, R>, Function<T, R>> {
+public class FunctionFactory<T, R> extends CombineFactory<IFunction<T, R>, IExFunction<T, R>> {
 
     public FunctionFactory(@NonNull IFunction<T, R> iFunction) {
        super(iFunction);
@@ -29,7 +29,7 @@ public final class FunctionFactory<T, R> extends CombineFactory<IFunction<T, R>,
      * @return
      */
     @Override
-    public Function<T, R> getRx() {
+    public IExFunction<T, R> getRx() {
         return (T t) -> get().apply(t);
     }
 

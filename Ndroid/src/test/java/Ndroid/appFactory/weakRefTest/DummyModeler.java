@@ -1,9 +1,5 @@
 package Ndroid.appFactory.weakRefTest;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Map;
-
 import Ndroid.appFactory.common.androidMvc.model.NxModeler;
 
 /**

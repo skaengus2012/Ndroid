@@ -7,14 +7,14 @@ import java.util.Comparator;
 import Ndroid.appFactory.common.androidMvc.model.NxModeler;
 import Ndroid.appFactory.common.function.IBiFunction;
 import Ndroid.appFactory.common.function.IBiPredicate;
-import Ndroid.appFactory.common.function.IBinaryOperator;
 import Ndroid.appFactory.common.function.IFunction;
 import Ndroid.appFactory.common.function.IPredicate;
-import Ndroid.appFactory.common.function.IUnaryOperator;
 import Ndroid.appFactory.common.function.extension.combineFactory.BiFunctionFactory;
 import Ndroid.appFactory.common.function.extension.combineFactory.BiPredicateFactory;
+import Ndroid.appFactory.common.function.extension.combineFactory.BinaryOperatorFactory;
 import Ndroid.appFactory.common.function.extension.combineFactory.ComparatorFactory;
 import Ndroid.appFactory.common.function.extension.combineFactory.FunctionFactory;
+import Ndroid.appFactory.common.function.extension.combineFactory.IUnaryOperatorFactory;
 import Ndroid.appFactory.common.function.extension.combineFactory.PredicateFactory;
 
 /**
@@ -99,7 +99,7 @@ public class LambdaUtil {
      * @return
      */
     public static <T, U, R> BiFunctionFactory<T, U, R> FunctionBuilder(@NonNull IBiFunction<T, U, R> function) {
-        return new BiFunctionFactory<T, U, R>(function);
+        return new BiFunctionFactory<>(function);
     }
 
     /**
@@ -123,8 +123,8 @@ public class LambdaUtil {
      * @param <T>
      * @return
      */
-    public static <T> IUnaryOperator<T> GetIdentity() {
-        return t -> t;
+    public static <T> IUnaryOperatorFactory<T> GetIdentity() {
+        return new IUnaryOperatorFactory<>(t -> t);
     }
 
     /**
@@ -134,9 +134,8 @@ public class LambdaUtil {
      * @param <T>
      * @return
      */
-    public static <T> IBinaryOperator<T> MinBy(@NonNull Comparator<? super T> comparator) {
-        NxModeler.NullCheck(comparator);
-        return (a, b) -> comparator.compare(a, b) <= 0 ? a : b;
+    public static <T> BinaryOperatorFactory<T> MinBy(@NonNull Comparator<? super T> comparator) {
+        return new BinaryOperatorFactory<>((a, b) -> comparator.compare(a, b) <= 0 ? a : b);
     }
 
     /**
@@ -146,8 +145,8 @@ public class LambdaUtil {
      * @param <T>
      * @return
      */
-    public static <T> IBinaryOperator<T> MaxBy(@NonNull Comparator<? super T> comparator) {
+    public static <T> BinaryOperatorFactory<T> MaxBy(@NonNull Comparator<? super T> comparator) {
         NxModeler.NullCheck(comparator);
-        return (a, b) -> comparator.compare(a, b) >= 0 ? a : b;
+        return new BinaryOperatorFactory<>((a, b) -> comparator.compare(a, b) >= 0 ? a : b);
     }
 }

@@ -3,7 +3,7 @@ package Ndroid.appFactory.common.function.extension.combineFactory;
 import android.support.annotation.NonNull;
 
 import Ndroid.appFactory.common.function.IBiPredicate;
-import io.reactivex.functions.BiPredicate;
+import Ndroid.appFactory.common.function.exceptionLambda.IExBiPredicate;
 
 /**
  * BiPredicate combination Factory
@@ -17,7 +17,7 @@ import io.reactivex.functions.BiPredicate;
  * Created by Doohyun on 2017. 3. 7..
  */
 
-public final class BiPredicateFactory<T, U> extends CombineFactory<IBiPredicate<T, U>, BiPredicate<T, U>>{
+public class BiPredicateFactory<T, U> extends CombineFactory<IBiPredicate<T, U>, IExBiPredicate<T, U>>{
 
     public BiPredicateFactory(@NonNull IBiPredicate<T, U> biPredicate) {
         super(biPredicate);
@@ -29,7 +29,7 @@ public final class BiPredicateFactory<T, U> extends CombineFactory<IBiPredicate<
      * @return
      */
     @Override
-    public BiPredicate<T, U> getRx() {
+    public IExBiPredicate<T, U> getRx() {
         return (T t, U u) -> get().test(t, u);
     }
 

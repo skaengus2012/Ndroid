@@ -4,7 +4,7 @@ import android.support.annotation.NonNull;
 
 import Ndroid.appFactory.common.function.IBiFunction;
 import Ndroid.appFactory.common.function.IFunction;
-import io.reactivex.functions.BiFunction;
+import Ndroid.appFactory.common.function.exceptionLambda.IExBiFunction;
 
 /**
  * BiFunction combination Factory
@@ -18,7 +18,7 @@ import io.reactivex.functions.BiFunction;
  * Created by Doohyun on 2017. 3. 7..
  */
 
-public final class BiFunctionFactory<T, U, R> extends CombineFactory<IBiFunction<T, U, R>, BiFunction<T, U, R>> {
+public class BiFunctionFactory<T, U, R> extends CombineFactory<IBiFunction<T, U, R>, IExBiFunction<T, U, R>> {
 
     public BiFunctionFactory(IBiFunction<T, U, R> biFunction) {
         super(biFunction);
@@ -30,7 +30,7 @@ public final class BiFunctionFactory<T, U, R> extends CombineFactory<IBiFunction
      * @return
      */
     @Override
-    public BiFunction<T, U, R> getRx() {
+    public IExBiFunction<T, U, R> getRx() {
         return (T t, U u) -> get().apply(t, u);
     }
 
