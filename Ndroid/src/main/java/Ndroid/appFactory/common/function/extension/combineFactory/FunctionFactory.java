@@ -54,6 +54,23 @@ public class FunctionFactory<T, R> extends CombineFactory<IFunction<T, R>, IExFu
     }
 
     /**
+     * Function combine : compose
+     *
+     * <pre>
+     *  FunctionFactory support
+     * </pre>
+     *
+     * @param before
+     * @param <V>
+     * @return
+     */
+    public <V> FunctionFactory<V, R> compose(@NonNull FunctionFactory<? super V, ? extends T> before) {
+        NullCheck(before);
+
+        return compose(before.get());
+    }
+
+    /**
      * Function combine : andThen
      *
      * <pre>
@@ -71,4 +88,22 @@ public class FunctionFactory<T, R> extends CombineFactory<IFunction<T, R>, IExFu
 
         return new FunctionFactory<>((T t) -> after.apply(get().apply(t)));
     }
+
+    /**
+     * Function combine : andThen
+     *
+     * <pre>
+     *  FunctionFactory support
+     * </pre>
+     *
+     * @param after
+     * @param <V>
+     * @return
+     */
+    public <V> FunctionFactory<T, V> andThen(@NonNull FunctionFactory<? super R, ? extends V> after) {
+        NullCheck(after);
+
+        return andThen(after.get());
+    }
+
 }

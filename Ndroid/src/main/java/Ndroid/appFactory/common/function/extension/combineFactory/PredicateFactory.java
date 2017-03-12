@@ -54,6 +54,17 @@ public class PredicateFactory<T> extends CombineFactory<IPredicate<T>, IExPredic
     }
 
     /**
+     * PredicateFactory and support!
+     *
+     * @param andPredicateFactory
+     * @return
+     */
+    public PredicateFactory<T> and(@NonNull PredicateFactory<T> andPredicateFactory) {
+        NullCheck(andPredicateFactory);
+        return and(andPredicateFactory.get());
+    }
+
+    /**
      * predicate 에 or 상태를 추가한다.
      *
      * @param orConditionPredicate
@@ -62,5 +73,16 @@ public class PredicateFactory<T> extends CombineFactory<IPredicate<T>, IExPredic
     public PredicateFactory<T> or(@NonNull IPredicate<T> orConditionPredicate) {
         NullCheck(orConditionPredicate);
         return new PredicateFactory<>(t -> get().test(t) || orConditionPredicate.test(t));
+    }
+
+    /**
+     * PredicateFactory and support!
+     *
+     * @param orPredicateFactory
+     * @return
+     */
+    public PredicateFactory<T> or(@NonNull PredicateFactory<T> orPredicateFactory) {
+        NullCheck(orPredicateFactory);
+        return or(orPredicateFactory.get());
     }
 }

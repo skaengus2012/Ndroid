@@ -93,6 +93,25 @@ public class LambdaUtil {
     }
 
     /**
+     * Create Comparator for support "Object" key compare.
+     *
+     * <pre>
+     *     ComparatorFactory support.
+     * </pre>
+     *
+     * @param keyExtractor
+     * @param keyComparator
+     * @param <T>
+     * @param <U>
+     * @return
+     */
+    public static <T, U> ComparatorFactory<T> ComparatorBuilder(
+            @NonNull IFunction<? super T, ? extends U> keyExtractor
+            , @NonNull ComparatorFactory<? super U> keyComparator) {
+        return ComparatorBuilder(keyExtractor, keyComparator.get());
+    }
+
+    /**
      * Create FunctionFactory for Lambda combination
      *
      * @param function

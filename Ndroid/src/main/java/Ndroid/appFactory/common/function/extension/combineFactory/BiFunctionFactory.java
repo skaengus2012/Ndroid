@@ -50,4 +50,17 @@ public class BiFunctionFactory<T, U, R> extends CombineFactory<IBiFunction<T, U,
 
         return new BiFunctionFactory<>((T t, U u) -> after.apply(get().apply(t, u)));
     }
+
+    /**
+     * Function Factory support.
+     *
+     * @param after
+     * @param <V>
+     * @return
+     */
+    public <V> BiFunctionFactory<T, U, V> andThen(@NonNull FunctionFactory<? super R, ? extends V> after) {
+        NullCheck(after);
+
+        return andThen(after.get());
+    }
 }

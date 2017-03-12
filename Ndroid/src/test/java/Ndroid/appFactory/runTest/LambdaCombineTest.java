@@ -86,17 +86,12 @@ public class LambdaCombineTest {
         // order by companySubjectSn, memberName DESC
         Observable.fromIterable(subjectRelationList).sorted(
                 LambdaUtil.ComparatorBuilder(
-                    SubjectRelation::getCompanySubjectSn
-                    , LambdaUtil.ComparatorBuilder((Integer a, Integer b) -> a.compareTo(b)).
-                            reversed()
-                            .get()).
+                    SubjectRelation::getCompanySubjectSn, (Integer a, Integer b) -> a.compareTo(b)).
                     thenComparing(
                             LambdaUtil.ComparatorBuilder(SubjectRelation::getMemberName,
                                     LambdaUtil.ComparatorBuilder((String a, String b) -> a.compareTo(b)).
                                             nullsFirst().
-                                            reversed().
-                                            get()).
-                                    get()
+                                            reversed())
                     ).getRx()).
                 map(SubjectRelation::getMemberSubjectSn).
                 subscribe(System.out::println);

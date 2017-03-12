@@ -46,6 +46,18 @@ public class BiPredicateFactory<T, U> extends CombineFactory<IBiPredicate<T, U>,
     }
 
     /**
+     * Support BiPredicateFactory
+     *
+     * @param other
+     * @return
+     */
+    public BiPredicateFactory<T, U> or(@NonNull BiPredicateFactory<? super T, ? super U> other) {
+        NullCheck(other);
+
+        return or(other.get());
+    }
+
+    /**
      * predicate 에 and 상태를 추가한다.
      *
      * @param other
@@ -55,6 +67,18 @@ public class BiPredicateFactory<T, U> extends CombineFactory<IBiPredicate<T, U>,
         NullCheck(other);
 
         return new BiPredicateFactory<>((T t, U u) -> get().test(t, u) && other.test(t, u));
+    }
+
+    /**
+     * Support BiPredicateFactory
+     *
+     * @param other
+     * @return
+     */
+    public BiPredicateFactory<T, U> and(@NonNull BiPredicateFactory<? super T, ? super U> other) {
+        NullCheck(other);
+
+        return and(other.get());
     }
 
     /**

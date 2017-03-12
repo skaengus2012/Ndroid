@@ -97,4 +97,19 @@ public class ComparatorFactory<T> extends CombineFactory<NullAbleComparator<T>, 
             return (res != 0) ? res : thenComparator.compare(c1, c2);
         }, nullFirstYn);
     }
+
+    /**
+     * add Compare!
+     *
+     * <pre>
+     *     Support ComparatorFactory!
+     * </pre>
+     *
+     * @param comparatorFactory
+     * @return
+     */
+    public ComparatorFactory<T> thenComparing(@NonNull ComparatorFactory<T> comparatorFactory) {
+        NullCheck(comparatorFactory);
+        return thenComparing(comparatorFactory.get());
+    }
 }
