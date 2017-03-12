@@ -235,9 +235,9 @@ List<SubjectRelation> subjectRelationList = Arrays.asList(
 
 ```
 <br/>
-Check, <B>keyComparator</B>. That is comparator, which is comparing between member val in Object.
+Check, <B>ComparatorBuilder</B>. That is comparator, which is comparing between member val in Object.
 ```java
-LambdaUtil.CreateKeyComparator(SubjectRelation::getMemberName,LambdaUtil.
+LambdaUtil.ComparatorBuilder(SubjectRelation::getMemberName,LambdaUtil.
 			ComparatorBuilder((String a, String b) -> a.compareTo(b)).
 				nullsFirst().
 				reversed().
