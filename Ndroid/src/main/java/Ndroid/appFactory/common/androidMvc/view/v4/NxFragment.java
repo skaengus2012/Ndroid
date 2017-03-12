@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import Ndroid.appFactory.common.androidMvc.view.INxViewComponentInitializeAction;
-import Ndroid.appFactory.common.androidMvc.view.NxViewComponentInitializePresenter;
 
 /**
  * 마이다스 Fragment 정의
@@ -21,7 +20,7 @@ import Ndroid.appFactory.common.androidMvc.view.NxViewComponentInitializePresent
 
 public abstract class NxFragment extends Fragment implements INxViewComponentInitializeAction {
 
-    private NxViewComponentInitializePresenter mitViewComponentInitializePresenter;
+    private NxViewFragmentInitializePresenter nxViewFragmentInitializePresenter;
 
     /**
      * 공통적으로 할 일 정의
@@ -36,8 +35,8 @@ public abstract class NxFragment extends Fragment implements INxViewComponentIni
                             , ViewGroup container
                             , Bundle savedInstanceState) {
         final View view = inflater.inflate(getLayoutResourceId(), container, getAttachToRoot());
-        mitViewComponentInitializePresenter = new NxViewComponentInitializePresenter(this);
-        mitViewComponentInitializePresenter.onCreateBehavior();
+        nxViewFragmentInitializePresenter = new NxViewFragmentInitializePresenter(this);
+        nxViewFragmentInitializePresenter.onCreateBehavior();
 
         return view;
     }

@@ -17,7 +17,7 @@ import Ndroid.appFactory.common.androidMvc.view.INxViewComponentInitializeAction
  */
 public abstract class NxActivity extends AppCompatActivity implements INxViewComponentInitializeAction {
 
-    private NxViewCommonActionViewModel mitViewCommonActionViewModel;
+    private NxViewActivityInitializePresenter nxViewActivityInitializePresenter;
 
     /**
      * 모든 액티비티는 이 메소드를 확장해야함
@@ -28,8 +28,9 @@ public abstract class NxActivity extends AppCompatActivity implements INxViewCom
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mitViewCommonActionViewModel = new NxViewCommonActionViewModel(this);
-        mitViewCommonActionViewModel.onCreate();
+        setContentView(getLayoutResourceId());
+        nxViewActivityInitializePresenter = new NxViewActivityInitializePresenter(this);
+        nxViewActivityInitializePresenter.onCreateBehavior();
     }
 
     /**
@@ -40,6 +41,6 @@ public abstract class NxActivity extends AppCompatActivity implements INxViewCom
      */
     @NonNull
     public String readString(@StringRes int resourceId){
-        return mitViewCommonActionViewModel.readString(resourceId);
+        return nxViewActivityInitializePresenter.readString(resourceId);
     }
 }

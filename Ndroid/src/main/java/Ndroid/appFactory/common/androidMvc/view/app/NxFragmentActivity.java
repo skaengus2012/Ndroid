@@ -9,29 +9,28 @@ import Ndroid.appFactory.common.androidMvc.view.INxViewComponentInitializeAction
 
 /**
  * 마이다스 액티비티 정의
- *
+ * <p>
  * <pre>
  *     FragmentActivity 를 사용할 모든 클래스는 이 클래스를 상속받아야함
  * </pre>
- *
+ * <p>
  * Created by Doohyun on 2017. 1. 25..
  */
 public abstract class NxFragmentActivity extends FragmentActivity implements INxViewComponentInitializeAction {
 
-    private NxViewCommonActionViewModel mitViewCommonActionViewModel;
+    private NxViewActivityInitializePresenter nxViewActivityInitializePresenter;
 
     /**
      * 모든 액티비티는 이 메소드를 확장해야함
      *
      * @param savedInstanceState
-     *
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        mitViewCommonActionViewModel = new NxViewCommonActionViewModel(this);
-        mitViewCommonActionViewModel.onCreate();
+        setContentView(getLayoutResourceId());
+        nxViewActivityInitializePresenter = new NxViewActivityInitializePresenter(this);
+        nxViewActivityInitializePresenter.onCreateBehavior();
     }
 
     /**
@@ -41,7 +40,7 @@ public abstract class NxFragmentActivity extends FragmentActivity implements INx
      * @return
      */
     @NonNull
-    public String readString(@StringRes int resourceId){
-        return mitViewCommonActionViewModel.readString(resourceId);
+    public String readString(@StringRes int resourceId) {
+        return nxViewActivityInitializePresenter.readString(resourceId);
     }
 }
