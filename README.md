@@ -42,7 +42,7 @@ allprojects {
 <B>STEP2</B> : Add the dependency:<br/>
 ```gradle
 dependencies {
-	compile 'com.github.skaengus2012:Ndroid:v0.0.4.3-alpha'
+	compile 'com.github.skaengus2012:Ndroid:v0.0.4.4-alpha'
 }
 ```
 <br/>
@@ -216,23 +216,17 @@ List<SubjectRelation> subjectRelationList = Arrays.asList(
         );
 	
 // order by companySubjectSn, memberName DESC
- Observable.fromIterable(subjectRelationList).sorted(
-                LambdaUtil.ComparatorBuilder(
-                    SubjectRelation::getCompanySubjectSn
-                    , LambdaUtil.ComparatorBuilder((Integer a, Integer b) -> a.compareTo(b)).
-                            reversed()
-                            .get()).
-                    thenComparing(
-                            LambdaUtil.ComparatorBuilder(SubjectRelation::getMemberName,
-                                    LambdaUtil.ComparatorBuilder((String a, String b) -> a.compareTo(b)).
-                                            nullsFirst().
-                                            reversed().
-                                            get()).
-                                    get()
-                    ).getRx()).
-                map(SubjectRelation::getMemberSubjectSn).
-                subscribe(System.out::println);
-
+Observable.fromIterable(subjectRelationList).sorted(
+	LambdaUtil.ComparatorBuilder(SubjectRelation::getCompanySubjectSn, (Integer a, Integer b) -> a.compareTo(b)).
+		thenComparing(
+			LambdaUtil.ComparatorBuilder(SubjectRelation::getMemberName
+				, LambdaUtil.ComparatorBuilder((String a, String b) -> a.compareTo(b)).
+					nullsFirst().
+					reversed())
+			).getRx()).
+		map(SubjectRelation::getMemberSubjectSn).
+		subscribe(System.out::println);
+		
 ```
 <br/>
 Check, <B>ComparatorBuilder</B>. That is comparator, which is comparing between member val in Object.
