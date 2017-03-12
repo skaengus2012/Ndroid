@@ -43,7 +43,7 @@ public class LambdaCombineTest {
             System.out.println(
                     LambdaUtil.FunctionBuilder((Integer a) -> a + 2).
                             compose((Integer a) -> a * 8).
-                            getFunction().
+                            get().
                             apply(10));
         }
 
@@ -54,7 +54,7 @@ public class LambdaCombineTest {
             System.out.println(
                     LambdaUtil.FunctionBuilder((Integer a) -> a + 2).
                             andThen((Integer a) -> a * 8).
-                            getFunction().
+                            get().
                             apply(10));
         }
 
@@ -84,17 +84,22 @@ public class LambdaCombineTest {
         );
 
         // order by companySubjectSn, memberName DESC
-        Comparator<SubjectRelation> comparator = LambdaUtil.ComparatorBuilder(
-                LambdaUtil.CreateKeyComparator(SubjectRelation::getCompanySubjectSn
-                        , LambdaUtil.ComparatorBuilder((Integer a, Integer b) -> a.compareTo(b)).reversed()
-                                .get())).
-                thenComparing(
-                        LambdaUtil.CreateKeyComparator(SubjectRelation::getMemberName,
-                                LambdaUtil.ComparatorBuilder((String a, String b) -> a.compareTo(b)).
-                                        nullsFirst().reversed().get())).get();
-
-        // order by companySubjectSn, memberName DESC
-        Collections.sort(subjectRelationList, comparator);
+        Observable.fromIterable(subjectRelationList).sorted(
+                LambdaUtil.ComparatorBuilder(
+                    SubjectRelation::getCompanySubjectSn
+                    , LambdaUtil.ComparatorBuilder((Integer a, Integer b) -> a.compareTo(b)).
+                            reversed()
+                            .get()).
+                    thenComparing(
+                            LambdaUtil.ComparatorBuilder(SubjectRelation::getMemberName,
+                                    LambdaUtil.ComparatorBuilder((String a, String b) -> a.compareTo(b)).
+                                            nullsFirst().
+                                            reversed().
+                                            get()).
+                                    get()
+                    ).getRx()).
+                map(SubjectRelation::getMemberSubjectSn).
+                subscribe(System.out::println);
     }
 
     /**

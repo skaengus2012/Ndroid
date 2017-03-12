@@ -78,6 +78,21 @@ public class LambdaUtil {
     }
 
     /**
+     * Create Comparator for support "Object" key compare.
+     *
+     * @param keyExtractor
+     * @param keyComparator
+     * @param <T>
+     * @param <U>
+     * @return
+     */
+    public static <T, U> ComparatorFactory<T> ComparatorBuilder(
+            @NonNull IFunction<? super T, ? extends U> keyExtractor
+            , @NonNull Comparator<? super U> keyComparator) {
+        return new ComparatorFactory<>((c1, c2) -> keyComparator.compare(keyExtractor.apply(c1), keyExtractor.apply(c2)));
+    }
+
+    /**
      * Create FunctionFactory for Lambda combination
      *
      * @param function
@@ -100,21 +115,6 @@ public class LambdaUtil {
      */
     public static <T, U, R> BiFunctionFactory<T, U, R> FunctionBuilder(@NonNull IBiFunction<T, U, R> function) {
         return new BiFunctionFactory<>(function);
-    }
-
-    /**
-     * Create Comparator for support "Object" key compare.
-     *
-     * @param keyExtractor
-     * @param keyComparator
-     * @param <T>
-     * @param <U>
-     * @return
-     */
-    public static <T, U> Comparator<T> CreateKeyComparator(
-            @NonNull IFunction<? super T, ? extends U> keyExtractor
-            , @NonNull Comparator<? super U> keyComparator) {
-        return (T c1, T c2) -> keyComparator.compare(keyExtractor.apply(c1), keyExtractor.apply(c2));
     }
 
     /**
