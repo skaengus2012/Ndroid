@@ -216,23 +216,20 @@ List<SubjectRelation> subjectRelationList = Arrays.asList(
         );
 	
 // order by companySubjectSn, memberName DESC
- Observable.fromIterable(subjectRelationList).sorted(
+        Observable.fromIterable(subjectRelationList).sorted(
                 LambdaUtil.ComparatorBuilder(
                     SubjectRelation::getCompanySubjectSn
                     , LambdaUtil.ComparatorBuilder((Integer a, Integer b) -> a.compareTo(b)).
-                            reversed()
-                            .get()).
+                            reversed()).
                     thenComparing(
                             LambdaUtil.ComparatorBuilder(SubjectRelation::getMemberName,
                                     LambdaUtil.ComparatorBuilder((String a, String b) -> a.compareTo(b)).
                                             nullsFirst().
-                                            reversed().
-                                            get()).
-                                    get()
+                                            reversed())
                     ).getRx()).
                 map(SubjectRelation::getMemberSubjectSn).
                 subscribe(System.out::println);
-
+		
 ```
 <br/>
 Check, <B>ComparatorBuilder</B>. That is comparator, which is comparing between member val in Object.
