@@ -216,19 +216,17 @@ List<SubjectRelation> subjectRelationList = Arrays.asList(
         );
 	
 // order by companySubjectSn, memberName DESC
-        Observable.fromIterable(subjectRelationList).sorted(
-                LambdaUtil.ComparatorBuilder(
-                    SubjectRelation::getCompanySubjectSn
-                    , LambdaUtil.ComparatorBuilder((Integer a, Integer b) -> a.compareTo(b)).
-                            reversed()).
-                    thenComparing(
-                            LambdaUtil.ComparatorBuilder(SubjectRelation::getMemberName,
-                                    LambdaUtil.ComparatorBuilder((String a, String b) -> a.compareTo(b)).
-                                            nullsFirst().
-                                            reversed())
-                    ).getRx()).
-                map(SubjectRelation::getMemberSubjectSn).
-                subscribe(System.out::println);
+Observable.fromIterable(subjectRelationList).sorted(
+	LambdaUtil.ComparatorBuilder(SubjectRelation::getCompanySubjectSn
+		, LambdaUtil.ComparatorBuilder((Integer a, Integer b) -> a.compareTo(b)).reversed()).
+		thenComparing(
+			LambdaUtil.ComparatorBuilder(SubjectRelation::getMemberName
+				, LambdaUtil.ComparatorBuilder((String a, String b) -> a.compareTo(b)).
+					nullsFirst().
+					reversed())
+			).getRx()).
+		map(SubjectRelation::getMemberSubjectSn).
+		subscribe(System.out::println);
 		
 ```
 <br/>
