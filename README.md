@@ -320,3 +320,19 @@ nullValueMaybe.subscribe(System.out::println);
 MaybeUtil.RunEmptyMaybe(nullValueMaybe, () -> System.out.println("That value is null!!"));
 ```
 
+<H2>Map support using maybe!</H2>
+
+```java
+HashMap<String, Integer> testMap = new HashMap<>();
+testMap.put("key1", 1);
+testMap.put("key2", 1);
+testMap.put("key3", 1);
+
+// Extract maybe value in Map
+MaybeUtil.JustInMap(testMap, "key1").subscribe(System.out::println);
+
+// Run maybe, if targetMap have key-value.
+MaybeUtil.RunMaybeInMap(testMap, "key1", System.out::println);
+MaybeUtil.RunMaybeInMap(testMap, "key4", System.out::println);
+```
+
