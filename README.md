@@ -50,6 +50,7 @@ dependencies {
 }
 ```
 <br/>
+
 # Android MVP
 
 Ndroid support android mvp with considering memory leak.
