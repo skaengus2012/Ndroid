@@ -55,7 +55,14 @@ public class MaybeUtilTest {
      */
     @Test
     public void parseSupport() {
+        // Parse Integer
         MaybeUtil.ParseInteger("1").subscribe(System.out::println);
         MaybeUtil.ParseInteger("String Text").subscribe(System.out::println);
+
+        // Parse Boolean
+        MaybeUtil.ParseBoolean("false").subscribe(System.out::println);
+
+        // Parse Double
+        MaybeUtil.ParseDouble("0.0111111").subscribe(System.out::println);
     }
 }

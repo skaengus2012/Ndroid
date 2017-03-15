@@ -106,6 +106,16 @@ public class MaybeUtil {
     }
 
     /**
+     * Boolean parse!
+     *
+     * @param stringValue
+     * @return
+     */
+    public static Maybe<Boolean> ParseBoolean(@NonNull String stringValue) {
+        return ParseBoxedObject(stringValue, Boolean::parseBoolean);
+    }
+
+    /**
      * Integer parse!
      *
      * @param stringValue
@@ -113,6 +123,16 @@ public class MaybeUtil {
      */
     public static Maybe<Integer> ParseInteger(@NonNull String stringValue) {
         return ParseBoxedObject(stringValue, Integer::parseInt);
+    }
+
+    /**
+     * Long parse!
+     *
+     * @param stringValue
+     * @return
+     */
+    public static Maybe<Long> ParseLong(@NonNull String stringValue) {
+        return ParseBoxedObject(stringValue, Long::parseLong);
     }
 
     /**
