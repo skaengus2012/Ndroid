@@ -26,7 +26,7 @@ So I published <B>LambdaUtil</B> for combination. We can build lambda.
 <B>example</B> : https://github.com/skaengus2012/Ndroid#lambda-combination
 <br/><br/>
 And I will make new function for this library. Please check support Function.<br/>
-<B>Index</B> : https://github.com/skaengus2012/Ndroid#Support-Function<br/><br/>
+<B>Index</B> : https://github.com/skaengus2012/Ndroid#support-function<br/><br/>
 Thank you!!
 <br/><br/>
 
