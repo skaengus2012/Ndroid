@@ -5,7 +5,6 @@ import android.support.annotation.Nullable;
 
 import java.util.Map;
 
-import Ndroid.appFactory.common.function.IFunction;
 import Ndroid.appFactory.common.function.exceptionLambda.IExConsumer;
 import Ndroid.appFactory.common.function.exceptionLambda.IExFunction;
 import io.reactivex.Maybe;
