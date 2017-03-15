@@ -25,12 +25,9 @@ So I published <B>LambdaUtil</B> for combination. We can build lambda.
 <B>blog url</B> : http://doohyun.tistory.com/45<br/>
 <B>example</B> : https://github.com/skaengus2012/Ndroid#lambda-combination
 <br/><br/>
+And I will make new function for this library. Please check support Function. (https://github.com/skaengus2012/Ndroid#Support-Function)<br/>
 Thank you!!
 <br/><br/>
-<h3>Support Function</h3>
-<B>1. Android MVP</B> : https://github.com/skaengus2012/Ndroid#android-mvp<br/>
-<B>2. Lambda combination</B> : https://github.com/skaengus2012/Ndroid#lambda-combination<br/>
-<B>3. MaybeUtil</B> : l<br/>
 
 # Getting started
 
@@ -50,6 +47,11 @@ dependencies {
 }
 ```
 <br/>
+
+# Support Function
+<B>1. Android MVP</B> : https://github.com/skaengus2012/Ndroid#android-mvp<br/>
+<B>2. Lambda combination</B> : https://github.com/skaengus2012/Ndroid#lambda-combination<br/>
+<B>3. MaybeUtil</B> : l<br/>
 
 # Android MVP
 
