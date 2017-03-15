@@ -301,7 +301,7 @@ Please check <B>Ndroid.appFactory.common.function</B> pakage. you can use simple
 
 We can use Maybe instead of Optional in the JAVA8 library.<br/>
 But Rx.Maybe is not strong compared java8.optional. (Especially Maybe not support nullableJust.)<br/>
-So, I support Rx.Maybe using MaybeUtil.<br/>
+So, I support Rx.Maybe using MaybeUtil.<br/><br/>
 Please reference next.
 
 <H2>Null able just Maybe</H2>
