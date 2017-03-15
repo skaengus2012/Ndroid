@@ -28,9 +28,9 @@ So I published <B>LambdaUtil</B> for combination. We can build lambda.
 Thank you!!
 <br/><br/>
 <h3>Support Function</h3><br/>
-**1. Android MVP** : https://github.com/skaengus2012/Ndroid#android-mvp<br/>
-**2. Lambda combination** : https://github.com/skaengus2012/Ndroid#lambda-combination<br/>
-**3. MaybeUti** : l<br/>
+<B>1. Android MVP</B> : https://github.com/skaengus2012/Ndroid#android-mvp<br/>
+<B>2. Lambda combination</B> : https://github.com/skaengus2012/Ndroid#lambda-combination<br/>
+<B>3. MaybeUtil</B> : l<br/>
 
 # Getting started
 
