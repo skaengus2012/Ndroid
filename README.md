@@ -294,4 +294,28 @@ Observable.range(0, 60).filter(
 ```
 
 So we do not check exception while using lambda. <br/>
-Please check <B>Ndroid.appFactory.common.function</B> pakage. you can use simple lambda.
+Please check <B>Ndroid.appFactory.common.function</B> pakage. you can use simple lambda.<br/><br/>
+
+
+# MaybeUtil
+
+We can use Maybe instead of Optional in the JAVA8 library.<br/>
+But Rx.Maybe is not strong compared java8.optional. (Especially Maybe not support nullableJust.)<br/>
+So, I support Rx.Maybe using MaybeUtil.<br/>
+Please reference next.
+
+<H2>Null able just Maybe</H2>
+```java
+String test = "Test", nullValue = null;
+
+// NullAble just support.
+MaybeUtil.JustNullable(test).subscribe(System.out::println);
+
+Maybe<String> nullValueMaybe = MaybeUtil.JustNullable(nullValue);
+
+nullValueMaybe.subscribe(System.out::println);
+        
+// Empty maybe run
+MaybeUtil.RunEmptyMaybe(nullValueMaybe, () -> System.out.println("That value is null!!"));
+```
+
