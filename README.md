@@ -52,7 +52,7 @@ dependencies {
 # Support Function
 <B>1. Android MVP</B> : https://github.com/skaengus2012/Ndroid#android-mvp<br/>
 <B>2. Lambda combination</B> : https://github.com/skaengus2012/Ndroid#lambda-combination<br/>
-<B>3. MaybeUtil</B> : l<br/>
+<B>3. MaybeUtil</B> : https://github.com/skaengus2012/Ndroid#maybeutil<br/>
 
 # Android MVP
 
@@ -305,6 +305,7 @@ So, I support Rx.Maybe using MaybeUtil.<br/>
 Please reference next.
 
 <H2>Null able just Maybe</H2>
+
 ```java
 String test = "Test", nullValue = null;
 
