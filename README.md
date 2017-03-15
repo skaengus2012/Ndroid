@@ -336,3 +336,17 @@ MaybeUtil.RunMaybeInMap(testMap, "key1", System.out::println);
 MaybeUtil.RunMaybeInMap(testMap, "key4", System.out::println);
 ```
 
+<H2>String to boxed object parse support.</H2>
+
+```java
+// Parse Integer
+MaybeUtil.ParseInteger("1").subscribe(System.out::println);
+MaybeUtil.ParseInteger("String Text").subscribe(System.out::println);
+
+// Parse Boolean
+MaybeUtil.ParseBoolean("false").subscribe(System.out::println);
+
+// Parse Double
+MaybeUtil.ParseDouble("0.0111111").subscribe(System.out::println);
+```
+
