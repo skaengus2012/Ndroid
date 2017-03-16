@@ -123,6 +123,8 @@ public class LoginPresenter extends NxActivityPresenter<T> implements ILoginServ
 		// runOnUiThread activity action.
 		runOnUiThread(LoginActivity::setClickDisableLoginButton);
 	 }
+	 
+	 ...
 }
 ```
 <h2>NxModeler</h2>
