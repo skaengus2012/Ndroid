@@ -1,5 +1,9 @@
 package Ndroid.appFactory.common.androidMvc.presenter;
 
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+
+import Ndroid.appFactory.common.androidMvc.model.NxModeler;
 import Ndroid.appFactory.common.function.IConsumer;
 import Ndroid.appFactory.common.function.IFunction;
 import Ndroid.appFactory.util.weakRef.NxWeakReference;
@@ -16,11 +20,12 @@ import Ndroid.appFactory.util.weakRef.NxWeakReference;
  * Created by Doohyun on 2017. 2. 12..
  */
 
-public abstract class NxPresenter<T> {
+public abstract class NxPresenter<T> extends NxModeler {
 
     private NxWeakReference<T> mitActivityWeakReference;
 
-    public NxPresenter(T t) {
+    public NxPresenter(@NonNull T t) {
+        NullCheck(t);
         mitActivityWeakReference = createWeakReference(t);
     }
 
@@ -34,7 +39,7 @@ public abstract class NxPresenter<T> {
      * @param t
      * @return
      */
-    protected abstract NxWeakReference<T> createWeakReference(T t);
+    protected abstract NxWeakReference<T> createWeakReference(@NonNull T t);
 
     /**
      * WeakReference 호출
@@ -50,7 +55,8 @@ public abstract class NxPresenter<T> {
      *
      * @param consumer
      */
-    public final void run(IConsumer<T> consumer) {
+    public final void run(@NonNull IConsumer<T> consumer) {
+        NullCheck(consumer);
         mitActivityWeakReference.run(consumer);
     }
 
@@ -61,6 +67,7 @@ public abstract class NxPresenter<T> {
      * @return
      */
     public final <R> R call(IFunction<T, R> function) {
+        NullCheck(function);
         return mitActivityWeakReference.call(function);
     }
 
@@ -71,7 +78,8 @@ public abstract class NxPresenter<T> {
      * @param defaultValue
      * @return
      */
-    public final <R> R call(IFunction<T, R> function, R defaultValue) {
+    public final <R> R call(@NonNull IFunction<T, R> function, @Nullable R defaultValue) {
+        NullCheck(function);
         return mitActivityWeakReference.call(function, defaultValue);
     }
 }

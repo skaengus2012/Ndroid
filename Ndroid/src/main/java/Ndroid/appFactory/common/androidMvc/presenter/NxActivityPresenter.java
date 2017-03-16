@@ -1,6 +1,7 @@
 package Ndroid.appFactory.common.androidMvc.presenter;
 
 import android.app.Activity;
+import android.support.annotation.NonNull;
 import android.view.View;
 
 import Ndroid.appFactory.common.function.IConsumer;
@@ -16,7 +17,7 @@ import Ndroid.appFactory.util.weakRef.NxWeakReference;
 
 public abstract class NxActivityPresenter<T extends Activity> extends NxPresenter<T> {
 
-    public NxActivityPresenter(T activity) {
+    public NxActivityPresenter(@NonNull T activity) {
         super(activity);
     }
 
@@ -26,7 +27,8 @@ public abstract class NxActivityPresenter<T extends Activity> extends NxPresente
      * @param activity
      * @return
      */
-    protected final NxWeakReference<T> createWeakReference(T activity) {
+    protected final NxWeakReference<T> createWeakReference(@NonNull T activity) {
+        NullCheck(activity);
         return new NxActivityWeakReference<>(activity);
     }
 
@@ -35,7 +37,8 @@ public abstract class NxActivityPresenter<T extends Activity> extends NxPresente
      *
      * @param consumer
      */
-    public final void runOnUiThread(IConsumer<T> consumer) {
+    public final void runOnUiThread(@NonNull IConsumer<T> consumer) {
+        NullCheck(consumer);
         ((NxActivityWeakReference) this.getWeakRef()).runOnUiThread(consumer);
     }
 
@@ -47,7 +50,7 @@ public abstract class NxActivityPresenter<T extends Activity> extends NxPresente
      *
      *  @param view
      */
-    public void onBackPressed(View view) {
+    public void onBackPressed(@NonNull View view) {
         runOnUiThread(Activity::onBackPressed);
     }
 }

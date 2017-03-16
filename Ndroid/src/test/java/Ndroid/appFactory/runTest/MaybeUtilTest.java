@@ -16,19 +16,36 @@ import io.reactivex.Maybe;
 public class MaybeUtilTest {
 
     /**
+     * Maybe simple Test.
+     */
+    @Test
+    public void runMaybeTutorial() {
+        // 빈 Maybe 생성.
+        Maybe<String> emptyMaybe = Maybe.empty();
+        // 유효 값 Maybe 생성.
+        Maybe<String> validMaybe = Maybe.just("Test1");
+
+        // 값이 유효할 때 로그 출력.
+        validMaybe.subscribe(System.out::println);
+
+        // 실제 데이터 출력.
+        String returnValue = validMaybe.blockingGet("Default Value");
+    }
+
+    /**
      * Maybe Util tutorial.
      */
     @Test
     public void runMaybeUtil() {
         String test = "Test", nullValue = null;
 
-        // NullAble just support.
-
+        // Null 을 포함할 수 있는 just!
         MaybeUtil.JustNullable(test).subscribe(System.out::println);
 
         Maybe<String> nullValueMaybe = MaybeUtil.JustNullable(nullValue);
-
         nullValueMaybe.subscribe(System.out::println);
+
+        // 오직 비어있는 Maybe 일 때만 실행!
         MaybeUtil.RunEmptyMaybe(nullValueMaybe, () -> System.out.println("That value is null!!"));
     }
 
