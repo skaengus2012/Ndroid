@@ -235,7 +235,6 @@ Observable.fromIterable(subjectRelationList).sorted(
 		subscribe(System.out::println);
 		
 ```
-<br/>
 Check, <B>ComparatorBuilder</B>. That is comparator, which is comparing between member val in Object.<br/>
 
 ```java
