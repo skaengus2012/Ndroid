@@ -35,16 +35,16 @@ Thank you!!
 <B>STEP1</B> : Add it in your root build.gradle at the end of repositories:
 ```gradle
 allprojects {
-	repositories {
-		maven { url 'https://jitpack.io' }
-	}
+    repositories {
+        maven { url 'https://jitpack.io' }
+    }
 }
 ```
 
 <B>STEP2</B> : Add the dependency:<br/>
 ```gradle
 dependencies {
-	compile 'com.github.skaengus2012:Ndroid:v0.0.5-alpha'
+    compile 'com.github.skaengus2012:Ndroid:v0.0.5-alpha'
 }
 ```
 <br/>
@@ -96,13 +96,10 @@ public class LoginActivity extends NxActivity {
         super.onCreate(savedInstanceState);
 		loginPresenter = new LoginPresenter(this);
 	}
-	
-	....
 }
 ```
-
-<h2>NxPresenter</h2>
-This presenter manage activity using <B>WeakReference.</B> <br/>
+<H2>NxPresenter</H2>
+This presenter manage activity using <B>WeakReference.</B><br/>
 If you use that, you do not need to consider memory leak. <br/>
 This is simple presenter.<br/><br/>
 And attention <B>observer</B> in presenter. Implement observer in presenter, not activity.
@@ -190,6 +187,7 @@ So <B>Ndroid</B> support default combination method using factory & builder patt
 Please reference next.
 
 <H2>Predicate Example.</H2>
+
 ```java
 // a >= 5 && a < 10 || a == 0
 
@@ -212,6 +210,7 @@ LambdaUtil.PredicateBuilder((Integer a, Integer b) -> a + b > 0).and((Integer a,
 
 <H2>Comparator Example</H2>
 ComparatorBuilder support <B>null</B> value.<br> We can control null priority using ComparatorBuilder.
+
 ```java
 List<SubjectRelation> subjectRelationList = Arrays.asList(
                 new SubjectRelation(1, 1001, "Doohyun Nam", 1)
