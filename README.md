@@ -67,33 +67,33 @@ This is sample Activity. We need to separte basic function, and I suggest that.
 ```java
 public class LoginActivity extends NxActivity {
 
-    private EditText editId, editPwd;
-    
-    // This is presenter for LoginActivity
-    private LoginPresenter loginPresenter;
-    
-    /**
-     * Define, your activity layout resource id;
-     *
-     * @return
-     */
-    @Override
-    public int getLayoutResourceId(){
-        return R.layout.activity_login;
-    }
-    
-    /**
-     * layout xml binding.
-     */
-    @Override
-    public void initView() {
-        editId = (EditText) findViewById(R.id.editId);
-        editPwd = (EditText) findViewById(R.id.editPwd);
+	private EditText editId, editPwd;
+
+	// This is presenter for LoginActivity
+	private LoginPresenter loginPresenter;
+
+	/**
+	 * Define, your activity layout resource id;
+	 *
+	 * @return
+	 */
+	@Override
+	public int getLayoutResourceId() {
+		return R.layout.activity_login;
 	}
-	
- 	@Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+
+	/**
+	 * layout xml binding.
+	 */
+	@Override
+	public void initView() {
+		editId = (EditText) findViewById(R.id.editId);
+		editPwd = (EditText) findViewById(R.id.editPwd);
+	}
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
 		loginPresenter = new LoginPresenter(this);
 	}
 }
