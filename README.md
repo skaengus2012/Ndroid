@@ -236,7 +236,8 @@ Observable.fromIterable(subjectRelationList).sorted(
 		
 ```
 <br/>
-Check, <B>ComparatorBuilder</B>. That is comparator, which is comparing between member val in Object.
+Check, <B>ComparatorBuilder</B>. That is comparator, which is comparing between member val in Object.<br/>
+
 ```java
 LambdaUtil.ComparatorBuilder(SubjectRelation::getMemberName,LambdaUtil.
 			ComparatorBuilder((String a, String b) -> a.compareTo(b)).
