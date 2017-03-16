@@ -107,22 +107,22 @@ And attention <B>observer</B> in presenter. Implement observer in presenter, not
 ```java
 public class LoginPresenter extends NxActivityPresenter<T> implements ILoginServiceObserver {
 
-	public LoginPresenter(LoginActivity loginActivity) {
+     public LoginPresenter(LoginActivity loginActivity) {
         super(loginActivity);
-	}
+     }
 	
-	/**
+   /**
      * Presenter method example.
      *
      * @param view
      */
-	 public void clickLoginButton(View view) {
-	 	// simple activity action.
-	 	run(LoginActivity::setClickDisableLoginButton);	// run(loginActivity -> loginActivity.setClickDisableLoginButton());
+     public void clickLoginButton(View view) {
+     	// simple activity action.
+	run(LoginActivity::setClickDisableLoginButton);	// run(loginActivity -> loginActivity.setClickDisableLoginButton());
 		
-		// runOnUiThread activity action.
-		runOnUiThread(LoginActivity::setClickDisableLoginButton);
-	 }
+	// runOnUiThread activity action.
+	runOnUiThread(LoginActivity::setClickDisableLoginButton);
+     }
 }
 ```
 <h2>NxModeler</h2>
