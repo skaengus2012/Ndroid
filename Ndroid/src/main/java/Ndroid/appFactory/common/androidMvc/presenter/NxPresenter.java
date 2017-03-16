@@ -66,7 +66,7 @@ public abstract class NxPresenter<T> extends NxModeler {
      * @param function
      * @return
      */
-    public final <R> R call(IFunction<T, R> function) {
+    public final <R> R call(@NonNull IFunction<T, R> function) {
         NullCheck(function);
         return mitActivityWeakReference.call(function);
     }
