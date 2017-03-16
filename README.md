@@ -72,7 +72,7 @@ public class LoginActivity extends NxActivity {
     // This is presenter for LoginActivity
     private LoginPresenter loginPresenter;
 
-    /**
+     /**
       * Define, your activity layout resource id;
       *
       * @return
@@ -82,7 +82,7 @@ public class LoginActivity extends NxActivity {
          return R.layout.activity_login;
       }
 
-    /**
+     /**
       * layout xml binding.
       */
       @Override
