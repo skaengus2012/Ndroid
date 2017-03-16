@@ -35,16 +35,16 @@ Thank you!!
 <B>STEP1</B> : Add it in your root build.gradle at the end of repositories:
 ```gradle
 allprojects {
-	repositories {
-		maven { url 'https://jitpack.io' }
-	}
+    repositories {
+        maven { url 'https://jitpack.io' }
+    }
 }
 ```
 
 <B>STEP2</B> : Add the dependency:<br/>
 ```gradle
 dependencies {
-	compile 'com.github.skaengus2012:Ndroid:v0.0.5-alpha'
+    compile 'com.github.skaengus2012:Ndroid:v0.0.5-alpha'
 }
 ```
 <br/>
@@ -68,41 +68,38 @@ This is sample Activity. We need to separte basic function, and I suggest that.
 public class LoginActivity extends NxActivity {
 
     private EditText editId, editPwd;
-    
+
     // This is presenter for LoginActivity
     private LoginPresenter loginPresenter;
-    
-    /**
-     * Define, your activity layout resource id;
-     *
-     * @return
-     */
-    @Override
-    public int getLayoutResourceId(){
-        return R.layout.activity_login;
-    }
-    
-    /**
-     * layout xml binding.
-     */
-    @Override
-    public void initView() {
-        editId = (EditText) findViewById(R.id.editId);
-        editPwd = (EditText) findViewById(R.id.editPwd);
-	}
-	
- 	@Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-		loginPresenter = new LoginPresenter(this);
-	}
-	
-	....
+
+     /**
+      * Define, your activity layout resource id;
+      *
+      * @return
+      */
+      @Override
+      public int getLayoutResourceId() {
+         return R.layout.activity_login;
+      }
+
+     /**
+      * layout xml binding.
+      */
+      @Override
+      public void initView() {
+          editId = (EditText) findViewById(R.id.editId);
+          editPwd = (EditText) findViewById(R.id.editPwd);
+      }
+
+      @Override
+      protected void onCreate(Bundle savedInstanceState) {
+          super.onCreate(savedInstanceState);
+          loginPresenter = new LoginPresenter(this);
+      }
 }
 ```
-
-<h2>NxPresenter</h2>
-This presenter manage activity using <B>WeakReference.</B> <br/>
+<H2>NxPresenter</H2>
+This presenter manage activity using <B>WeakReference.</B><br/>
 If you use that, you do not need to consider memory leak. <br/>
 This is simple presenter.<br/><br/>
 And attention <B>observer</B> in presenter. Implement observer in presenter, not activity.
@@ -110,22 +107,22 @@ And attention <B>observer</B> in presenter. Implement observer in presenter, not
 ```java
 public class LoginPresenter extends NxActivityPresenter<T> implements ILoginServiceObserver {
 
-	public LoginPresenter(LoginActivity loginActivity) {
+     public LoginPresenter(LoginActivity loginActivity) {
         super(loginActivity);
-	}
+     }
 	
-	/**
+    /**
      * Presenter method example.
      *
      * @param view
      */
-	 public void clickLoginButton(View view) {
-	 	// simple activity action.
-	 	run(LoginActivity::setClickDisableLoginButton);	// run(loginActivity -> loginActivity.setClickDisableLoginButton());
+     public void clickLoginButton(View view) {
+     	// simple activity action.
+	run(LoginActivity::setClickDisableLoginButton);	// run(loginActivity -> loginActivity.setClickDisableLoginButton());
 		
-		// runOnUiThread activity action.
-		runOnUiThread(LoginActivity::setClickDisableLoginButton);
-	 }
+	// runOnUiThread activity action.
+	runOnUiThread(LoginActivity::setClickDisableLoginButton);
+     }
 }
 ```
 <h2>NxModeler</h2>
@@ -190,6 +187,7 @@ So <B>Ndroid</B> support default combination method using factory & builder patt
 Please reference next.
 
 <H2>Predicate Example.</H2>
+
 ```java
 // a >= 5 && a < 10 || a == 0
 
@@ -212,6 +210,7 @@ LambdaUtil.PredicateBuilder((Integer a, Integer b) -> a + b > 0).and((Integer a,
 
 <H2>Comparator Example</H2>
 ComparatorBuilder support <B>null</B> value.<br> We can control null priority using ComparatorBuilder.
+
 ```java
 List<SubjectRelation> subjectRelationList = Arrays.asList(
                 new SubjectRelation(1, 1001, "Doohyun Nam", 1)
@@ -236,8 +235,8 @@ Observable.fromIterable(subjectRelationList).sorted(
 		subscribe(System.out::println);
 		
 ```
-<br/>
-Check, <B>ComparatorBuilder</B>. That is comparator, which is comparing between member val in Object.
+Check, <B>ComparatorBuilder</B>. That is comparator, which is comparing between member val in Object.<br/>
+
 ```java
 LambdaUtil.ComparatorBuilder(SubjectRelation::getMemberName,LambdaUtil.
 			ComparatorBuilder((String a, String b) -> a.compareTo(b)).
@@ -248,6 +247,7 @@ LambdaUtil.ComparatorBuilder(SubjectRelation::getMemberName,LambdaUtil.
 ```
 
 <H2>Function Example</H2>
+
 ```java
 {
 	// f(x) = x + 2
@@ -280,9 +280,11 @@ LambdaUtil.ComparatorBuilder(SubjectRelation::getMemberName,LambdaUtil.
 ```
 
 <H2>Rx Lambda supprt</H2>
+
 I hate RxJava2 lambda because they made method with Exception in functional interface.<br/><br/>
 So I support functional interface method not including Exception.<br/><br/>
 But Ndroid needed to support <B>Observable in Rx</B>. So I check <B>getRx()</B> for Rx Lambda support.
+
 ```java
 // a % 5 == 0 && a > 40 || a < 20
 Observable.range(0, 60).filter(
