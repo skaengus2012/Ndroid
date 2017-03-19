@@ -1,4 +1,4 @@
-package Ndroid.appFactory.util;
+package Ndroid.appFactory.util.function;
 
 import android.support.annotation.NonNull;
 

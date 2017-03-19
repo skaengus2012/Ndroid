@@ -1,10 +1,12 @@
-package Ndroid.appFactory.util;
+package Ndroid.appFactory.util.business;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 import java.util.Collection;
 import java.util.Map;
+
+import Ndroid.appFactory.util.function.MaybeUtil;
 
 /**
  * Container 클래스의 기능 지원.

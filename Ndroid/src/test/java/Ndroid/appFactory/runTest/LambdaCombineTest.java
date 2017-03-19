@@ -7,7 +7,7 @@ import java.util.List;
 
 import Ndroid.appFactory.common.function.IPredicate;
 import Ndroid.appFactory.testVo.SubjectRelation;
-import Ndroid.appFactory.util.LambdaUtil;
+import Ndroid.appFactory.util.function.LambdaUtil;
 import io.reactivex.Observable;
 
 /**

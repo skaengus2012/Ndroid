@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import java.util.HashMap;
 
-import Ndroid.appFactory.util.MaybeUtil;
+import Ndroid.appFactory.util.function.MaybeUtil;
 import io.reactivex.Maybe;
 
 /**
