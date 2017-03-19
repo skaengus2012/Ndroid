@@ -1,5 +1,8 @@
 package Ndroid.appFactory.util;
 
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+
 import java.util.Collection;
 import java.util.Map;
 
@@ -18,7 +21,8 @@ public class ContainerUtil{
      * @param <T>
      * @return
      */
-    public static <T> boolean IsEmpty(Collection<T> collection) {
+    @NonNull
+    public static <T> boolean IsEmpty(@Nullable Collection<T> collection) {
         return MaybeUtil.JustNullable(collection).map(param -> param.isEmpty()).blockingGet(true);
     }
 
@@ -29,7 +33,8 @@ public class ContainerUtil{
      * @param <T>
      * @return
      */
-    public static <T> boolean IsEmpty(T... arrayT) {
+    @NonNull
+    public static <T> boolean IsEmpty(@Nullable T... arrayT) {
         return MaybeUtil.JustNullable(arrayT).map(param -> param.length == 0).blockingGet(true);
     }
 
@@ -41,7 +46,8 @@ public class ContainerUtil{
      * @param <R>
      * @return
      */
-    public static <T, R> boolean IsEmpty(Map<T, R> map) {
+    @NonNull
+    public static <T, R> boolean IsEmpty(@Nullable Map<T, R> map) {
         return MaybeUtil.JustNullable(map).map(param -> param.isEmpty()).blockingGet(true);
     }
 }

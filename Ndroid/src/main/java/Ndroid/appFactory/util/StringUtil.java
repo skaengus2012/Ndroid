@@ -16,6 +16,7 @@ public class StringUtil {
      * @param text
      * @return
      */
+    @NonNull
     public static boolean IsEmpty(@NonNull Object text) {
         return MaybeUtil.JustNullable(text.toString()).map(str -> str.isEmpty()).blockingGet(true);
     }

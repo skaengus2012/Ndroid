@@ -34,6 +34,7 @@ public class MaybeUtil {
      * @param <T>
      * @return
      */
+    @NonNull
     public static <T> Maybe<T> JustNullable(@Nullable T t) {
         return (t == null) ? Maybe.empty() : Maybe.just(t);
     }
@@ -46,6 +47,7 @@ public class MaybeUtil {
      * @param emptyRunnable
      * @param <T>
      */
+    @NonNull
     public static <T> void Subscribe(
             @NonNull Maybe<T> maybe
             , @NonNull IExConsumer<T> consumer
@@ -64,6 +66,7 @@ public class MaybeUtil {
      * @param run
      * @param <T>
      */
+    @NonNull
     public static <T> void SubscribeEmpty(
             @NonNull Maybe<T> maybe
             , @NonNull Runnable run) {
@@ -83,6 +86,7 @@ public class MaybeUtil {
      * @param <R>
      * @return
      */
+    @NonNull
     public static <T, R> Maybe<R> JustInMap(
             @NonNull Map<T, R> targetMap
             , @NonNull T key) {
@@ -98,6 +102,7 @@ public class MaybeUtil {
      * @param <T>
      * @param <R>
      */
+    @NonNull
     public static <T, R> void RunMaybeInMap(
             @NonNull Map<T, R> targetMap
             , @NonNull T key
@@ -113,6 +118,7 @@ public class MaybeUtil {
      * @param <T>
      * @return
      */
+    @NonNull
     private static <T> Maybe<T> ParseBoxedObject(
             @NonNull String stringValue,
             @NonNull IExFunction<String, T> function) {
@@ -129,6 +135,7 @@ public class MaybeUtil {
      * @param stringValue
      * @return
      */
+    @NonNull
     public static Maybe<Boolean> ParseBoolean(@NonNull String stringValue) {
         return ParseBoxedObject(stringValue, Boolean::parseBoolean);
     }
@@ -139,6 +146,7 @@ public class MaybeUtil {
      * @param stringValue
      * @return
      */
+    @NonNull
     public static Maybe<Integer> ParseInteger(@NonNull String stringValue) {
         return ParseBoxedObject(stringValue, Integer::parseInt);
     }
@@ -149,6 +157,7 @@ public class MaybeUtil {
      * @param stringValue
      * @return
      */
+    @NonNull
     public static Maybe<Long> ParseLong(@NonNull String stringValue) {
         return ParseBoxedObject(stringValue, Long::parseLong);
     }
@@ -159,6 +168,7 @@ public class MaybeUtil {
      * @param stringValue
      * @return
      */
+    @NonNull
     public static Maybe<Double> ParseDouble(@NonNull String stringValue) {
         return ParseBoxedObject(stringValue, Double::parseDouble);
     }
@@ -169,6 +179,7 @@ public class MaybeUtil {
      * @param stringValue
      * @return
      */
+    @NonNull
     public static Maybe<Float> ParseFloat(@NonNull String stringValue) {
         return ParseBoxedObject(stringValue, Float::parseFloat);
     }

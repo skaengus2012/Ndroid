@@ -36,6 +36,7 @@ public class LambdaUtil {
      * @param <T>
      * @return
      */
+    @NonNull
     public static <T> PredicateFactory<T> PredicateBuilder(@NonNull IPredicate<T> iPredicate) {
         return new PredicateFactory<>(iPredicate);
     }
@@ -48,6 +49,7 @@ public class LambdaUtil {
      * @param <U>
      * @return
      */
+    @NonNull
     public static <T, U> BiPredicateFactory<T, U> PredicateBuilder(@NonNull IBiPredicate<T, U> iBiPredicate) {
         return new BiPredicateFactory<>(iBiPredicate);
     }
@@ -59,6 +61,7 @@ public class LambdaUtil {
      * @param <T>
      * @return
      */
+    @NonNull
     public static <T> ComparatorFactory<T> ComparatorBuilder(@NonNull Comparator<T> comparator){
         return new ComparatorFactory<>(comparator);
     }
@@ -71,6 +74,7 @@ public class LambdaUtil {
      * @param <T>
      * @return
      */
+    @NonNull
     public static <T> ComparatorFactory<T> ComparatorBuilder(
             @NonNull Comparator<T> comparator
             , @NonNull Boolean nullFirstYn){
@@ -86,6 +90,7 @@ public class LambdaUtil {
      * @param <U>
      * @return
      */
+    @NonNull
     public static <T, U> ComparatorFactory<T> ComparatorBuilder(
             @NonNull IFunction<? super T, ? extends U> keyExtractor
             , @NonNull Comparator<? super U> keyComparator) {
@@ -105,6 +110,7 @@ public class LambdaUtil {
      * @param <U>
      * @return
      */
+    @NonNull
     public static <T, U> ComparatorFactory<T> ComparatorBuilder(
             @NonNull IFunction<? super T, ? extends U> keyExtractor
             , @NonNull ComparatorFactory<? super U> keyComparator) {
@@ -119,6 +125,7 @@ public class LambdaUtil {
      * @param <R>
      * @return
      */
+    @NonNull
     public static <T, R> FunctionFactory<T, R> FunctionBuilder(@NonNull IFunction<T, R> function) {
         return new FunctionFactory<>(function);
     }
@@ -132,6 +139,7 @@ public class LambdaUtil {
      * @param <R>
      * @return
      */
+    @NonNull
     public static <T, U, R> BiFunctionFactory<T, U, R> FunctionBuilder(@NonNull IBiFunction<T, U, R> function) {
         return new BiFunctionFactory<>(function);
     }
@@ -142,6 +150,7 @@ public class LambdaUtil {
      * @param <T>
      * @return
      */
+    @NonNull
     public static <T> IUnaryOperatorFactory<T> GetIdentity() {
         return new IUnaryOperatorFactory<>(t -> t);
     }
@@ -153,6 +162,7 @@ public class LambdaUtil {
      * @param <T>
      * @return
      */
+    @NonNull
     public static <T> BinaryOperatorFactory<T> MinBy(@NonNull Comparator<? super T> comparator) {
         return new BinaryOperatorFactory<>((a, b) -> comparator.compare(a, b) <= 0 ? a : b);
     }
@@ -164,6 +174,7 @@ public class LambdaUtil {
      * @param <T>
      * @return
      */
+    @NonNull
     public static <T> BinaryOperatorFactory<T> MaxBy(@NonNull Comparator<? super T> comparator) {
         NxModeler.NullCheck(comparator);
         return new BinaryOperatorFactory<>((a, b) -> comparator.compare(a, b) >= 0 ? a : b);
