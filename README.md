@@ -319,7 +319,11 @@ Maybe<String> nullValueMaybe = MaybeUtil.JustNullable(nullValue);
 nullValueMaybe.subscribe(System.out::println);
         
 // Empty maybe run
-MaybeUtil.RunEmptyMaybe(nullValueMaybe, () -> System.out.println("That value is null!!"));
+MaybeUtil.SubscribeEmpty(nullValueMaybe, () -> System.out.println("That value is null!!"));
+
+// Empty maybe combo
+// If maybe is valid, consumer param will execute. But Empty maybe will be emptyRunnable;
+ MaybeUtil.Subscribe(nullValueMaybe, System.out::println, () -> System.out.println("That value is null!!"));
 ```
 
 <H2>Map support using maybe!</H2>
