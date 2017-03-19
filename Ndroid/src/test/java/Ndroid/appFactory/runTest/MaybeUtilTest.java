@@ -46,7 +46,10 @@ public class MaybeUtilTest {
         nullValueMaybe.subscribe(System.out::println);
 
         // 오직 비어있는 Maybe 일 때만 실행!
-        MaybeUtil.RunEmptyMaybe(nullValueMaybe, () -> System.out.println("That value is null!!"));
+        MaybeUtil.SubscribeEmpty(nullValueMaybe, () -> System.out.println("That value is null!!"));
+
+        // Maybe 가 유효하다면, 두번째 param, 아니라면 세번째 param 사용
+        MaybeUtil.Subscribe(nullValueMaybe, System.out::println, () -> System.out.println("That value is null!!"));
     }
 
     /**
