@@ -10,6 +10,6 @@ public class SimpleTest {
 
     @Test
     public void run() {
-        
+
     }
 }
