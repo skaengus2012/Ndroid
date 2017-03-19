@@ -23,7 +23,7 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package Ndroid.appFactory.util.business.koreanChar;
+package Ndroid.appFactory.util.business.koreanText;
 
 import java.util.Iterator;
 

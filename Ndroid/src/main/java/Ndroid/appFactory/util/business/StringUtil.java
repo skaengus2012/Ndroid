@@ -3,10 +3,10 @@ package Ndroid.appFactory.util.business;
 import android.support.annotation.NonNull;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.UUID;
 
+import Ndroid.appFactory.util.business.koreanText.KoreanTextMatcher;
 import Ndroid.appFactory.util.function.MaybeUtil;
 import io.reactivex.Observable;
 import io.reactivex.Single;
@@ -70,5 +70,15 @@ public class StringUtil {
                 collect(() -> new ArrayList<Character>(), (list, c) -> list.add(c))).
                 blockingGet(Single.just(new ArrayList<>())).
                 blockingGet();
+    }
+
+    /**
+     * 초성검색 매처를 생상한다.
+     *
+     * @param pattern
+     * @return
+     */
+    public static KoreanTextMatcher GetRegexMatcher(@NonNull String pattern) {
+        return new KoreanTextMatcher(pattern);
     }
 }

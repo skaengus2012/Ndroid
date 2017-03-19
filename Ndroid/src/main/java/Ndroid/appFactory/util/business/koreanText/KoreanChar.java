@@ -23,7 +23,7 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package Ndroid.appFactory.util.business.koreanChar;
+package Ndroid.appFactory.util.business.koreanText;
 
 /**
  * 한글 초성 추출을 위한 클래스
