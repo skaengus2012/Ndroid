@@ -39,16 +39,35 @@ public class MaybeUtil {
     }
 
     /**
+     * If maybe is valid, consumer param will execute. But Empty maybe will be emptyRunnable;
+     *
+     * @param maybe
+     * @param consumer
+     * @param emptyRunnable
+     * @param <T>
+     */
+    public static <T> void Subscribe(
+            @NonNull Maybe<T> maybe
+            , @NonNull IExConsumer<T> consumer
+            , @NonNull Runnable emptyRunnable) {
+        // empty maybe.
+        SubscribeEmpty(maybe, emptyRunnable);
+
+        // valid maybe.
+        maybe.subscribe(consumer);
+    }
+
+    /**
      * If maybe is empty, Runnable will be excute.
      *
-     * @param t
+     * @param maybe
      * @param run
      * @param <T>
      */
-    public static <T> void RunEmptyMaybe(
-            @NonNull Maybe<T> t
+    public static <T> void SubscribeEmpty(
+            @NonNull Maybe<T> maybe
             , @NonNull Runnable run) {
-        t.isEmpty().subscribe(emptyYn -> {
+        maybe.isEmpty().subscribe(emptyYn -> {
             if (emptyYn) {
                 run.run();
             }
