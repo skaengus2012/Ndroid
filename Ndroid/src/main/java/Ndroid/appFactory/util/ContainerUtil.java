@@ -4,12 +4,12 @@ import java.util.Collection;
 import java.util.Map;
 
 /**
- * Collection 클래스의 기능 지원.
+ * Container 클래스의 기능 지원.
  *
  * Created by Doohyun on 2017. 3. 1..
  */
 
-public class ContainerUtil {
+public class ContainerUtil{
 
     /**
      * Collection 빈 상태 확인.
@@ -19,8 +19,7 @@ public class ContainerUtil {
      * @return
      */
     public static <T> boolean IsEmpty(Collection<T> collection) {
-        return collection == null
-                || collection.isEmpty();
+        return MaybeUtil.JustNullable(collection).map(param -> param.isEmpty()).blockingGet(true);
     }
 
     /**
@@ -31,8 +30,7 @@ public class ContainerUtil {
      * @return
      */
     public static <T> boolean IsEmpty(T... arrayT) {
-        return arrayT == null
-                || arrayT.length == 0;
+        return MaybeUtil.JustNullable(arrayT).map(param -> param.length == 0).blockingGet(true);
     }
 
     /**
@@ -44,7 +42,6 @@ public class ContainerUtil {
      * @return
      */
     public static <T, R> boolean IsEmpty(Map<T, R> map) {
-        return map == null
-                || map.isEmpty();
+        return MaybeUtil.JustNullable(map).map(param -> param.isEmpty()).blockingGet(true);
     }
 }

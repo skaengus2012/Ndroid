@@ -5,6 +5,7 @@ import java.util.Map;
 
 import Ndroid.appFactory.common.function.ISupplier;
 import Ndroid.appFactory.util.ContainerUtil;
+import Ndroid.appFactory.util.StringUtil;
 
 
 /**
@@ -53,12 +54,7 @@ public abstract class NxModeler {
      * @param obj
      */
     public final static void EmptyToStringCheck(Object obj) {
-
-        NullCheck(obj);
-
-        final String toString = obj.toString();
-
-        if (toString == null || toString.isEmpty()) {
+        if (StringUtil.IsEmpty(obj)) {
             // toString 체크
             throw new RuntimeException(ERROR_BAD_ASSESS);
         }

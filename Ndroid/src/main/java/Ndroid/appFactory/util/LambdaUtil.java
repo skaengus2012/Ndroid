@@ -36,7 +36,7 @@ public class LambdaUtil {
      * @param <T>
      * @return
      */
-    public static <T> PredicateFactory<T> PredicateBuilder(@NonNull IPredicate<T> iPredicate){
+    public static <T> PredicateFactory<T> PredicateBuilder(@NonNull IPredicate<T> iPredicate) {
         return new PredicateFactory<>(iPredicate);
     }
 
