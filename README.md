@@ -335,24 +335,24 @@ testMap.put("key2", 1);
 testMap.put("key3", 1);
 
 // Extract maybe value in Map
-MaybeUtil.JustInMap(testMap, "key1").subscribe(System.out::println);
+ContainerUtil.JustInMap(testMap, "key1").subscribe(System.out::println);
 
 // Run maybe, if targetMap have key-value.
-MaybeUtil.RunMaybeInMap(testMap, "key1", System.out::println);
-MaybeUtil.RunMaybeInMap(testMap, "key4", System.out::println);
+ContainerUtil.RunMaybeInMap(testMap, "key1", System.out::println);
+ContainerUtil.RunMaybeInMap(testMap, "key4", System.out::println);
 ```
 
 <H2>String to boxed object parse support.</H2>
 
 ```java
 // Parse Integer
-MaybeUtil.ParseInteger("1").subscribe(System.out::println);
-MaybeUtil.ParseInteger("String Text").subscribe(System.out::println);
+StringUtil.ParseInteger("1").subscribe(System.out::println);
+StringUtil.ParseInteger("String Text").subscribe(System.out::println);
 
 // Parse Boolean
-MaybeUtil.ParseBoolean("false").subscribe(System.out::println);
+StringUtil.ParseBoolean("false").subscribe(System.out::println);
 
 // Parse Double
-MaybeUtil.ParseDouble("0.0111111").subscribe(System.out::println);
+StringUtil.ParseDouble("0.0111111").subscribe(System.out::println);
 ```
 
