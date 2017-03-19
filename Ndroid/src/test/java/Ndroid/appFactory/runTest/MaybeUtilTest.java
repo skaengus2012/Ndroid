@@ -4,6 +4,8 @@ import org.junit.Test;
 
 import java.util.HashMap;
 
+import Ndroid.appFactory.util.business.ContainerUtil;
+import Ndroid.appFactory.util.business.StringUtil;
 import Ndroid.appFactory.util.function.MaybeUtil;
 import io.reactivex.Maybe;
 
@@ -63,11 +65,16 @@ public class MaybeUtilTest {
         testMap.put("key3", 1);
 
         // Extract maybe value in Map
-        MaybeUtil.JustInMap(testMap, "key1").subscribe(System.out::println);
+        ContainerUtil.JustInMap(testMap, "key1").subscribe(System.out::println);
 
         // Run maybe, if targetMap have key-value.
-        MaybeUtil.RunMaybeInMap(testMap, "key1", System.out::println);
-        MaybeUtil.RunMaybeInMap(testMap, "key4", System.out::println);
+        ContainerUtil.RunMaybeInMap(testMap, "key1", System.out::println);
+        ContainerUtil.RunMaybeInMap(testMap, "key4", System.out::println);
+
+        // Put value, if key not contain in map.
+        ContainerUtil.PutEmptyKeyValueInMap(testMap, "key7", () -> 5);
+        ContainerUtil.JustInMap(testMap, "key7").subscribe(System.out::println);
+
     }
 
     /**
@@ -76,13 +83,13 @@ public class MaybeUtilTest {
     @Test
     public void parseSupport() {
         // Parse Integer
-        MaybeUtil.ParseInteger("1").subscribe(System.out::println);
-        MaybeUtil.ParseInteger("String Text").subscribe(System.out::println);
+        StringUtil.ParseInteger("1").subscribe(System.out::println);
+        StringUtil.ParseInteger("String Text").subscribe(System.out::println);
 
         // Parse Boolean
-        MaybeUtil.ParseBoolean("false").subscribe(System.out::println);
+        StringUtil.ParseBoolean("false").subscribe(System.out::println);
 
         // Parse Double
-        MaybeUtil.ParseDouble("0.0111111").subscribe(System.out::println);
+        StringUtil.ParseDouble("0.0111111").subscribe(System.out::println);
     }
 }

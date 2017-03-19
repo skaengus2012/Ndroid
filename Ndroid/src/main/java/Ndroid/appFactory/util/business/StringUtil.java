@@ -6,8 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import Ndroid.appFactory.common.function.exceptionLambda.IExFunction;
 import Ndroid.appFactory.util.business.koreanText.KoreanTextMatcher;
 import Ndroid.appFactory.util.function.MaybeUtil;
+import io.reactivex.Maybe;
 import io.reactivex.Observable;
 import io.reactivex.Single;
 
@@ -80,5 +82,79 @@ public class StringUtil {
      */
     public static KoreanTextMatcher GetRegexMatcher(@NonNull String pattern) {
         return new KoreanTextMatcher(pattern);
+    }
+
+    /**
+     * Parse, boxed object!
+     *
+     * @param stringValue
+     * @param function
+     * @param <T>
+     * @return
+     */
+    @NonNull
+    private static <T> Maybe<T> ParseBoxedObject(
+            @NonNull String stringValue,
+            @NonNull IExFunction<String, T> function) {
+        try {
+            return Maybe.just(function.apply(stringValue));
+        } catch (Exception e) {
+            return Maybe.empty();
+        }
+    }
+
+    /**
+     * Boolean parse!
+     *
+     * @param stringValue
+     * @return
+     */
+    @NonNull
+    public static Maybe<Boolean> ParseBoolean(@NonNull String stringValue) {
+        return ParseBoxedObject(stringValue, Boolean::parseBoolean);
+    }
+
+    /**
+     * Integer parse!
+     *
+     * @param stringValue
+     * @return
+     */
+    @NonNull
+    public static Maybe<Integer> ParseInteger(@NonNull String stringValue) {
+        return ParseBoxedObject(stringValue, Integer::parseInt);
+    }
+
+    /**
+     * Long parse!
+     *
+     * @param stringValue
+     * @return
+     */
+    @NonNull
+    public static Maybe<Long> ParseLong(@NonNull String stringValue) {
+        return ParseBoxedObject(stringValue, Long::parseLong);
+    }
+
+    /**
+     * Double parse!
+     *
+     * @param stringValue
+     * @return
+     */
+    @NonNull
+    public static Maybe<Double> ParseDouble(@NonNull String stringValue) {
+        return ParseBoxedObject(stringValue, Double::parseDouble);
+    }
+
+    /**
+     * Float parse!
+     *
+     * @param stringValue
+     * @return
+     */
+    @NonNull
+    public static Maybe<Float> ParseFloat(@NonNull String stringValue) {
+        return ParseBoxedObject(stringValue, Float::parseFloat);
     }
 }

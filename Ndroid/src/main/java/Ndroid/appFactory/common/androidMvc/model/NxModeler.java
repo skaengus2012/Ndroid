@@ -1,5 +1,7 @@
 package Ndroid.appFactory.common.androidMvc.model;
 
+import android.support.annotation.NonNull;
+
 import java.util.Collection;
 import java.util.Map;
 
@@ -104,11 +106,11 @@ public abstract class NxModeler {
      * @param key
      * @param iSupplier
      */
-    public static <T, R> void PutDefualtValueInMap(Map<T, R> map, T key, ISupplier<R> iSupplier) {
+    public static <T, R> void PutEmptyKeyValueInMap(@NonNull Map<T, R> map, @NonNull T key, @NonNull ISupplier<R> iSupplier) {
         NullCheck(map);
+        NullCheck(key);
+        NullCheck(iSupplier);
 
-        if (!map.containsKey(key)) {
-            map.put(key, iSupplier.accept());
-        }
+        ContainerUtil.PutEmptyKeyValueInMap(map, key, iSupplier);
     }
 }
