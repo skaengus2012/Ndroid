@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Ndroid.iml" filepath="$PROJECT_DIR$/Ndroid.iml" />
+      <module fileurl="file://$PROJECT_DIR$/n-java/n-java.iml" filepath="$PROJECT_DIR$/n-java/n-java.iml" />
     </modules>
   </component>
 </project>

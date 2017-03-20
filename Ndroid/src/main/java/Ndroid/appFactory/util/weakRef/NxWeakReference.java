@@ -3,8 +3,8 @@ package Ndroid.appFactory.util.weakRef;
 import java.lang.ref.ReferenceQueue;
 import java.lang.ref.WeakReference;
 
-import Ndroid.appFactory.common.function.IConsumer;
-import Ndroid.appFactory.common.function.IFunction;
+import Njava.function.IConsumer;
+import Njava.function.IFunction;
 
 
 /**

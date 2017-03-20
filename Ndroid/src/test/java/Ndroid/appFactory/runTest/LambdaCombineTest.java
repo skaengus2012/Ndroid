@@ -5,9 +5,9 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.List;
 
-import Ndroid.appFactory.common.function.IPredicate;
 import Ndroid.appFactory.testVo.SubjectRelation;
-import Ndroid.appFactory.util.function.LambdaUtil;
+import Njava.function.IPredicate;
+import Njava.util.function.LambdaUtil;
 import io.reactivex.Observable;
 
 /**

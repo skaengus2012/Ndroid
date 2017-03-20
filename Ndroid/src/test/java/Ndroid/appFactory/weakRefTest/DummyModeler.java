@@ -1,6 +1,7 @@
 package Ndroid.appFactory.weakRefTest;
 
-import Ndroid.appFactory.common.androidMvc.model.NxModeler;
+
+import Njava.modeler.NxModeler;
 
 /**
  * 스레드에서 일을 시킨다고 가정하고, 테스트를 수행하는 모델러

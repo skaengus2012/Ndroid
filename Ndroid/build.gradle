@@ -3,7 +3,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.3'
+        classpath 'com.android.tools.build:gradle:2.3.0'
         classpath 'me.tatarka:gradle-retrolambda:3.2.5'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
     }
@@ -12,7 +12,9 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
+        maven { url 'https://jitpack.io' }
     }
+
     apply plugin: 'com.android.library'
     apply plugin: 'me.tatarka.retrolambda'
     apply plugin: 'com.github.dcendents.android-maven'
@@ -28,11 +30,12 @@ android {
         minSdkVersion 15
         targetSdkVersion 22
         versionCode 1
-        versionName 'v0.0.3.5-alpha'
+        versionName 'v0.0.6-alpha'
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -56,13 +59,12 @@ dependencies {
     // android library
     compile 'com.android.support:support-v4:25.1.0'
     compile 'com.android.support:appcompat-v7:25.1.0'
-    compile 'com.android.support:support-annotations:25.1.0'
 
     // for Cloner
     compile 'uk.com.robust-it:cloning:1.9.3'
 
-    // RxJava
-    compile 'io.reactivex.rxjava2:rxjava:2.0.6'
+    // N-Java (with RxJava2)
+    compile 'com.github.skaengus2012:N-java:v0.0.6-alpha'
 
     testCompile 'junit:junit:4.12'
 }

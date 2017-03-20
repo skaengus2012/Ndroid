@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import Ndroid.appFactory.util.business.StringUtil;
-import Ndroid.appFactory.util.business.koreanText.KoreanTextMatcher;
+import Ndroid.appFactory.util.koreanText.KoreanTextMatcher;
 import io.reactivex.Observable;
 
 /**

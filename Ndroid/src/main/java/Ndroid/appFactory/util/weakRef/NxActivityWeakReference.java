@@ -4,7 +4,7 @@ import android.app.Activity;
 
 import java.lang.ref.ReferenceQueue;
 
-import Ndroid.appFactory.common.function.IConsumer;
+import Njava.function.IConsumer;
 
 /**
  * Activity 전용 약한참조 객체
@@ -40,9 +40,7 @@ public class NxActivityWeakReference<T extends Activity> extends NxWeakReference
         final T activity = this.get();
 
         if (activity != null) {
-            activity.runOnUiThread(() -> {
-                weakReferenceConsumer.accept(activity);
-            });
+            activity.runOnUiThread(() -> weakReferenceConsumer.accept(activity));
         }
     }
 }
