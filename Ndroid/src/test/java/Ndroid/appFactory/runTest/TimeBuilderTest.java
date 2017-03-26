@@ -70,6 +70,8 @@ public class TimeBuilderTest {
                 to_yyMMdd().
                 getStringFormat("yyyy.MM.dd (hh,mm,ss a)").
                 subscribe(System.out::println);
+
+        TimeBuilder.Create(dateString, "yyyy-MM-dd hh:mm").endDayOfMonth().getStringFormat("yyyy.MM.dd").subscribe(System.out::println);
     }
 
     @Test
@@ -99,6 +101,12 @@ public class TimeBuilderTest {
 
         // return hour 12 type
         System.out.println(currentTimeBuilder.getHour12());
+    }
+
+    @Test
+    public void runEndOfMonth() {
+        TimeBuilder.Create().addMonth(-1).addYear(-1).endDayOfMonth().getStringFormat("yyyy-MM-dd").subscribe(System.out::println);
+        TimeBuilder.Create().firstDayOfMonth().getStringFormat("yyyy-MM-dd").subscribe(System.out::println);
     }
 
     @Test
