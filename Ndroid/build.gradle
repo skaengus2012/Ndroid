@@ -30,7 +30,7 @@ android {
         minSdkVersion 15
         targetSdkVersion 22
         versionCode 1
-        versionName 'v0.0.6-alpha'
+        versionName 'v0.1.0-alpha'
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -64,7 +64,7 @@ dependencies {
     compile 'uk.com.robust-it:cloning:1.9.3'
 
     // N-Java (with RxJava2)
-    compile 'com.github.skaengus2012:N-java:v0.0.6-alpha'
+    compile 'com.github.skaengus2012:N-java:v0.1.0-alpha'
 
     testCompile 'junit:junit:4.12'
 }
