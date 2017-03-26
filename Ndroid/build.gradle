@@ -64,7 +64,7 @@ dependencies {
     compile 'uk.com.robust-it:cloning:1.9.3'
 
     // N-Java (with RxJava2)
-    compile 'com.github.skaengus2012:N-java:v0.1.0-alpha'
+    compile 'com.github.skaengus2012:N-java:v0.1.0-beta'
 
     testCompile 'junit:junit:4.12'
 }
