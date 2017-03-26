@@ -53,6 +53,7 @@ dependencies {
 <B>1. Android MVP</B> : https://github.com/skaengus2012/Ndroid#android-mvp<br/>
 <B>2. Lambda combination</B> : https://github.com/skaengus2012/N-java#lambda-combination<br/>
 <B>3. MaybeUtil</B> : https://github.com/skaengus2012/N-java#maybeutil<br/>
+<B>4. TimeUtil & TimeBuilder </B> : https://github.com/skaengus2012/N-java/#timeutil--timebuilder <br/>
 
 # Android MVP
 
