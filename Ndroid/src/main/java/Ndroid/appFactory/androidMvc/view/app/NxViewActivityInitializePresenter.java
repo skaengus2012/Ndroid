@@ -39,4 +39,11 @@ public final class NxViewActivityInitializePresenter<T extends INxViewComponentI
     public String readString(@StringRes final int resId) {
         return nxActivityWeakReference.call(activity -> activity.getApplicationContext().getString(resId), "");
     }
+
+    /**
+     * Setting RESULT OK
+     */
+    public void setResultOk() {
+        nxActivityWeakReference.runOnUiThread(activity -> activity.setResult(Activity.RESULT_OK));
+    }
 }

@@ -40,7 +40,14 @@ public abstract class NxFragmentActivity extends FragmentActivity implements INx
      * @return
      */
     @NonNull
-    public String readString(@StringRes int resourceId) {
+    public final String readString(@StringRes int resourceId) {
         return nxViewActivityInitializePresenter.readString(resourceId);
+    }
+
+    /**
+     * Result OK 세팅 처리.
+     */
+    public final void setResultOk() {
+        nxViewActivityInitializePresenter.setResultOk();
     }
 }
