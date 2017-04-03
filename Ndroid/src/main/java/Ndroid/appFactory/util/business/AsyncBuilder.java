@@ -74,14 +74,36 @@ public final class AsyncBuilder<T> extends NxModeler {
     }
 
     /**
+     * Create copy object
+     *
+     * <pre>
+     *     deep copy.
+     * </pre>
+     *
+     * @return
+     */
+    private AsyncBuilder<T> getCopyObject() {
+        AsyncBuilder<T> copyObject = new AsyncBuilder<>(flowAbleOnSubscribe);
+        copyObject.nextConsumerMaybe = nextConsumerMaybe;
+        copyObject.exceptionConsumerMaybe = exceptionConsumerMaybe;
+        copyObject.completeRunnableMaybe = completeRunnableMaybe;
+        copyObject.subscribeOnScheduler = subscribeOnScheduler;
+        copyObject.observeOnScheduler = observeOnScheduler;
+
+        return copyObject;
+    }
+
+    /**
      * Setting next.
      *
      * @param nextConsumer
      * @return
      */
     public AsyncBuilder<T> doOnNext(@Nullable IExConsumer<T> nextConsumer) {
-        this.nextConsumerMaybe = MaybeUtil.JustNullable(nextConsumer);
-        return this;
+        AsyncBuilder<T> copyObject = getCopyObject();
+
+        copyObject.nextConsumerMaybe = MaybeUtil.JustNullable(nextConsumer);
+        return copyObject;
     }
 
     /**
@@ -91,8 +113,10 @@ public final class AsyncBuilder<T> extends NxModeler {
      * @return
      */
     public AsyncBuilder<T> doOnComplete(@Nullable Action completeRunnable) {
-        this.completeRunnableMaybe = MaybeUtil.JustNullable(completeRunnable);
-        return this;
+        AsyncBuilder<T> copyObject = getCopyObject();
+
+        copyObject.completeRunnableMaybe = MaybeUtil.JustNullable(completeRunnable);
+        return copyObject;
     }
 
     /**
@@ -102,9 +126,10 @@ public final class AsyncBuilder<T> extends NxModeler {
      * @return
      */
     public AsyncBuilder<T> doOnError(@Nullable IExConsumer<Throwable> exceptionIExConsumer) {
-        this.exceptionConsumerMaybe = MaybeUtil.JustNullable(exceptionIExConsumer);
+        AsyncBuilder<T> copyObject = getCopyObject();
 
-        return this;
+        copyObject.exceptionConsumerMaybe = MaybeUtil.JustNullable(exceptionIExConsumer);
+        return copyObject;
     }
 
     /**
@@ -116,9 +141,10 @@ public final class AsyncBuilder<T> extends NxModeler {
     public AsyncBuilder<T> subscribeOnScheduler(@NonNull Scheduler scheduler) {
         NullCheck(scheduler);
 
-        subscribeOnScheduler = scheduler;
+        AsyncBuilder<T> copyObject = getCopyObject();
 
-        return this;
+        copyObject.subscribeOnScheduler = scheduler;
+        return copyObject;
     }
 
     /**
@@ -130,25 +156,10 @@ public final class AsyncBuilder<T> extends NxModeler {
     public AsyncBuilder<T> observeOnScheduler(@NonNull Scheduler scheduler) {
         NullCheck(scheduler);
 
-        observeOnScheduler = scheduler;
+        AsyncBuilder<T> copyObject = getCopyObject();
 
-        return this;
-    }
-
-    /**
-     * setting member var & return Flowable
-     *
-     * @return
-     */
-    private Flowable<T> createFlowAble() {
-        final Flowable<T> flowAble = Flowable.create(flowAbleOnSubscribe, BackpressureStrategy.BUFFER).
-                subscribeOn(subscribeOnScheduler).
-                observeOn(observeOnScheduler).
-                doOnNext(t -> nextConsumerMaybe.subscribe(consumer -> consumer.accept(t))).
-                doOnError(e -> exceptionConsumerMaybe.subscribe(consumer -> consumer.accept(e))).
-                doOnComplete(() -> completeRunnableMaybe.subscribe(Action::run));
-
-        return flowAble;
+        copyObject.observeOnScheduler = scheduler;
+        return copyObject;
     }
 
     /**
