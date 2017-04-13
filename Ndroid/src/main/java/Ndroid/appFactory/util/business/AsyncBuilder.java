@@ -44,7 +44,7 @@ public final class AsyncBuilder<T> extends NxModeler {
         completeRunnableMaybe = Maybe.empty();
         exceptionConsumerMaybe = Maybe.empty();
 
-        subscribeOnScheduler = Schedulers.trampoline();
+        subscribeOnScheduler = Schedulers.io();
         observeOnScheduler = AndroidSchedulers.mainThread();
     }
 
