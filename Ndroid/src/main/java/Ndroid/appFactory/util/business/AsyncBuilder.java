@@ -133,32 +133,27 @@ public final class AsyncBuilder<T> extends NxModeler {
     }
 
     /**
-     * Setting subscribeOnScheduler.
+     * Setting subscribeOnScheduler with IO
      *
-     * @param scheduler
      * @return
      */
-    public AsyncBuilder<T> subscribeOnScheduler(@NonNull Scheduler scheduler) {
-        NullCheck(scheduler);
+    public AsyncBuilder<T> Io() {
 
         AsyncBuilder<T> copyObject = getCopyObject();
 
-        copyObject.subscribeOnScheduler = scheduler;
+        copyObject.subscribeOnScheduler = Schedulers.io();
         return copyObject;
     }
 
     /**
-     * Setting observeOnScheduler.
+     * Setting subscribeOnScheduler with trampoline.
      *
-     * @param scheduler
      * @return
      */
-    public AsyncBuilder<T> observeOnScheduler(@NonNull Scheduler scheduler) {
-        NullCheck(scheduler);
-
+    public AsyncBuilder<T> TrampoLine() {
         AsyncBuilder<T> copyObject = getCopyObject();
 
-        copyObject.observeOnScheduler = scheduler;
+        copyObject.subscribeOnScheduler = Schedulers.trampoline();
         return copyObject;
     }
 
