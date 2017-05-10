@@ -52,10 +52,10 @@ dependencies {
 # Support Function
 
 <H2>N-java</H2>
-<B>1. Lambda combination</B> : https://github.com/skaengus2012/N-java/wiki/N-java-WIKI-!#lambda-combination<br/>
-<B>2. MaybeUtil</B> : https://github.com/skaengus2012/N-java/wiki/N-java-WIKI-!#maybeutil<br/>
-<B>3. TimeUtil & TimeBuilder </B> : https://github.com/skaengus2012/N-java/wiki/N-java-WIKI-!#timeutil--timebuilder <br/>
-<B>4. CheckUtil </B> : https://github.com/skaengus2012/N-java/wiki/OPEN-N-java-v0.2-release-wiki!#checkutil <br/>
+<B>1. Lambda combination</B> : https://github.com/skaengus2012/N-java/wiki/N-java-v0.2-wiki#lambda-combination<br/>
+<B>2. MaybeUtil</B> : https://github.com/skaengus2012/N-java/wiki/N-java-v0.2-wiki#maybeutil<br/>
+<B>3. TimeUtil & TimeBuilder </B> : https://github.com/skaengus2012/N-java/wiki/N-java-v0.2-wiki#timeutil--timebuilder <br/>
+<B>4. CheckUtil </B> : https://github.com/skaengus2012/N-java/wiki/N-java-v0.2-wiki#checkutil <br/>
 
 <H2>Ndroid</H2>
 <B>1. Android MVP</B> : https://github.com/skaengus2012/Ndroid#android-mvp <br/><br/>
