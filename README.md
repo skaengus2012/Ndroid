@@ -59,11 +59,12 @@ dependencies {
 
 <H2>Ndroid</H2>
 <B>1. Android MVP</B> : https://github.com/skaengus2012/Ndroid#android-mvp <br/><br/>
+
 # Android MVP
 
 Ndroid support android mvp with considering memory leak.
 
-First, You can find NxActivity, NxPresenter, NxModeler
+First, You can find NxActivity, NxPresenter, NxComponent
 
 <H2>NxActivity series</H2>
 I defined required abstract method in NxActivity series.
@@ -130,12 +131,12 @@ public class LoginPresenter extends NxActivityPresenter<T> implements ILoginServ
      }
 }
 ```
-<h2>NxModeler</h2>
+<h2>NxComponent</h2>
 I think that model likes Service, Component in Spring Framework required while devloping app.<br/>
 So I made modeler for busines logic.
 
 ```java
-public class DummyModeler extends NxModeler {
+public class DummyModeler extends NxComponent {
 
     private DummyModeler() {
     }
