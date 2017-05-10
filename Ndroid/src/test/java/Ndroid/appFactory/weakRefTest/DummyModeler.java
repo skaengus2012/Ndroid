@@ -1,7 +1,7 @@
 package Ndroid.appFactory.weakRefTest;
 
 
-import Njava.modeler.NxModeler;
+import Njava.common.NxComponent;
 
 /**
  * 스레드에서 일을 시킨다고 가정하고, 테스트를 수행하는 모델러
@@ -9,7 +9,7 @@ import Njava.modeler.NxModeler;
  * Created by Doohyun on 2017. 2. 22..
  */
 
-public class DummyModeler extends NxModeler {
+public class DummyModeler extends NxComponent {
 
     private DummyModeler() {
     }

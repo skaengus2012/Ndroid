@@ -1,7 +1,7 @@
 package Ndroid.appFactory.util.business;
 
 import Ndroid.appFactory.util.koreanText.KoreanTextMatcher;
-import Njava.modeler.NxModeler;
+import Njava.util.business.CheckUtil;
 import io.reactivex.annotations.NonNull;
 
 /**
@@ -19,7 +19,7 @@ public class StringUtil extends Njava.util.business.StringUtil {
      * @return
      */
     public static KoreanTextMatcher GetRegexMatcher(@NonNull String pattern) {
-        NxModeler.NullCheck(pattern);
+        CheckUtil.NullCheck(pattern, "[ERROR] pattern is empty!!", RuntimeException.class);
 
         return new KoreanTextMatcher(pattern);
     }

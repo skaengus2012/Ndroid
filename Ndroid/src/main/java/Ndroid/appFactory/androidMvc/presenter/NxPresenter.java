@@ -4,9 +4,9 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 import Ndroid.appFactory.util.weakRef.NxWeakReference;
+import Njava.common.NxComponent;
 import Njava.function.IConsumer;
 import Njava.function.IFunction;
-import Njava.modeler.NxModeler;
 
 /**
  * Presenter 정의
@@ -20,7 +20,7 @@ import Njava.modeler.NxModeler;
  * Created by Doohyun on 2017. 2. 12..
  */
 
-public abstract class NxPresenter<T> extends NxModeler {
+public abstract class NxPresenter<T> extends NxComponent {
 
     private NxWeakReference<T> mitActivityWeakReference;
 

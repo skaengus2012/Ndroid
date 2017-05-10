@@ -5,7 +5,7 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 
 import Njava.function.exceptionLambda.IExConsumer;
-import Njava.modeler.NxModeler;
+import Njava.util.business.CheckUtil;
 import Njava.util.function.MaybeUtil;
 import io.reactivex.BackpressureStrategy;
 import io.reactivex.Flowable;
@@ -23,7 +23,7 @@ import io.reactivex.schedulers.Schedulers;
  * <p>
  * Created by Doohyun on 2017. 4. 2..
  */
-public final class AsyncBuilder<T> extends NxModeler {
+public final class AsyncBuilder<T> {
 
     private static final String LOG_NAME = "Rx Builder";
 
@@ -56,7 +56,7 @@ public final class AsyncBuilder<T> extends NxModeler {
      * @return
      */
     public static <T> AsyncBuilder<T> Create(@NonNull FlowableOnSubscribe<T> flowAbleOnSubscribe) {
-        NullCheck(flowAbleOnSubscribe);
+        CheckUtil.NullCheck(flowAbleOnSubscribe, "[ERROR] : flowAbleOnSubscribe param is null", RuntimeException.class);
         return new AsyncBuilder<>(flowAbleOnSubscribe);
     }
 
@@ -68,9 +68,9 @@ public final class AsyncBuilder<T> extends NxModeler {
      */
     public static AsyncBuilder<Void> Create(@Nullable Runnable runnable) {
         return new AsyncBuilder<>((FlowableEmitter<Void> emitter) -> {
-            MaybeUtil.JustNullable(runnable).subscribe(Runnable::run);
-            emitter.onComplete();
-        });
+                                        MaybeUtil.JustNullable(runnable).subscribe(Runnable::run);
+                                        emitter.onComplete();
+                                    });
     }
 
     /**
