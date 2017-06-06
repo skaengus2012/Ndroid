@@ -44,7 +44,7 @@ allprojects {
 <B>STEP2</B> : Add the dependency:<br/>
 ```gradle
 dependencies {
-    compile 'com.github.skaengus2012:Ndroid:v0.1.5-beta'
+    compile 'com.github.skaengus2012:Ndroid:v0.2.3-beta'
 }
 ```
 <br/>
