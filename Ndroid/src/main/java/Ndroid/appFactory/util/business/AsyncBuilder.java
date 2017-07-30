@@ -34,7 +34,7 @@ public final class AsyncBuilder<T> {
     private Maybe<Action> completeRunnableMaybe = Maybe.empty();
     private Maybe<IExConsumer<Throwable>> exceptionConsumerMaybe = Maybe.empty();
 
-    // default trampoline & androidSchedulers.
+    // default io & androidSchedulers.
     private Scheduler subscribeOnScheduler, observeOnScheduler;
 
     private AsyncBuilder(@NonNull FlowableOnSubscribe<T> flowAbleOnSubscribe) {
@@ -74,36 +74,14 @@ public final class AsyncBuilder<T> {
     }
 
     /**
-     * Create copy object
-     *
-     * <pre>
-     *     deep copy.
-     * </pre>
-     *
-     * @return
-     */
-    private AsyncBuilder<T> getCopyObject() {
-        AsyncBuilder<T> copyObject = new AsyncBuilder<>(flowAbleOnSubscribe);
-        copyObject.nextConsumerMaybe = nextConsumerMaybe;
-        copyObject.exceptionConsumerMaybe = exceptionConsumerMaybe;
-        copyObject.completeRunnableMaybe = completeRunnableMaybe;
-        copyObject.subscribeOnScheduler = subscribeOnScheduler;
-        copyObject.observeOnScheduler = observeOnScheduler;
-
-        return copyObject;
-    }
-
-    /**
      * Setting next.
      *
      * @param nextConsumer
      * @return
      */
     public AsyncBuilder<T> doOnNext(@Nullable IExConsumer<T> nextConsumer) {
-        AsyncBuilder<T> copyObject = getCopyObject();
-
-        copyObject.nextConsumerMaybe = MaybeUtil.JustNullable(nextConsumer);
-        return copyObject;
+        nextConsumerMaybe = MaybeUtil.JustNullable(nextConsumer);
+        return this;
     }
 
     /**
@@ -113,10 +91,8 @@ public final class AsyncBuilder<T> {
      * @return
      */
     public AsyncBuilder<T> doOnComplete(@Nullable Action completeRunnable) {
-        AsyncBuilder<T> copyObject = getCopyObject();
-
-        copyObject.completeRunnableMaybe = MaybeUtil.JustNullable(completeRunnable);
-        return copyObject;
+        completeRunnableMaybe = MaybeUtil.JustNullable(completeRunnable);
+        return this;
     }
 
     /**
@@ -126,10 +102,8 @@ public final class AsyncBuilder<T> {
      * @return
      */
     public AsyncBuilder<T> doOnError(@Nullable IExConsumer<Throwable> exceptionIExConsumer) {
-        AsyncBuilder<T> copyObject = getCopyObject();
-
-        copyObject.exceptionConsumerMaybe = MaybeUtil.JustNullable(exceptionIExConsumer);
-        return copyObject;
+        exceptionConsumerMaybe = MaybeUtil.JustNullable(exceptionIExConsumer);
+        return this;
     }
 
     /**
@@ -138,11 +112,8 @@ public final class AsyncBuilder<T> {
      * @return
      */
     public AsyncBuilder<T> Io() {
-
-        AsyncBuilder<T> copyObject = getCopyObject();
-
-        copyObject.subscribeOnScheduler = Schedulers.io();
-        return copyObject;
+        subscribeOnScheduler = Schedulers.io();
+        return this;
     }
 
     /**
@@ -151,10 +122,8 @@ public final class AsyncBuilder<T> {
      * @return
      */
     public AsyncBuilder<T> TrampoLine() {
-        AsyncBuilder<T> copyObject = getCopyObject();
-
-        copyObject.subscribeOnScheduler = Schedulers.trampoline();
-        return copyObject;
+        subscribeOnScheduler = Schedulers.trampoline();
+        return this;
     }
 
     /**
