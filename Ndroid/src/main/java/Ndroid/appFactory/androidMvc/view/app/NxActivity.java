@@ -5,8 +5,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
 import android.support.v7.app.AppCompatActivity;
 
-import Ndroid.appFactory.androidMvc.view.INxViewComponentInitializeAction;
-
 /**
  * 마이다스 액티비티 정의
  *
@@ -15,9 +13,9 @@ import Ndroid.appFactory.androidMvc.view.INxViewComponentInitializeAction;
  * </pre>
  * Created by Doohyun on 2017. 1. 25..
  */
-public abstract class NxActivity extends AppCompatActivity implements INxViewComponentInitializeAction {
+public abstract class NxActivity extends AppCompatActivity implements INxActivityInitializeAction {
 
-    private NxViewActivityInitializePresenter nxViewActivityInitializePresenter;
+    private NxActivityInitializePresenter nxViewActivityInitializePresenter;
 
     /**
      * 모든 액티비티는 이 메소드를 확장해야함
@@ -29,7 +27,7 @@ public abstract class NxActivity extends AppCompatActivity implements INxViewCom
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutResourceId());
-        nxViewActivityInitializePresenter = new NxViewActivityInitializePresenter(this);
+        nxViewActivityInitializePresenter = new NxActivityInitializePresenter(this);
         nxViewActivityInitializePresenter.onCreateBehavior();
     }
 

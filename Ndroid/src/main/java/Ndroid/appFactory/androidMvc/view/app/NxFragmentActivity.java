@@ -5,8 +5,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
 import android.support.v4.app.FragmentActivity;
 
-import Ndroid.appFactory.androidMvc.view.INxViewComponentInitializeAction;
-
 /**
  * 마이다스 액티비티 정의
  * <p>
@@ -16,9 +14,9 @@ import Ndroid.appFactory.androidMvc.view.INxViewComponentInitializeAction;
  * <p>
  * Created by Doohyun on 2017. 1. 25..
  */
-public abstract class NxFragmentActivity extends FragmentActivity implements INxViewComponentInitializeAction {
+public abstract class NxFragmentActivity extends FragmentActivity implements INxActivityInitializeAction {
 
-    private NxViewActivityInitializePresenter nxViewActivityInitializePresenter;
+    private NxActivityInitializePresenter nxViewActivityInitializePresenter;
 
     /**
      * 모든 액티비티는 이 메소드를 확장해야함
@@ -29,7 +27,7 @@ public abstract class NxFragmentActivity extends FragmentActivity implements INx
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutResourceId());
-        nxViewActivityInitializePresenter = new NxViewActivityInitializePresenter(this);
+        nxViewActivityInitializePresenter = new NxActivityInitializePresenter(this);
         nxViewActivityInitializePresenter.onCreateBehavior();
     }
 

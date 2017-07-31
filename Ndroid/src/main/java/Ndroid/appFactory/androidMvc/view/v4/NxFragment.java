@@ -1,15 +1,14 @@
 package Ndroid.appFactory.androidMvc.view.v4;
 
 import android.os.Bundle;
+import android.support.annotation.LayoutRes;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import Ndroid.appFactory.androidMvc.view.INxViewComponentInitializeAction;
-
 /**
- * 마이다스 Fragment 정의
+ * NXFragment 정의
  *
  * <pre>
  *      Fragment 를 사용할 모든 클래스는 이 클래스를 상속받아야함
@@ -18,9 +17,7 @@ import Ndroid.appFactory.androidMvc.view.INxViewComponentInitializeAction;
  * Created by Doohyun on 2017. 2. 5..
  */
 
-public abstract class NxFragment extends Fragment implements INxViewComponentInitializeAction {
-
-    private NxViewFragmentInitializePresenter nxViewFragmentInitializePresenter;
+public abstract class NxFragment extends Fragment {
 
     /**
      * 공통적으로 할 일 정의
@@ -35,8 +32,7 @@ public abstract class NxFragment extends Fragment implements INxViewComponentIni
                             , ViewGroup container
                             , Bundle savedInstanceState) {
         final View view = inflater.inflate(getLayoutResourceId(), container, getAttachToRoot());
-        nxViewFragmentInitializePresenter = new NxViewFragmentInitializePresenter(this);
-        nxViewFragmentInitializePresenter.onCreateBehavior();
+        initView(view);
 
         return view;
     }
@@ -53,4 +49,19 @@ public abstract class NxFragment extends Fragment implements INxViewComponentIni
     public boolean getAttachToRoot() {
         return false;
     }
+
+    /**
+     * View 들에 대한 binding 작업 수행
+     *
+     * @param view
+     */
+    public abstract void initView(View view);
+
+    /**
+     * 레이아웃 리소스 id 명세
+     *
+     * @return
+     */
+    @LayoutRes
+    public abstract int getLayoutResourceId();
 }

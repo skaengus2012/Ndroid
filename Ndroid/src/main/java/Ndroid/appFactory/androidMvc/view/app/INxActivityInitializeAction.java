@@ -1,4 +1,4 @@
-package Ndroid.appFactory.androidMvc.view;
+package Ndroid.appFactory.androidMvc.view.app;
 
 import android.support.annotation.LayoutRes;
 
@@ -7,7 +7,7 @@ import android.support.annotation.LayoutRes;
  *  Created by Doohyun on 2017. 1. 25..
  */
 
-public interface INxViewComponentInitializeAction {
+public interface INxActivityInitializeAction {
 
     /**
      * View 들에 대한 binding 작업 수행
