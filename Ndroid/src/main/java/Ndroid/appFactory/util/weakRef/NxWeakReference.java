@@ -5,6 +5,8 @@ import java.lang.ref.WeakReference;
 
 import Njava.function.IConsumer;
 import Njava.function.IFunction;
+import Njava.util.function.MaybeUtil;
+import io.reactivex.Maybe;
 
 
 /**
@@ -53,7 +55,7 @@ public class NxWeakReference<T> extends WeakReference<T> {
      *
      * @param weakReferenceFunction
      */
-    public <R> R call(IFunction<T, R> weakReferenceFunction) {
+    public <R> Maybe<R> call(IFunction<T, R> weakReferenceFunction) {
         R result = null;
 
         T t = this.get();
@@ -62,7 +64,7 @@ public class NxWeakReference<T> extends WeakReference<T> {
             result = weakReferenceFunction.apply(t);
         }
 
-        return result;
+        return MaybeUtil.JustNullable(result);
     }
 
     /**
@@ -75,7 +77,8 @@ public class NxWeakReference<T> extends WeakReference<T> {
      * @param weakReferenceFunction
      */
     public <R> R call(IFunction<T, R> weakReferenceFunction, R defaultValue) {
-        final R result = call(weakReferenceFunction);
-        return (result == null) ? defaultValue : result;
+        final Maybe<R> result = call(weakReferenceFunction);
+
+        return result.blockingGet(defaultValue);
     }
 }
