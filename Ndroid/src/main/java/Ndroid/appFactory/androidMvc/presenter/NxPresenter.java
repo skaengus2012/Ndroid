@@ -7,6 +7,7 @@ import Ndroid.appFactory.util.weakRef.NxWeakReference;
 import Njava.common.NxComponent;
 import Njava.function.IConsumer;
 import Njava.function.IFunction;
+import io.reactivex.Maybe;
 
 /**
  * Presenter 정의
@@ -66,7 +67,7 @@ public abstract class NxPresenter<T> extends NxComponent {
      * @param function
      * @return
      */
-    public final <R> R call(@NonNull IFunction<T, R> function) {
+    public final <R> Maybe<R> call(@NonNull IFunction<T, R> function) {
         NullCheck(function);
         return mitActivityWeakReference.call(function);
     }

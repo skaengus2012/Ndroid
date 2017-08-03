@@ -74,7 +74,7 @@ public final class NxActivityInitializePresenter<T extends INxActivityInitialize
      */
     @LayoutRes
     public final int getLayoutResourceId() {
-        return call(INxActivityInitializeAction::getLayoutResourceId);
+        return call(INxActivityInitializeAction::getLayoutResourceId).blockingGet();
     }
 
     /**
