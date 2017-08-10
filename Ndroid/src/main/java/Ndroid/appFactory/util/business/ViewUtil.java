@@ -3,8 +3,6 @@ package Ndroid.appFactory.util.business;
 import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.LayoutRes;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -14,6 +12,8 @@ import Ndroid.appFactory.util.weakRef.NxWeakReference;
 import Njava.function.IConsumer;
 import Njava.util.business.CheckUtil;
 import Njava.util.function.MaybeUtil;
+import io.reactivex.annotations.NonNull;
+import io.reactivex.annotations.Nullable;
 
 /**
  * Define android view business util.
@@ -111,8 +111,28 @@ public class ViewUtil {
      * @param consumer
      * @param <T>
      */
-    public static <T extends View>void Post(T view, IConsumer<T> consumer) {
+    public static <T extends View>void Post(@NonNull T view, @NonNull IConsumer<T> consumer) {
+
+        CheckUtil.NullCheck(view);
+        CheckUtil.NullCheck(consumer);
+
         NxWeakReference<T> weakReference = new NxWeakReference<>(view);
         view.post(() -> weakReference.run(consumer));
+    }
+
+    /**
+     * Post behavior by view. (With delayed)
+     *
+     * @param view
+     * @param consumer
+     * @param delayTime
+     * @param <T>
+     */
+    public static <T extends View>void Post(@NonNull T view, @NonNull IConsumer<T> consumer, @NonNull int delayTime) {
+        CheckUtil.NullCheck(view);
+        CheckUtil.NullCheck(consumer);
+
+        NxWeakReference<T> weakReference = new NxWeakReference<>(view);
+        view.postDelayed(() -> weakReference.run(consumer), delayTime);
     }
 }
