@@ -22,7 +22,7 @@ import io.reactivex.annotations.Nullable;
  */
 public class ViewUtil {
 
-    private ViewUtil() {}
+    protected ViewUtil() {}
 
     /**
      * Request create View by layout id
@@ -79,9 +79,9 @@ public class ViewUtil {
             , @NonNull View childView
             , @NonNull int y) {
 
-        CheckUtil.NullCheck(scrollView, "스크롤 뷰로 스크롤링 하는 중 에러 발생!!", RuntimeException.class);
-        CheckUtil.NullCheck(childView, "스크롤 뷰로 스크롤링 하는 중 에러 발생!!", RuntimeException.class);
-        CheckUtil.NullCheck(y, "스크롤 뷰로 스크롤링 하는 중 에러 발생!!", RuntimeException.class);
+        CheckUtil.NullCheck(scrollView, "ScrollView will be required!!!!", RuntimeException.class);
+        CheckUtil.NullCheck(childView, "ChildView will be required!!!!", RuntimeException.class);
+        CheckUtil.NullCheck(y, "target Y will be non Null", RuntimeException.class);
 
         // 이동할 타겟 Y 를 구한다.
         int targetY = 0;
