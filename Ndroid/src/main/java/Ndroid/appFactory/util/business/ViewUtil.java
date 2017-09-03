@@ -151,7 +151,7 @@ public class ViewUtil {
      * @return
      */
     @Nullable
-    public static <T> T FindByViewId(Object context, @IdRes int resId) {
+    public static <T> T FindViewById(Object context, @IdRes int resId) {
 
         T result = null;
 
