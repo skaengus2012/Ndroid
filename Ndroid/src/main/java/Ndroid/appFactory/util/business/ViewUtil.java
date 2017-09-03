@@ -1,6 +1,7 @@
 package Ndroid.appFactory.util.business;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
@@ -142,7 +143,7 @@ public class ViewUtil {
      * Binding From Something context.
      *
      * <pre>
-     *     Param 'context' is supported 'Activity' & 'View'
+     *     Param 'context' is supported 'Activity' & 'View' & 'Dialog'
      * </pre>
      *
      * @param context
@@ -159,6 +160,8 @@ public class ViewUtil {
             result = (T) ((View)context).findViewById(resId);
         } else if (context instanceof Activity) {
             result = (T) ((Activity) context).findViewById(resId);
+        } else if (context instanceof Dialog) {
+            result = (T) ((Dialog) context).findViewById(resId);
         }
 
         return result;
