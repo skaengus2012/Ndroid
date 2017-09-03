@@ -140,30 +140,41 @@ public class ViewUtil {
     }
 
     /**
-     * Binding From Something context.
+     * Binding From Something Activity.
      *
-     * <pre>
-     *     Param 'context' is supported 'Activity' & 'View' & 'Dialog'
-     * </pre>
-     *
-     * @param context
+     * @param activity
      * @param resId
      * @param <T>
      * @return
      */
     @Nullable
-    public static <T> T FindViewById(Object context, @IdRes int resId) {
+    public static <T> T FindViewById(Activity activity, @IdRes int resId) {
+        return (T) activity.findViewById(resId);
+    }
 
-        T result = null;
+    /**
+     * Binding From Something View.
+     *
+     * @param view
+     * @param resId
+     * @param <T>
+     * @return
+     */
+    @Nullable
+    public static <T> T FindViewById(View view, @IdRes int resId) {
+        return (T) view.findViewById(resId);
+    }
 
-        if (context instanceof View) {
-            result = (T) ((View)context).findViewById(resId);
-        } else if (context instanceof Activity) {
-            result = (T) ((Activity) context).findViewById(resId);
-        } else if (context instanceof Dialog) {
-            result = (T) ((Dialog) context).findViewById(resId);
-        }
-
-        return result;
+    /**
+     * Binding From Something Dialog.
+     *
+     * @param dialog
+     * @param resId
+     * @param <T>
+     * @return
+     */
+    @Nullable
+    public static <T> T FindViewById(Dialog dialog, @IdRes int resId) {
+        return (T) dialog.findViewById(resId);
     }
 }
