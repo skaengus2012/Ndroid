@@ -2,6 +2,7 @@ package Ndroid.appFactory.util.business;
 
 import android.app.Activity;
 import android.content.Context;
+import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -67,6 +68,7 @@ public class ViewUtil {
             , @NonNull View childView) {
         ScrollTo(scrollView, childView, 0);
     }
+
     /**
      * Scroll To childView
      *
@@ -134,5 +136,31 @@ public class ViewUtil {
 
         NxWeakReference<T> weakReference = new NxWeakReference<>(view);
         view.postDelayed(() -> weakReference.run(consumer), delayTime);
+    }
+
+    /**
+     * Binding From Something context.
+     *
+     * <pre>
+     *     Param 'context' is supported 'Activity' & 'View'
+     * </pre>
+     *
+     * @param context
+     * @param resId
+     * @param <T>
+     * @return
+     */
+    @Nullable
+    public static <T> T FindByViewId(Object context, @IdRes int resId) {
+
+        T result = null;
+
+        if (context instanceof View) {
+            result = (T) ((View)context).findViewById(resId);
+        } else if (context instanceof Activity) {
+            result = (T) ((Activity) context).findViewById(resId);
+        }
+
+        return result;
     }
 }
