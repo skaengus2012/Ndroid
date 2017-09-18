@@ -58,14 +58,15 @@ public class ViewUtil {
      * Hide keyboard
      *
      * @param activity (Null 허용)
+     * @param flags
      */
-    public static void ShowKeyBoard(@Nullable Activity activity) {
+    public static void ShowKeyBoard(@Nullable Activity activity, int flags) {
 
         MaybeUtil.JustNullable(activity).flatMap(ac -> MaybeUtil.JustNullable(ac.getCurrentFocus())).subscribe(v -> {
             // inputManager 호출.
             InputMethodManager inputManager = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
             // 키보드 가리기.
-            inputManager.showSoftInput(v, InputMethodManager.SHOW_FORCED);
+            inputManager.showSoftInput(v, flags);
         });
     }
 
