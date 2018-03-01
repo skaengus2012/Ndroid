@@ -1,6 +1,10 @@
 buildscript {
     repositories {
         jcenter()
+        maven {
+            url 'https://maven.google.com/'
+            name 'Google'
+        }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.0'
@@ -13,6 +17,10 @@ allprojects {
     repositories {
         jcenter()
         maven { url 'https://jitpack.io' }
+        maven {
+            url 'https://maven.google.com/'
+            name 'Google'
+        }
     }
 
     apply plugin: 'com.android.library'
@@ -23,8 +31,8 @@ allprojects {
 group = 'com.github.skaengus2012'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion '25.0.1'
+    compileSdkVersion 26
+    buildToolsVersion '26.0.2'
 
     defaultConfig {
         minSdkVersion 15
@@ -65,8 +73,8 @@ dependencies {
     androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.1'
 
     // android library
-    compile 'com.android.support:support-v4:25.1.0'
-    compile 'com.android.support:appcompat-v7:25.1.0'
+    compile 'com.android.support:support-v4:26.0.2'
+    compile 'com.android.support:appcompat-v7:26.0.2'
 
     // N-Java (with RxJava2)
     compile 'com.github.skaengus2012:N-java:v0.4.2-beta'
