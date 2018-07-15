@@ -86,6 +86,7 @@ dependencies {
     // N-Java (with RxJava2)
     implementation 'com.github.skaengus2012:N-java:v0.5.0-beta'
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
+    implementation 'io.reactivex.rxjava2:rxkotlin:2.2.0'
 
     // test
     testImplementation 'junit:junit:4.12'

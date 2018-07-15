@@ -1,4 +1,4 @@
-package Ndroid.appFactory.testVo;
+package Ndroid.appFactory.model;
 
 /**
  * Created by Doohyun on 2017. 3. 5..

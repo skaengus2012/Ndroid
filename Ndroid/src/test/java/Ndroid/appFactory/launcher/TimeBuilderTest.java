@@ -1,4 +1,4 @@
-package Ndroid.appFactory.runTest;
+package Ndroid.appFactory.launcher;
 
 import org.junit.Test;
 

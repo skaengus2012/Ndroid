@@ -1,4 +1,4 @@
-package Ndroid.appFactory.weakRefTest;
+package Ndroid.appFactory.weakref;
 
 
 import Njava.common.NxComponent;

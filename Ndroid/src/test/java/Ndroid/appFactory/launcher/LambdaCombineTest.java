@@ -1,11 +1,11 @@
-package Ndroid.appFactory.runTest;
+package Ndroid.appFactory.launcher;
 
 import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.List;
 
-import Ndroid.appFactory.testVo.SubjectRelation;
+import Ndroid.appFactory.model.SubjectRelation;
 import Njava.function.IPredicate;
 import Njava.util.function.LambdaUtil;
 import io.reactivex.Observable;

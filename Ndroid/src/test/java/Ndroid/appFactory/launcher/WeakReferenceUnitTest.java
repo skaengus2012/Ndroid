@@ -1,11 +1,11 @@
-package Ndroid.appFactory.runTest;
+package Ndroid.appFactory.launcher;
 
 import org.junit.Test;
 
 import java.lang.ref.WeakReference;
 
-import Ndroid.appFactory.weakRefTest.weakRefApply.DummyActivity;
-import Ndroid.appFactory.weakRefTest.weakRefNone.DummyWeakNoneActivity;
+import Ndroid.appFactory.weakref.apply.DummyActivity;
+import Ndroid.appFactory.weakref.none.DummyWeakNoneActivity;
 
 /**
  * Ndroid MVP android context memory leak test!

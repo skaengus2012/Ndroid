@@ -1,16 +1,16 @@
-package Ndroid.appFactory.weakRefTest.weakRefNone;
+package Ndroid.appFactory.weakref.apply;
 
 /**
  * 편의 상 실제 액티비티가 아닌 액티비티가 있다고 가정.
  * Created by Doohyun on 2017. 2. 22..
  */
 
-public class DummyWeakNoneActivity {
+public class DummyActivity {
 
-    private DummyNonePresenter dummyPresenter;
+    private DummyPresenter dummyPresenter;
 
-    public DummyWeakNoneActivity() {
-        dummyPresenter = new DummyNonePresenter(this);
+    public DummyActivity() {
+        dummyPresenter = new DummyPresenter(this);
     }
 
     public void activityAction(){

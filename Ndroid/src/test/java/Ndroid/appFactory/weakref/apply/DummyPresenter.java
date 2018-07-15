@@ -1,6 +1,6 @@
-package Ndroid.appFactory.weakRefTest.weakRefApply;
+package Ndroid.appFactory.weakref.apply;
 
-import Ndroid.appFactory.weakRefTest.DummyModeler;
+import Ndroid.appFactory.weakref.DummyModeler;
 import Ndroid.appFactory.util.weakRef.NxWeakReference;
 
 /**

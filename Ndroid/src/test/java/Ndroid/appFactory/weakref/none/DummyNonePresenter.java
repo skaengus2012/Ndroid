@@ -1,6 +1,6 @@
-package Ndroid.appFactory.weakRefTest.weakRefNone;
+package Ndroid.appFactory.weakref.none;
 
-import Ndroid.appFactory.weakRefTest.DummyModeler;
+import Ndroid.appFactory.weakref.DummyModeler;
 
 /**
  * Created by Doohyun on 2017. 2. 22..
